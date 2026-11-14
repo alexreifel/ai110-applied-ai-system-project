@@ -1,0 +1,30 @@
+$ python -m src.cli --mode offline --request "Danceable electronic or pop, high energy, no experimental tracks." --yes --limit 3
+Mode: offline_fixture
+Interpretation: Offline test fixture for dance exclusion.
+Model: none (predefined fixture)
+Assumption: This is a predefined fixture, not a model interpretation.
+Preferences: {"bounds": {}, "excluded_genres": ["experimental"], "preferred_genres": ["electronic", "pop"], "required_genres": [], "targets": {"danceability": 0.85, "energy": 0.85}, "unsupported": []}
+Catalog: 1200; eligible: 1090; returned: 3
+Recommendations from catalog metadata; scores are similarities, not probabilities.
+1. Snake In A Box — M.W.D. | Match: 0.998 | FMA 33322
+   Genres: downtempo, hip-hop, jazz
+   genre: matched electronic; similarity 1.000, weight 2
+   danceability: observed 0.8436, target 0.8500; similarity 0.9936, weight 1
+   energy: observed 0.8483, target 0.8500; similarity 0.9983, weight 1
+   excluded genres absent: experimental
+   Source: https://freemusicarchive.org/music/MWD/Singing_Forest/07_mwd-snake_in_a_box
+2. Quittin' Time — Patrick Lee | Match: 0.982 | FMA 33850
+   Genres: electronic, funk
+   genre: matched electronic; similarity 1.000, weight 2
+   danceability: observed 0.8008, target 0.8500; similarity 0.9508, weight 1
+   energy: observed 0.8286, target 0.8500; similarity 0.9786, weight 1
+   excluded genres absent: experimental
+   Source: https://freemusicarchive.org/music/Patrick_Lee/Bad_Panda_42/Quittin_Time
+3. Vapor (Kupa Mix) — MHV | Match: 0.981 | FMA 40817
+   Genres: chip music, dubstep, electronic
+   genre: matched electronic; similarity 1.000, weight 2
+   danceability: observed 0.8240, target 0.8500; similarity 0.9740, weight 1
+   energy: observed 0.8015, target 0.8500; similarity 0.9515, weight 1
+   excluded genres absent: experimental
+   Source: https://freemusicarchive.org/music/MHV/Vapor_Remixes/vira_-_VIRANET01_MHV_-_VAPOR_Remixes_-_02_Vapor_Kupa_Mix
+Exit code: 0

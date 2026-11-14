@@ -1,0 +1,27 @@
+$ python -m src.cli --mode offline --request "I want jazz around 95 BPM with moderate energy." --yes --limit 3
+Mode: offline_fixture
+Interpretation: Offline test fixture for jazz tempo.
+Model: none (predefined fixture)
+Assumption: This is a predefined fixture, not a model interpretation.
+Preferences: {"bounds": {}, "excluded_genres": [], "preferred_genres": ["jazz"], "required_genres": [], "targets": {"energy": 0.5, "tempo_bpm": 95.0}, "unsupported": []}
+Catalog: 1200; eligible: 1200; returned: 3
+Recommendations from catalog metadata; scores are similarities, not probabilities.
+1. Love Languid — Matt Darriau's Paradox Trio | Match: 0.995 | FMA 6375
+   Genres: balkan, europe, free-jazz, international
+   genre: matched jazz; similarity 1.000, weight 2
+   energy: observed 0.4998, target 0.5000; similarity 0.9998, weight 1
+   tempo_bpm: observed 93.2160, target 95.0000; similarity 0.9822, weight 1
+   Source: https://freemusicarchive.org/music/Matt_Darriaus_Paradox_Trio/Paradox_Trio_Live_on_WFMU_from_the_2009_Golden_Festival_in_NYC/Love_Languid
+2. Forward — Northbound | Match: 0.989 | FMA 39361
+   Genres: downtempo, funk, jazz
+   genre: matched jazz; similarity 1.000, weight 2
+   energy: observed 0.5182, target 0.5000; similarity 0.9818, weight 1
+   tempo_bpm: observed 97.4720, target 95.0000; similarity 0.9753, weight 1
+   Source: https://freemusicarchive.org/music/Northbound/Landscapes_of_Late/9404_Northbound_Forward_Monotonik_Creative_Commons___by_nc_nd_25_wwwdogmazicnet
+3. Handful of Dust [remix of Fabryka original] — Musetta | Match: 0.989 | FMA 41565
+   Genres: jazz, lounge
+   genre: matched jazz; similarity 1.000, weight 2
+   energy: observed 0.5441, target 0.5000; similarity 0.9559, weight 1
+   tempo_bpm: observed 94.9770, target 95.0000; similarity 0.9998, weight 1
+   Source: https://freemusicarchive.org/music/Musetta/Absolute_Balance/01_-_musetta_-_handful_of_dust_remix_of_song_by_fabryka
+Exit code: 0

@@ -1,0 +1,11 @@
+{
+  "read_only_model_list": {
+    "http_status": 400,
+    "status": "INVALID_ARGUMENT",
+    "reason": "API_KEY_INVALID"
+  },
+  "content_generation_calls": 0,
+  "live_verification": false,
+  "user_direction": "Keep generation offline until access and billing are confirmed; user will configure key locally.",
+  "specialization_comparison": "not run; no baseline or specialized live result is claimed"
+}

@@ -1,0 +1,84 @@
+{
+  "runtime": "Streamlit 1.67.0 localhost agent API",
+  "mode": "offline_fixture and manual",
+  "provider_generation_calls": 0,
+  "observed": [
+    {
+      "action": "switch to offline",
+      "status": "ready",
+      "subheaders": [
+        "1. Describe your music",
+        "Your catalog"
+      ],
+      "source_link_count": 0,
+      "exceptions": []
+    },
+    {
+      "action": "interpret predefined reply",
+      "status": "ready",
+      "subheaders": [
+        "1. Describe your music",
+        "2. Review and edit",
+        "Your catalog"
+      ],
+      "source_link_count": 0,
+      "exceptions": []
+    },
+    {
+      "action": "recommend real tracks",
+      "status": "ready",
+      "subheaders": [
+        "1. Describe your music",
+        "2. Review and edit",
+        "3. Your recommendations",
+        "1. Long Nights I",
+        "2. Musicawi Silt [Walias Band]",
+        "3. Nothing Much",
+        "4. Kamikaze Economy Christmas",
+        "5. O Sinachis",
+        "Your catalog"
+      ],
+      "source_link_count": 5,
+      "exceptions": []
+    },
+    {
+      "action": "change request clears old results",
+      "status": "ready",
+      "subheaders": [
+        "1. Describe your music",
+        "Your catalog"
+      ],
+      "source_link_count": 0,
+      "exceptions": []
+    },
+    {
+      "action": "switch to manual",
+      "status": "ready",
+      "subheaders": [
+        "1. Describe your music",
+        "2. Review and edit",
+        "Your catalog"
+      ],
+      "source_link_count": 0,
+      "exceptions": []
+    },
+    {
+      "action": "recommend manually",
+      "status": "ready",
+      "subheaders": [
+        "1. Describe your music",
+        "2. Review and edit",
+        "3. Your recommendations",
+        "1. sleeping world",
+        "2. Love Languid",
+        "3. Nobody But You",
+        "4. Through a Glass Darkly",
+        "5. V",
+        "Your catalog"
+      ],
+      "source_link_count": 5,
+      "exceptions": []
+    }
+  ],
+  "visual_review": "No human visual rendering/listening evaluation performed"
+}

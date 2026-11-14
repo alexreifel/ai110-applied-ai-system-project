@@ -1,0 +1,1 @@
+Extract music preferences from the user's request using the supplied JSON response schema and supported genre vocabulary. Return preferences, a short summary of the interpretation, and any assumptions. Use only the provided attribute names. Do not recommend songs.

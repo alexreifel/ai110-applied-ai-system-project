@@ -1,84 +1,88 @@
 # Durable session handoff
 
-Updated November 14, 2026 (America/New_York). **Pass 1: Recommender Foundation is complete.** Alex's latest request authorized the full Pass 1 only. Stop at this checkpoint; Passes 2–4 remain pending.
+Updated November 14, 2026 (America/New_York). **Combined Passes 2–3 are implemented and verified offline. Live Gemini verification/comparison remains blocked. Pass 4 audit/publication is pending.**
 
 ## Resume after compaction
 
-1. Read `source/AI110_Final_Project_Codex_Prompt.md` in full, including both appendices. It remains the verbatim original, not a reconstructed summary.
-2. Read this file, `pass1_report.md`, `requirements_checklist.md`, `execution_passes.md`, and the current README/model card.
-3. Apply later user instructions over historical source statements. Project selection is complete; Alex also authorized the two selected bonuses. Do not ask to choose the base again or restart completed work.
-4. Recheck actual Git state before mutations/commits/pushes. Never assume this recorded checkpoint is the latest working tree.
-5. Keep Complete / Partial / Blocked / Requires Alex review statuses tied to real evidence. Re-read the full original at the final audit. Do not invent a grade, execution logs, live success, human evaluation, or personal experiences.
+1. Read `source/AI110_Final_Project_Codex_Prompt.md` in full, including both appendices. It is the word-for-word source, not a reconstructed summary. Later user instructions take precedence over its historical unselected-project/no-bonus wording.
+2. Read this file, `pass23_report.md`, `requirements_checklist.md`, current README/model card, and `execution_passes.md`.
+3. Do not repeat completed foundation/app/harness work. Recheck Git and actual files before changes. Never invent logs, live success, grades, human evaluation, or Alex personal experiences.
+4. Current user request: combine Pass 2 and Pass 3 consecutively. Those passes' independent app, tests, harness, evidence, presentation/portfolio preparation and docs are done. No Pass 4 full audit or publication has been performed.
+5. **Live-call restriction:** Alex explicitly said to keep content generation offline until access and billing are confirmed, and will configure a valid key locally and confirm when ready. A new .env file or valid-looking key is NOT permission. Wait for explicit confirmation before generation. No billing changes or unapproved charges.
 
-## Requirements and actual user decisions
+## Source integrity and confirmed decisions
 
-- Original source: `/Users/alexreifel/Downloads/AI110_Final_Project_Codex_Prompt.md`.
-- Preserved source: `docs/source/AI110_Final_Project_Codex_Prompt.md`; 36,532 bytes; SHA-256 `80499cf3ac233cf418596f1fa07d7531a9a35f7428439a8afc0fa57ecccbe0a0`.
-- Checklist retains all 21 exact required rubric rows plus all four criterion statements in the two selected bonus categories.
-- Alex selected Module 3 Music Recommender Simulation, revised the tiny fictional-catalog proposal to require real variety and richer preferences, accepted independent tracks with reliable metadata, and chose a local browser app plus CLI evidence.
-- Alex rejected repeated LLM binary-search coaching because a deterministic algorithm suffices after one explanation. That is a real rejected AI suggestion. Alex's catalog revision is a real revised suggestion. Preserve this authorship record in the model card.
-- Alex subsequently requested bonuses. Target evaluation harness (+2) and actual specialized-model comparison (+2); all 21 required points plus up to 4 bonus points is a target, not an awarded/guaranteed score. No RAG/agent bonus work is needed.
-- Alex's current task is **full Pass 1**. The earlier general plan to continue across passes does not override that narrowed current request.
+- Original `/Users/alexreifel/Downloads/AI110_Final_Project_Codex_Prompt.md`; preserved at `docs/source/AI110_Final_Project_Codex_Prompt.md` (36,532 bytes).
+- SHA-256 `80499cf3ac233cf418596f1fa07d7531a9a35f7428439a8afc0fa57ecccbe0a0` remains unchanged.
+- Checklist retains all 21 exact required rubric rows plus the four exact criterion statements for the selected two bonus categories.
+- Alex chose Module 3 Music Recommender Simulation, revised the tiny fictional catalog to real variety/richer preferences, accepted independent tracks with reliable metadata, and chose a local browser app plus CLI.
+- Alex rejected repeated LLM binary-search coaching because the algorithm suffices after one explanation. Actual accepted/revised/rejected decisions are recorded in model_card.md and ai_interactions.md; do not attribute agent implementation choices to Alex.
+- Alex authorized some bonuses after the original handoff: target evaluation harness (+2) and demonstrated specialization (+2). The harness has observed offline evidence. Specialization has no observed live model behavior/differences yet. Target all 21 plus up to 4, never assign/guarantee a grade. No RAG/agent bonus scope is needed.
 
-## Actual paths and repository history
+## Paths, history, and publication
 
-- Actual course folder: `/Users/alexreifel/Coding Programs/CodePath AI 110`.
-- The initially supplied `/Users/alexreifel/CodePath AI 110` path does not exist. Always pass the actual working directory explicitly. Available permission roots may still name the nonexistent path; necessary actual-project writes have succeeded through the escalation/auto-review mechanism. No approval rejection occurred.
-- Final project: `/Users/alexreifel/Coding Programs/CodePath AI 110/ai110-applied-ai-system-project`.
-- Dedicated origin: `https://github.com/alexreifel/ai110-applied-ai-system-project`. GitHub connector verified owner/login alexreifel, public visibility, and push permission during Pass 1. No other remote is retained.
-- Base project: sibling `ai110-module3show-musicrecommendersimulation-starter`, original clean main at `46eaeb6abc72d10dafa895880a59945869610933`.
-- History-preserving merge: `5901fa0321bbcac60f5b496e7f7c19b55dd24fe8`. Both original final initial commit `97724ce` and base head `46eaeb6` are ancestors. Used a local-path fetch, not a push-capable upstream. Resolved only the README add/add conflict using the base README at setup, then updated final docs separately. No history rewrite/reset/force push.
-- Pass 1 feature checkpoint uses commit subject `Build audited real-track recommender foundation`; obtain its hash from `git log` after the commit. Setup merge is additional to coherent feature commits; adjust later grouping honestly rather than manufacture or rewrite commits.
-- Original source repository remains clean and unchanged: all 18 original tracked-file hashes match the manifest. Its original source modules, synthetic CSV, and tests are also byte-identical in the final repo. See `evaluation/pass1/preservation_check.json`.
-- No applicable AGENTS.md was found in checked ancestors/selected/base locations. Recheck if new instructions appear. Do not touch unrelated repositories, including BugHound remotes.
+- Actual course folder `/Users/alexreifel/Coding Programs/CodePath AI 110`. Initially supplied `/Users/alexreifel/CodePath AI 110` does not exist; always pass the actual cwd explicitly.
+- Final project `/Users/alexreifel/Coding Programs/CodePath AI 110/ai110-applied-ai-system-project`.
+- Actual-project writes have succeeded through escalation/automatic review because permission roots may still name the nonexistent path. No approval rejection occurred. Explain any future actual rejection precisely; do not invent an approval requirement.
+- Only retained remote is dedicated origin `https://github.com/alexreifel/ai110-applied-ai-system-project`. GitHub connector reverified alexreifel ownership, public visibility, and push permission during combined passes. No push has occurred; remote code is still the original README-only repository.
+- Original base is sibling `ai110-module3show-musicrecommendersimulation-starter`, clean main at `46eaeb6abc72d10dafa895880a59945869610933`. All 18 original tracked-file hashes still match and original CLI/evaluation reports remain byte-identical.
+- History-preserving setup merge `5901fa0321bbcac60f5b496e7f7c19b55dd24fe8` retains both original final initial commit `97724ce` and base history. Used a local fetch; no upstream remote remains; no reset/rebase/force push.
+- Pass 1 feature commit `5fd73684d51e170ff9fdb3d0a43c38a1b7960658` (`Build audited real-track recommender foundation`). Combined feature/evaluation checkpoint uses subject `Integrate music assistant, browser review, and evaluation harness`; obtain its actual hash from git log after commit.
+- Setup merge is additional to coherent feature commits; adjust final documentation/evidence grouping honestly without empty commits or history rewriting.
+- Original source, synthetic CSV and tests remain unchanged. `docs/baseline/` archives original docs; `docs/pass1_README.md` archives the Pass 1 README.
+- No applicable AGENTS.md found in checked ancestors/selected/base locations; recheck if new files appear. Do not alter unrelated repositories or BugHound remotes.
 
-## Pass 1 delivered code and data
+## Implemented application
 
-- `src/catalog.py`: immutable real-track records, strict JSON, validated identity/source/features, represented vocabulary, local snapshot loading.
-- `src/preferences.py`: manual/future-model contract with `preferred_genres`, `required_genres`, `excluded_genres`, optional numeric `targets`, inclusive hard `bounds`, and `unsupported` conditions. Genre lists mean alternatives, not all-at-once requirements. Unknown fields/genres, invalid values, duplicate keys, contradictory conditions, and oversized inputs are rejected.
-- `src/ranking.py`: hard-filter first, then weighted mean over requested soft preferences only. Genre weight 2, numeric weight 1; tempo gap scale 100 BPM. Threshold 0.6; compromise indicator below 0.75 per feature; these are explicit uncalibrated heuristics. Required-only results are unscored; ties use source ID. Missing requested evidence excludes a track. Never relax conditions to fill results.
-- `src/cli.py`: manual entry point, text/JSON output, supported-genre listing, safe aggregate logs. Exit 0 results; 2 invalid input/file/configuration; 3 no-results/clarification. No LLM calls. Examples in `examples/`.
-- `scripts/prepare_catalog.py`: checksum-verified metadata ZIP reader (CSV only; never deserialize pickle), deterministic artist-capped round-robin selection, audit/provenance and exact rebuild. Audio is not downloaded.
-- FMA metadata rc1 source ZIP is temporarily at `/private/tmp/ai110-fma-metadata.zip` (342 MiB). Published SHA-1 verified: `f0df49ffe5f2a6008d7dc83c6915b31835dfe733`. Actual SHA-256: `d9527a5297a65da31c5676484d5047c3e2b8a8060ce72a46e26158be736bf265`. Rebuild instructions/attribution in `data/README.md`.
-- 106,574 source metadata tracks; 13,129 feature records; 13,128 usable candidates. Track 26620 rejected for missing title.
-- Snapshot: **1,200 real tracks, 775 artists, 113 represented genre labels**. Six numeric estimates present for all selected tracks. All 16 broad genres represented; 15 have at least 20 tracks, spoken is sparse at 7. Genre counts overlap.
-- Selected source IDs, exact checksums, feature ranges/coverage, cleaning, and limitations in `data/catalog_report.json`. Titles/artists have HTML entities decoded and whitespace collapsed; genres casefolded with source-derived ancestry; tempo renamed; HTTP FMA references upgraded to HTTPS. No track identity, feature, or genre is invented by an LLM.
-- Catalog/report/hierarchy rebuild byte-for-byte identically. Original 20-song synthetic catalog is retained as `data/songs.csv`.
+- Project .venv: Python 3.11.18, Streamlit 1.67.0, pytest 8.4.2. Runtime requirements pinned in requirements.txt, optional development mypy 2.4.1 in requirements-dev.txt, exact transitive constraints in requirements-lock.txt. Install development setup with `python -m pip install -r requirements-dev.txt -c requirements-lock.txt`.
+- `src/catalog.py`, `src/preferences.py`, `src/ranking.py`: Pass 1 validated catalog, immutable typed preferences, hard-condition filtering, factual scoring/explanations and stable ID ties. Multiple genre labels mean alternatives. Missing requested evidence excludes candidates, never becomes fabricated zero. Hard conditions are never relaxed.
+- Numeric targets: energy, tempo_bpm, valence, acousticness, danceability, instrumentalness. Preferred-genre weight 2, requested numeric weight 1; tempo gap scale 100 BPM; soft match threshold .6 and compromise indicator .75 are uncalibrated heuristics, not probabilities. Required-only results are unscored.
+- `src/llm_client.py`: standard-library Gemini generateContent adapter. Default configurable `gemini-2.5-flash-lite`; JSON response schema, temperature 0, maxOutputTokens 2048, network timeout configurable 1–45 seconds (default 20), one request, no retries/tools. Key goes only in header, is excluded from repr, and malformed format is rejected before header construction. Safe separate error categories: config/missing credentials/auth/model access/quota/timeout/network/provider/invalid output. Raw error bodies and keys are not displayed/logged. Model thought parts are excluded, no hidden chain-of-thought requested/saved.
+- Simple ignored .env config (no shell execution/interpolation). Priority: environment GEMINI_API_KEY, local GEMINI_API_KEY, environment GOOGLE_API_KEY, local GOOGLE_API_KEY. Other matching environment settings override file. .env.example has placeholders only.
+- `prompts/specialized.txt`: rules/four examples for alternatives/exclusions, hard bounds, unrequested dimensions, assumptions, unsupported conditions, prompt override. `generic.txt`: minimal extraction baseline. Same vocabulary/schema supplied to both.
+- `src/assistant.py`: bounded input, single interpretation call, strict wrapper/preferences/vocabulary checks, visible summary/assumptions, small deterministic evidence-gap rules (lyric guarantees, guaranteed no vocals, medical effects). The model can still misunderstand requests; keyword rules are not exhaustive semantic validation. Original validated model preferences are stored separately BEFORE local corrections for honest evaluation.
+- `app.py`: cached source catalog; AI/manual/offline demo modes; explicit Interpret button; review/edit form with optional target selection and required bounds; unsupported conditions block until user explicitly revises; source-backed cards/explanations. No API calls on initial load, rerenders, or preference edits. New request/mode clears stale review/results. Forms submit edits together; outputs reflect last submitted preferences.
+- `src/cli.py`: same backend; manual JSON inputs preserved. `--request`, `--mode live|offline`, `--yes` batch confirmation; --json provenance. Noninteractive requests without --yes fail BEFORE generation. Exit 0 results, 2 invalid/provider/configuration, 3 no-results/clarification. Offline demo accepts exact predefined requests only and is explicitly labeled offline_fixture/model none.
+- Browser requests are kept only in session memory, not written to disk. Evaluation intentionally records predefined nonpersonal requests/replies; provider retention is governed by provider terms. Catalog facts are never model-generated.
 
-## Verified tests, evidence, and environment
+## Catalog and source
 
-- Project-local `.venv`: Python **3.11.18**, pytest **8.4.2**, Streamlit **1.67.0**. `requirements.txt` pins direct dependencies; `requirements-lock.txt` supplies exact transitive constraints. Install with `python -m pip install -r requirements.txt -c requirements-lock.txt`.
-- Original baseline before changes: **52 passed**, no pre-existing failures; original demo/evaluation match committed reports. Captured in `evaluation/baseline/` with original tracked-file hashes.
-- After Pass 1: **127 passed** (52 inherited + 75 new behavior checks), also **127 passed in a freshly installed temporary environment**. `pip check`, syntax compilation, baseline output comparisons all pass. Evidence in `evaluation/pass1/`.
-- Three captured successful manual examples: acoustic_folk, evening_jazz, dance_pop. Separate unsupported_lyrics and no_results examples exit 3 intentionally. They are **manual, model none**, not live AI.
-- Real controlled exclusion ablation: fixed catalog and energy target; guard on returns 0 excluded rock tracks, bypass returns 3. JSON contains exact IDs/preferences and matching catalog hash. Unit test also proves the effect with controlled fixtures.
-- Same-catalog sensitivity: changing only acousticness target (fixed folk condition and energy target) changes all top-three IDs. `manual_sensitivity.json` records actual attributes/scores. This is not a listener-quality or LLM-specialization comparison.
-- Three top demo source references returned HTTP 200 in HEAD checks; playback/content identity and all other URLs remain unverified. `source_reference_checks.json` records exactly what was checked.
-- Inherited offline CI retained, dependency constraints added, syntax check expanded to scripts. **No Pass 1 push or new Actions run** has occurred. Publication is scheduled for Pass 4.
+- 1,200 real FMA tracks; 775 artists; 113 represented genre labels. All 16 broad genres represented; 15 have >=20 tracks, spoken only 7. Six numeric estimates present for all selected tracks. Genre counts overlap.
+- FMA metadata rc1: 106,574 metadata records, 13,129 feature rows, 13,128 usable candidates; one blank-title track 26620 rejected.
+- scripts/prepare_catalog.py verifies the ZIP and reads only CSVs (never pickle); deterministic SHA-256 ordering, round-robin broad genre selection, max 3 per artist, output sorted IDs. Snapshot/report/hierarchy rebuild byte-identically. No audio downloaded or model-imputed data.
+- Source ZIP temporarily `/private/tmp/ai110-fma-metadata.zip`; published SHA-1 `f0df49ffe5f2a6008d7dc83c6915b31835dfe733`, actual SHA-256 `d9527a5297a65da31c5676484d5047c3e2b8a8060ce72a46e26158be736bf265`. Attribution/license/rebuild in data/README.md; IDs, feature ranges, transformations/checksums in catalog_report.json.
+- Historical independent catalog, not current mainstream coverage. Features are estimates, not verified moods/lyrics/instruments/no vocals or listening satisfaction. Three demo source references returned HTTP 200 in HEAD checks; playback/all URLs not guaranteed.
 
-## Documentation and skills
+## Evaluation and observed results
 
-- Root README describes current/future behavior accurately and includes setup, design, three actual manual examples, error/guardrail table, test results, provenance/limitations, and links.
-- `model_card.md` answers current technical/ethical/collaboration sections, with honest pending live-specialization and Alex personal-reflection markers. Original docs archived verbatim under `docs/baseline/`; root uppercase checklist points to final checklist.
-- `diagrams/architecture.mmd` matches implemented Pass 1; add actual LLM/browser/human-review components in Pass 2. `assets/README.md` retains the required directory.
-- Read engineering:system-design and developing-with-streamlit skills during planning. Project environment discovery now succeeds: `.venv/lib/python3.11/site-packages/streamlit/.agents/skills/developing-with-streamlit/SKILL.md`. Read task-specific version-matched references before UI implementation, especially state, forms, layout, testing, and environment. No UI was built in Pass 1.
-- Current Streamlit skill says to verify edited UI in the running app and type-check edited UI code; agent API can drive local tests. It also asks before starting a user-facing app or actions with external side effects. Apply actual user authorization and developer instructions, and do not invent a new approval gate. Live paid API access still requires approved cost scope.
+- Before changes: 52 original tests passed, no pre-existing failures, original outputs exact; evidence evaluation/baseline/.
+- Pass 1: 127 passed (52 inherited +75 new), fresh environment also passed; exclusion ablation and fixed-catalog acousticness sensitivity in evaluation/pass1/.
+- Combined passes: **170 passed** in project and separate clean environments; mypy checks app.py with imported modules followed silently; compileall/pip check pass. Evidence evaluation/pass23/verification.json and stdout files.
+- Five AppTest flows cover no initial generation, full fixture review/results/edit without reinterpreting, stale-state clearing, manual fallback, unsupported-condition revision, and safe provider failure (some covered together).
+- Actual localhost Streamlit agent runtime checked page load, offline Interpret/Recommend (five real-track cards), request-change clearing and manual recommendations, with no exceptions. The temporary test server was stopped afterward. Runtime evidence is compact actual snapshots, not a human visual/listening review.
+- `src/evaluate_assistant.py`: twelve predefined requests in evaluation/cases.json, per-case checks and aggregate summary, JSON output with model/mode/prompt/schema/case/catalog hashes and settings. Offline run **12/12 passed**, labeled fixture plumbing/guardrails only; no measured model quality. Checks compare original model preferences before semantic corrections, then downstream conditions and catalog membership. A controlled omitted-lyric fixture shows guard success but model-semantic failure.
+- Comparison mode requires live; offline comparison is refused. Same model/settings/schema/vocabulary/catalog/cases across generic/specialized arms, only instructions/examples change. Default twelve cases × two arms = at most 24 generation calls. Stops on access/quota/network/provider failures. Actual live outputs/differences remain missing.
+- Three normal assistant CLI examples plus separate unsupported case captured in evaluation/pass23/cli_runs.json and README. All are offline fixtures/model none. Do not relabel as live.
+- CI retains original Python 3.11/3.12 pytest/baseline comparisons, adds offline harness and UI type check, and uses development requirements with constraints. No secrets required. Corresponding commands pass locally; no new remote Actions run claimed.
 
-## Remaining access and review constraints
+## Live access: actual blocker and next steps
 
-- A `GOOGLE_API_KEY` variable NAME was previously observed; no secret value printed. Usable key, provider/model access, quotas, billing/free use remain unverified. **No live model calls made.** Never enable billing or incur unapproved charges. Never commit `.env`/secrets; ignore rules are present. Use placeholder configuration in Pass 2.
-- Official course pages were inaccessible. Prior deadline November 16, 2026, 2:59 a.m. New York and Demo Day November 18, 8 p.m. New York remain unverified. No submission/timeliness claim.
-- Do not fabricate Alex's testing surprise, listening satisfaction, human evaluations, or personal experiences. Actual accepted/rejected/revised suggestions are grounded in chat; Alex reviews personal reflection after trying the app.
-- Final presentation outline and portfolio draft are not yet written; do not claim a presentation delivered or portfolio published.
+- Existing key read-only model-list check: HTTP 400 / INVALID_ARGUMENT / API_KEY_INVALID; no secret printed. See evaluation/pass23/access_status.json.
+- Alex said: keep model calls offline until access and billing are confirmed; will configure the key locally and confirm when ready. **Zero content-generation requests made.** Neither a new file nor elapsed time is confirmation.
+- After explicit confirmation and usable access, run the bounded live comparison, inspect actual outputs/semantics and fix actual failures. Save model identifiers/settings and baseline/specialized differences/ties/regressions in model_card.md. Use specialized records from the first three normal cases as examples to avoid unnecessary extra calls. Do not assume a free quota or enable billing.
+- If live remains unavailable, finish independent work and report the precise missing evidence; do not claim complete core/live or specialization-bonus verification.
 
-## Next passes and final obligations
+## Documentation, reflection and skills
 
-Pass 2: integrate one specialized structured-preference interpreter/provider with bounded errors, honest unsupported conditions, a browser review/edit flow, and the shared assistant CLI. Reuse the existing schema/ranker and preserve manual fallback. Verify live access/cost early without changing billing; finish independent work if access is unavailable.
+- README has actual current setup/run/test commands, original scope, architecture, captured offline examples, guardrails/evaluation, design, limitations and clear live gap. Mermaid describes actual code, assets/ retained.
+- model_card.md covers limitations/bias, misuse/mitigation, actual tests/collaboration, accepted/revised/rejected suggestions, future work and comparison status. Alex's personal testing surprise/reflection remains for review; no human evaluation invented.
+- docs/presentation_outline.md is a six-minute outline with honest demo modes. docs/portfolio_draft.md has verified public repository link and personal text grounded in actual chat decisions. Neither delivered/published. Writing-style skill was used for the draft; its wording remains for Alex's review.
+- Read engineering:system-design, developing-with-streamlit, and Alex writing-style skills. Current Streamlit skill is in .venv/lib/python3.11/site-packages/streamlit/.agents/skills/developing-with-streamlit/; read relevant version-matched references before UI edits. UI changes were type-checked and verified in AppTest and actual runtime. Do not introduce permission gates from inferred skill requirements; honor actual authorization and the explicit no-live-until-confirmed instruction.
 
-Pass 3: add the explicitly requested runnable evaluation harness with per-case/aggregate summaries. Demonstrate specialization through actual generic-vs-specialized prompt outputs using the same model/settings/schema/vocabulary/requests; fixtures cannot establish live-model behavior. Capture at least three actual live end-to-end examples plus separate guardrail/errors when access permits. Document differences/regressions/ties honestly in model_card.md.
+## Pass 4 and final obligations
 
-Pass 4: re-read the entire source and check all 21 required rows, four selected bonus criterion statements, and every additional instruction against the finished app/evidence. Fix gaps, verify clean setup and entry points, finish README/model card/architecture/presentation/portfolio/checklist/final audit, and mark personal-review/live gaps accurately.
+Re-read the complete original handoff and both appendices; explicitly check all 21 required rows, four selected bonus criteria, and all additional instructions against finished code/app/logs/docs. Fix gaps and verify affected behavior. Write docs/final_audit.md and update exact-criterion checklist. Personal reflection and live comparison cannot be completed by invention. Prepared presentation is not delivered; draft portfolio is not published.
 
-Before any push: inspect actual Git authentication, owner, all fetch/push URLs/mappings/tracking, remote.pushDefault, branch-specific push remotes, staged content and inherited history for secrets/unrelated material. Push only to the dedicated public final repository; never change an existing private repository's visibility. Inspect real CI run and report its URL/status. Do not change account-wide security settings.
+Before pushing, inspect actual Git auth/owner, all fetch/push URLs/mappings/tracking, remote.pushDefault and branch push remotes; scan staged content and inherited history for credentials/unrelated data. Push only dedicated public final repository, never original submission/CodePath; no force push/history rewrite, no visibility change of an existing private repo, no account-wide security changes. Inspect actual CI run and report URL/status after push.
 
-Do not submit to CodePath, message anyone, record/upload a video, or publish elsewhere. Final implementation report includes absolute local path, verified repo URL, actual commit hashes/purposes, exact commands/results, CI URL/status, rubric/bonus evidence assessment, and outstanding live/personal-review items. No official grade is assigned.
+Do not submit to CodePath, message anyone, record/upload a video, or publish elsewhere. Final report includes absolute local path, verified repo URL, actual commits/purposes, exact commands/results, real CI URL/status, rubric/bonus evidence assessment and live/personal-review gaps. Official course pages remain inaccessible: prior Nov 16, 2026 2:59 a.m. New York deadline and Nov 18 8 p.m. Demo Day are unverified; do not claim timeliness or submission. Never assign an official grade.

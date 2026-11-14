@@ -1,0 +1,2 @@
+$ .venv/bin/python -m mypy app.py --follow-imports=silent --ignore-missing-imports
+Success: no issues found in 1 source file

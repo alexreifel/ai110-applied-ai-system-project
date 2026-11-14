@@ -1,4 +1,4 @@
 # Python 3.11/3.12; manual recommendation uses only the standard library.
 pytest==8.4.2
-# Prepared for the browser interface in Pass 2.
+# Browser interface runtime.
 streamlit==1.67.0

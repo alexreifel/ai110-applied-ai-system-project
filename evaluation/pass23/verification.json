@@ -1,0 +1,18 @@
+{
+  "tests": {
+    "pytest.txt": 170,
+    "clean_setup_pytest.txt": 170,
+    "offline_evaluation.txt": 12
+  },
+  "offline_cases_passed": 12,
+  "offline_cases_total": 12,
+  "model_generation_calls": 0,
+  "live_verification": false,
+  "type_check": "app.py passed mypy with imports followed silently",
+  "baseline_outputs_unchanged": true,
+  "original_repository_unchanged": true,
+  "syntax_and_dependencies": "passed",
+  "source_requirements_unchanged": true,
+  "app_sha256": "881bb41e3049a57a6205caec8b1c00c8903cb58ca3145fe0da3540f1c1055950",
+  "catalog_sha256": "0f1ace043abee4464fd8c8cb28b5909aaeee37949a4193cdcbf7308d5cf4967d"
+}

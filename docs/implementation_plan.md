@@ -1,7 +1,7 @@
 # Music Discovery Assistant — implementation plan
 
 Planning date: November 14, 2026, America/New_York.
-Status: Pass 1 foundation complete. See pass1_report.md for observed results; design sections describing the assistant/browser remain future work. No live model verification has occurred.
+Status: combined Passes 2–3 app/evaluation implemented and verified offline. See pass23_report.md and SESSION_HANDOFF.md for current facts. Live model validation/comparison remains blocked; the starting-point section below is historical.
 
 ## 1. Requirements authority and decisions
 
@@ -14,7 +14,7 @@ Confirmed by Alex in this chat:
 - A tiny fictional catalog is insufficient; support varied requests with meaningful musical attributes.
 - Real independent tracks are acceptable; prioritize variety and reliable metadata.
 - Use a local browser app for users and terminal commands for reproducible evidence.
-- Use four focused passes, with a final audit of the finished app. Alex subsequently requested the full Pass 1 foundation; that checkpoint is now implemented and verified. Current authorization in this turn is Pass 1 only.
+- Use four focused passes, with a final audit of the finished app. Alex completed Pass 1, then requested Pass 2 and Pass 3 consecutively. Their independent app/evaluation work is implemented; live access remains pending, and Pass 4 is not yet performed.
 - Alex now explicitly requests at least some bonuses. Target the evaluation harness (+2) and specialization behavior (+2), with observed evidence for each.
 - Preserve all original assignment requirements and rubric rows across context compactions.
 

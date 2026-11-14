@@ -1,0 +1,30 @@
+$ python -m src.cli --mode offline --request "Find mellow acoustic folk or country for a quiet evening; keep it at or below 100 BPM." --yes --limit 3
+Mode: offline_fixture
+Interpretation: Offline test fixture for acoustic evening.
+Model: none (predefined fixture)
+Assumption: This is a predefined fixture, not a model interpretation.
+Preferences: {"bounds": {"tempo_bpm": {"maximum": 100.0, "minimum": null}}, "excluded_genres": [], "preferred_genres": ["folk", "country"], "required_genres": [], "targets": {"acousticness": 0.85, "energy": 0.25}, "unsupported": []}
+Catalog: 1200; eligible: 405; returned: 3
+Recommendations from catalog metadata; scores are similarities, not probabilities.
+1. Long Nights I — Daniel Bachman | Match: 0.995 | FMA 62880
+   Genres: americana, folk
+   genre: matched country, folk; similarity 1.000, weight 2
+   acousticness: observed 0.8535, target 0.8500; similarity 0.9965, weight 1
+   energy: observed 0.2673, target 0.2500; similarity 0.9827, weight 1
+   required tempo_bpm: at most 100.0; observed 83.9580
+   Source: https://freemusicarchive.org/music/Daniel_Bachman/Live_at_WFMU_on_Irene_Trudels_Show_on_March_26_2012/Daniel_Bachman_-_05_-_Long_Nights_I
+2. Musicawi Silt [Walias Band] — Debo Band | Match: 0.995 | FMA 31342
+   Genres: folk, international, middle east
+   genre: matched folk; similarity 1.000, weight 2
+   acousticness: observed 0.8522, target 0.8500; similarity 0.9978, weight 1
+   energy: observed 0.2303, target 0.2500; similarity 0.9803, weight 1
+   required tempo_bpm: at most 100.0; observed 66.6810
+   Source: https://freemusicarchive.org/music/Debo_Band/Live_on_WFMUs_Transpacific_Sound_Paradise_with_Bob_Weisberg_12122009/Debo_Band_-_07_-_Musicawi_Silt__Walias_Band
+3. Nothing Much — My Bubba & Mi | Match: 0.994 | FMA 57802
+   Genres: blues, folk, pop
+   genre: matched folk; similarity 1.000, weight 2
+   acousticness: observed 0.8280, target 0.8500; similarity 0.9780, weight 1
+   energy: observed 0.2494, target 0.2500; similarity 0.9994, weight 1
+   required tempo_bpm: at most 100.0; observed 99.9410
+   Source: https://freemusicarchive.org/music/My_Bubba__Mi/Wild__You/My_bubba__Mi_-_Wild__You_-_01_Nothing_Much
+Exit code: 0

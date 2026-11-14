@@ -1,19 +1,28 @@
-%% Pass 1 implemented components only. Add LLM and browser flow when Pass 2 exists.
 flowchart TD
-    Z[Checksum-verified source metadata ZIP] --> B[scripts.prepare_catalog]
-    B --> D[Versioned real-track snapshot and coverage report]
-    U[Human writes or edits JSON preferences] --> C[Manual CLI]
-    C --> P[Strict preference validation]
-    D --> L[Catalog loader validates records]
-    L --> V[Check represented genre vocabulary]
-    P --> V
-    V --> F[Filter required genres, exclusions, bounds, missing evidence]
-    F --> S[Score only requested soft preferences]
-    S --> T[Apply soft-match threshold and stable ID ordering]
-    T --> O[Real tracks, factual match explanations, source references]
-    V --> E[Invalid input or unsupported-condition message]
-    F --> N[Explicit no-result message]
-    T --> N
-    Q[Pytest and captured manual CLI runs] -.-> P
-    Q -.-> F
+    U[User describes music in browser or CLI] --> I[Validate request length and text]
+    I --> P[Task-specific prompt plus represented genre vocabulary and JSON schema]
+    P --> G[Gemini REST client: one request, timeout, no retries]
+    P --> X[Explicit offline mode: predefined test fixture]
+    G --> V[Validate response structure, numeric values, genre labels and contradictions]
+    X --> V
+    V --> B[Check known unsupported guarantees]
+    B --> H[Human reviews or edits preferences in browser; CLI explicit confirmation]
+    M[Manual preferences, no provider required] --> H
+    H --> F[Filter required genres, exclusions, bounds and missing evidence]
+    D[Versioned FMA catalog] --> V
+    D --> F
+    F --> R[Deterministic weighted ranking over requested preferences]
+    R --> O[Real tracks with factual explanations, compromises and source references]
+    G --> E[Safe categorized provider error; manual mode remains available]
+    V --> E
+    B --> C[Unsupported conditions require clarification or explicit revision]
+    C --> H
+    F --> N[No suitable results; conditions are not relaxed]
+    R --> N
+    T[Pytest, UI tests and running-app checks] -.-> V
+    T -.-> H
+    T -.-> F
+    Q[Evaluation harness: predefined requests, pass/fail summary, JSON results] -.-> I
     Q -.-> O
+    Q -.-> A[Live generic-vs-specialized comparison uses same model, schema, vocabulary and requests]
+    A -.-> P

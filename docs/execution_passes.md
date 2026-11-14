@@ -97,4 +97,6 @@ Recheck Git and instructions, create the project environment, run the original b
 
 ## Current checkpoint
 
-Pass 1 is complete: see [pass1_report.md](pass1_report.md), the recorded 127-test result, and the catalog report. Alex requested the full Pass 1 only in the latest turn; stop at that checkpoint and leave Passes 2–4 pending. The initial general continuation language above does not expand that later scope. No browser app, LLM calls, bonus harness/comparison, push, or course submission has occurred.
+Alex requested Pass 2 and Pass 3 consecutively after Pass 1. The browser/CLI interpreter, bounded provider adapter, editable review, offline evaluation harness, live comparison machinery, tests and draft final documentation are implemented. The full suite passes 170 tests in both environments and the offline harness passes 12/12 cases. Actual localhost runtime checks succeed.
+
+Live Gemini verification remains blocked: the existing key returned API_KEY_INVALID and Alex instructed that content generation stay offline until access/billing confirmation. No live comparison or live success is claimed. The user plans to configure the key locally. Pass 4's explicit full audit/publication/remote CI check remains pending. See pass23_report.md and SESSION_HANDOFF.md; do not interpret the older Pass 1-only instruction as current scope.

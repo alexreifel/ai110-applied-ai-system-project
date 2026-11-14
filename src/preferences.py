@@ -1,4 +1,4 @@
-"""Strict, reusable preferences for manual input and the future AI interpreter."""
+"""Strict, reusable preferences for manual input and the AI interpreter."""
 
 from dataclasses import dataclass, field
 from types import MappingProxyType

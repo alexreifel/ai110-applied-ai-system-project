@@ -1,0 +1,9 @@
+$ python -m src.cli --mode offline --request "Pop songs guaranteed safe for children with no explicit lyrics." --yes --limit 3
+Mode: offline_fixture
+Interpretation: Offline test fixture for lyric guarantee.
+Model: none (predefined fixture)
+Assumption: This is a predefined fixture, not a model interpretation.
+Preferences: {"bounds": {}, "excluded_genres": [], "preferred_genres": ["pop"], "required_genres": [], "targets": {}, "unsupported": ["Verified lyric safety is unavailable.", "Verified lyric safety is unavailable in this catalog."]}
+Catalog: 1200; eligible: 0; returned: 0
+Cannot verify: Verified lyric safety is unavailable.; Verified lyric safety is unavailable in this catalog.
+Exit code: 3

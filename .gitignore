@@ -21,3 +21,6 @@ venv/
 .streamlit/secrets.toml
 data/raw/
 *.zip
+
+# Development tool caches
+.mypy_cache/
