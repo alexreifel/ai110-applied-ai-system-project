@@ -31,8 +31,8 @@ class Settings:
     timeout: float = 20
 
     def __post_init__(self):
-        if not isinstance(self.api_key, str) or (self.api_key and not re.fullmatch(r"[A-Za-z0-9_-]{10,256}", self.api_key)):
-            raise ProviderError("configuration", "API key format is invalid. Check the local value; it must not contain whitespace or control characters.")
+        if not isinstance(self.api_key, str) or (self.api_key and not re.fullmatch(r"[A-Za-z0-9_.-]{10,256}", self.api_key)):
+            raise ProviderError("configuration", "API key format is invalid. Copy the complete value from Google AI Studio without spaces, line breaks, or surrounding quotes.")
         if not re.fullmatch(r"[A-Za-z0-9_.-]{1,100}", self.model):
             raise ProviderError("configuration", "GEMINI_MODEL must be a plain model identifier.")
         if not 1 <= self.timeout <= 45:

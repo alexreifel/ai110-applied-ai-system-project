@@ -119,3 +119,7 @@ Repository: [alexreifel/ai110-applied-ai-system-project](https://github.com/alex
 4. Alex reviews the app, personal portfolio wording and six-minute outline before any course submission/presentation. Required presentation delivery remains a human action.
 
 Review the [README](../README.md) first, run `python -m streamlit run app.py` and use Explore without AI, then inspect the [model card](../model_card.md) and exact checklist. All independent local work is complete; the specific live prerequisites above remain open.
+
+## Subsequent key-compatibility correction
+
+Alex configured a key, then reported a local format error. Safe metadata-only inspection found no whitespace; the app's regular expression incorrectly excluded periods used by Google AI Studio authorization keys. The correction accepts periods while retaining length/character, whitespace/control protections and secret-safe errors. Offline regression coverage checks both standard and dotted keys through .env precedence and header construction. Latest verification:176tests in both local environments, mypy success and offline harness12/12; evidence evaluation/key_compatibility/. The configured local key now passes formatting, without revealing its value or making an API/model call. This does not resolve the separate live access/billing confirmation or specialization-evidence gap.

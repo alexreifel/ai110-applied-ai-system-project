@@ -1,0 +1,55 @@
+{
+  "scope": "Key-format compatibility correction; not a live authentication check",
+  "configured_key_passes_local_validation": true,
+  "key_value_logged": false,
+  "model_calls": 0,
+  "checks": [
+    {
+      "name": "pytest",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "mypy",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "mypy",
+        "app.py",
+        "--follow-imports=silent",
+        "--ignore-missing-imports"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "offline_evaluation",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "src.evaluate_assistant",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "clean_setup_pytest",
+      "command": [
+        "/private/tmp/ai110-pass1-clean-env/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "source_hashes": {
+    "src/llm_client.py": "bc06da13ec8d07f6e9c04900cefa93080673dd73b6de46a89c43516cdc5afa04",
+    "tests/test_assistant.py": "3eaec8221f950a7fb0420811b669490e304d4abd9d7958020bbb5c78d30125e7"
+  }
+}

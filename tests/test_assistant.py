@@ -48,18 +48,19 @@ def provider_reply(text=None, finish="STOP"):
         {"text": text or reply()}]}}]}).encode()
 
 
-def test_provider_uses_header_schema_fixed_settings_and_one_request():
+@pytest.mark.parametrize("api_key", ["local-test-key", "AQ.offline_test_key"], ids=["standard", "authorization"])
+def test_provider_uses_header_schema_fixed_settings_and_one_request(api_key):
     requests = []
     def opener(req, timeout):
         requests.append((req, timeout))
         return io.BytesIO(provider_reply())
-    client = GeminiClient(Settings("local-test-key"), opener)
+    client = GeminiClient(Settings(api_key), opener)
     result = client.generate("instructions", "request", {"type": "object"})
     assert result == reply() and "Private reasoning" not in result
     assert len(requests) == 1
     req, timeout = requests[0]
-    assert "local-test-key" not in req.full_url
-    assert req.get_header("X-goog-api-key") == "local-test-key"
+    assert api_key not in req.full_url
+    assert req.get_header("X-goog-api-key") == api_key
     payload = json.loads(req.data)
     assert payload["generationConfig"]["temperature"] == 0
     assert payload["generationConfig"]["responseJsonSchema"] == {"type": "object"}
@@ -104,12 +105,13 @@ def test_missing_key_never_calls_network():
     assert caught.value.kind == "missing_credentials"
 
 
-def test_settings_local_key_overrides_old_google_alias_without_exposing_it(tmp_path):
+@pytest.mark.parametrize("api_key", ["new-local-key", "AQ.offline_local_key"], ids=["standard", "authorization"])
+def test_settings_local_key_overrides_old_google_alias_without_exposing_it(tmp_path, api_key):
     path=tmp_path/".env"
-    path.write_text('GEMINI_API_KEY="new-local-key"\nGEMINI_TIMEOUT_SECONDS=12\n')
+    path.write_text(f'GEMINI_API_KEY="{api_key}"\nGEMINI_TIMEOUT_SECONDS=12\n')
     settings=settings_from_environment({"GOOGLE_API_KEY":"old-key"},path)
-    assert settings.api_key == "new-local-key" and settings.timeout == 12
-    assert "new-local-key" not in repr(settings)
+    assert settings.api_key == api_key and settings.timeout == 12
+    assert api_key not in repr(settings)
     assert settings_from_environment({"GEMINI_API_KEY":"explicit-key"},path).api_key == "explicit-key"
 
 
