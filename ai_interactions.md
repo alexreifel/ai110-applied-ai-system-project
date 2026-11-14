@@ -1,43 +1,7 @@
-# AI Interactions Log
+# Actual AI collaboration — final project
 
-> **Stretch features only.** Only fill in the sections that apply to stretch features you attempted. If you did not attempt a stretch feature, leave its section blank or delete it. This file is not required for the core project.
+Alex selected the music-assistant extension, rejected repetitive LLM binary-search coaching, and revised the initial tiny-catalog proposal. Alex confirmed independent real tracks and a local browser interface plus reproducible CLI. Alex subsequently authorized the evaluation-harness and specialization bonuses and requested the full Pass 1 foundation.
 
----
+Codex inspected the actual repositories, preserved both histories, established the 52-test baseline, researched FMA, implemented the data preparation/schema/ranker/CLI, ran meaningful regression and error tests, and captured the observed results. Weights, thresholds, sampling and module choices are Codex implementation decisions for Alex to review. No hidden model chain-of-thought is requested or stored.
 
-## Agentic Workflow (SF8)
-
-> Document your experience using an AI agent (e.g., Cursor Agent, Claude, Copilot) to make multi-step changes autonomously.
-
-**What task did you give the agent?**
-
-<!-- Describe the goal you asked the agent to accomplish -->
-
-**Prompts used:**
-
-<!-- Paste the key prompts you gave the agent -->
-
-**What did the agent generate or change?**
-
-<!-- List the files edited, code generated, or commands run -->
-
-**What did you verify or fix manually?**
-
-<!-- Describe anything the agent got wrong or that required human review -->
-
----
-
-## Design Pattern (SF10)
-
-> Document how AI helped you choose or implement a design pattern.
-
-**Which design pattern did you use?**
-
-<!-- e.g., Strategy, Factory, Observer, etc. -->
-
-**How did AI help you brainstorm or implement it?**
-
-<!-- Describe the conversation or suggestions that led to your decision -->
-
-**How does the pattern appear in your final code?**
-
-<!-- Point to the relevant class or method -->
+See [Pass 1 report](docs/pass1_report.md), [model card](model_card.md), and [session handoff](docs/SESSION_HANDOFF.md). Original Module 3 interaction notes are preserved verbatim in [docs/baseline/ai_interactions.md](docs/baseline/ai_interactions.md). No live LLM was called in Pass 1.

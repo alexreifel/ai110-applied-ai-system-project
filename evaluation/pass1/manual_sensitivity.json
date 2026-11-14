@@ -1,0 +1,72 @@
+[
+  {
+    "preferences": {
+      "preferred_genres": [],
+      "required_genres": [
+        "folk"
+      ],
+      "excluded_genres": [],
+      "targets": {
+        "energy": 0.4,
+        "acousticness": 0.1
+      },
+      "bounds": {},
+      "unsupported": []
+    },
+    "top_tracks": [
+      {
+        "id": 66081,
+        "acousticness": 0.1445198401,
+        "energy": 0.4197543177,
+        "score": 0.9678629211
+      },
+      {
+        "id": 62877,
+        "acousticness": 0.135823223,
+        "energy": 0.4724397053,
+        "score": 0.94586853585
+      },
+      {
+        "id": 16242,
+        "acousticness": 0.1011417916,
+        "energy": 0.5488725692,
+        "score": 0.9249928196
+      }
+    ]
+  },
+  {
+    "preferences": {
+      "preferred_genres": [],
+      "required_genres": [
+        "folk"
+      ],
+      "excluded_genres": [],
+      "targets": {
+        "energy": 0.4,
+        "acousticness": 0.9
+      },
+      "bounds": {},
+      "unsupported": []
+    },
+    "top_tracks": [
+      {
+        "id": 3783,
+        "acousticness": 0.8934807136,
+        "energy": 0.3468725463,
+        "score": 0.97017662995
+      },
+      {
+        "id": 37842,
+        "acousticness": 0.9339967888,
+        "energy": 0.3598529049,
+        "score": 0.96292805805
+      },
+      {
+        "id": 31340,
+        "acousticness": 0.8428851786,
+        "energy": 0.4235456998,
+        "score": 0.9596697394
+      }
+    ]
+  }
+]

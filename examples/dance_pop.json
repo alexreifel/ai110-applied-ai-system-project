@@ -1,0 +1,7 @@
+{
+  "preferred_genres": ["pop", "electronic"],
+  "required_genres": ["pop", "electronic"],
+  "excluded_genres": ["experimental"],
+  "targets": {"energy": 0.85, "danceability": 0.85, "valence": 0.8, "tempo_bpm": 125},
+  "bounds": {"danceability": {"minimum": 0.65}}
+}

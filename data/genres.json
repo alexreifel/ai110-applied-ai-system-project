@@ -1,0 +1,654 @@
+{
+  "1": {
+    "parent": 38,
+    "title": "avant-garde"
+  },
+  "2": {
+    "parent": 0,
+    "title": "international"
+  },
+  "3": {
+    "parent": 0,
+    "title": "blues"
+  },
+  "4": {
+    "parent": 0,
+    "title": "jazz"
+  },
+  "5": {
+    "parent": 0,
+    "title": "classical"
+  },
+  "6": {
+    "parent": 38,
+    "title": "novelty"
+  },
+  "7": {
+    "parent": 20,
+    "title": "comedy"
+  },
+  "8": {
+    "parent": 0,
+    "title": "old-time / historic"
+  },
+  "9": {
+    "parent": 0,
+    "title": "country"
+  },
+  "10": {
+    "parent": 0,
+    "title": "pop"
+  },
+  "11": {
+    "parent": 14,
+    "title": "disco"
+  },
+  "12": {
+    "parent": 0,
+    "title": "rock"
+  },
+  "13": {
+    "parent": 0,
+    "title": "easy listening"
+  },
+  "14": {
+    "parent": 0,
+    "title": "soul-rnb"
+  },
+  "15": {
+    "parent": 0,
+    "title": "electronic"
+  },
+  "16": {
+    "parent": 6,
+    "title": "sound effects"
+  },
+  "17": {
+    "parent": 0,
+    "title": "folk"
+  },
+  "18": {
+    "parent": 1235,
+    "title": "soundtrack"
+  },
+  "19": {
+    "parent": 14,
+    "title": "funk"
+  },
+  "20": {
+    "parent": 0,
+    "title": "spoken"
+  },
+  "21": {
+    "parent": 0,
+    "title": "hip-hop"
+  },
+  "22": {
+    "parent": 38,
+    "title": "audio collage"
+  },
+  "25": {
+    "parent": 12,
+    "title": "punk"
+  },
+  "26": {
+    "parent": 12,
+    "title": "post-rock"
+  },
+  "27": {
+    "parent": 12,
+    "title": "lo-fi"
+  },
+  "30": {
+    "parent": 38,
+    "title": "field recordings"
+  },
+  "31": {
+    "parent": 12,
+    "title": "metal"
+  },
+  "32": {
+    "parent": 38,
+    "title": "noise"
+  },
+  "33": {
+    "parent": 17,
+    "title": "psych-folk"
+  },
+  "36": {
+    "parent": 12,
+    "title": "krautrock"
+  },
+  "37": {
+    "parent": 4,
+    "title": "jazz: vocal"
+  },
+  "38": {
+    "parent": 0,
+    "title": "experimental"
+  },
+  "41": {
+    "parent": 38,
+    "title": "electroacoustic"
+  },
+  "42": {
+    "parent": 15,
+    "title": "ambient electronic"
+  },
+  "43": {
+    "parent": 65,
+    "title": "radio art"
+  },
+  "45": {
+    "parent": 12,
+    "title": "loud-rock"
+  },
+  "46": {
+    "parent": 2,
+    "title": "latin america"
+  },
+  "47": {
+    "parent": 38,
+    "title": "drone"
+  },
+  "49": {
+    "parent": 17,
+    "title": "free-folk"
+  },
+  "53": {
+    "parent": 45,
+    "title": "noise-rock"
+  },
+  "58": {
+    "parent": 12,
+    "title": "psych-rock"
+  },
+  "63": {
+    "parent": 9,
+    "title": "bluegrass"
+  },
+  "64": {
+    "parent": 25,
+    "title": "electro-punk"
+  },
+  "65": {
+    "parent": 20,
+    "title": "radio"
+  },
+  "66": {
+    "parent": 12,
+    "title": "indie-rock"
+  },
+  "70": {
+    "parent": 12,
+    "title": "industrial"
+  },
+  "71": {
+    "parent": 25,
+    "title": "no wave"
+  },
+  "74": {
+    "parent": 4,
+    "title": "free-jazz"
+  },
+  "76": {
+    "parent": 10,
+    "title": "experimental pop"
+  },
+  "77": {
+    "parent": 2,
+    "title": "french"
+  },
+  "79": {
+    "parent": 2,
+    "title": "reggae - dub"
+  },
+  "81": {
+    "parent": 92,
+    "title": "afrobeat"
+  },
+  "83": {
+    "parent": 21,
+    "title": "nerdcore"
+  },
+  "85": {
+    "parent": 12,
+    "title": "garage"
+  },
+  "86": {
+    "parent": 2,
+    "title": "indian"
+  },
+  "88": {
+    "parent": 12,
+    "title": "new wave"
+  },
+  "89": {
+    "parent": 25,
+    "title": "post-punk"
+  },
+  "90": {
+    "parent": 53,
+    "title": "sludge"
+  },
+  "92": {
+    "parent": 2,
+    "title": "african"
+  },
+  "94": {
+    "parent": 17,
+    "title": "freak-folk"
+  },
+  "97": {
+    "parent": 4,
+    "title": "jazz: out"
+  },
+  "98": {
+    "parent": 12,
+    "title": "progressive"
+  },
+  "100": {
+    "parent": 21,
+    "title": "alternative hip-hop"
+  },
+  "101": {
+    "parent": 31,
+    "title": "death-metal"
+  },
+  "102": {
+    "parent": 2,
+    "title": "middle east"
+  },
+  "103": {
+    "parent": 17,
+    "title": "singer-songwriter"
+  },
+  "107": {
+    "parent": 1235,
+    "title": "ambient"
+  },
+  "109": {
+    "parent": 25,
+    "title": "hardcore"
+  },
+  "111": {
+    "parent": 25,
+    "title": "power-pop"
+  },
+  "113": {
+    "parent": 26,
+    "title": "space-rock"
+  },
+  "117": {
+    "parent": 2,
+    "title": "polka"
+  },
+  "118": {
+    "parent": 2,
+    "title": "balkan"
+  },
+  "125": {
+    "parent": 38,
+    "title": "unclassifiable"
+  },
+  "130": {
+    "parent": 2,
+    "title": "europe"
+  },
+  "137": {
+    "parent": 9,
+    "title": "americana"
+  },
+  "138": {
+    "parent": 20,
+    "title": "spoken weird"
+  },
+  "166": {
+    "parent": 65,
+    "title": "interview"
+  },
+  "167": {
+    "parent": 31,
+    "title": "black-metal"
+  },
+  "169": {
+    "parent": 9,
+    "title": "rockabilly"
+  },
+  "170": {
+    "parent": 13,
+    "title": "easy listening: vocal"
+  },
+  "171": {
+    "parent": 2,
+    "title": "brazilian"
+  },
+  "172": {
+    "parent": 2,
+    "title": "asia-far east"
+  },
+  "173": {
+    "parent": 86,
+    "title": "n. indian traditional"
+  },
+  "174": {
+    "parent": 86,
+    "title": "south indian traditional"
+  },
+  "175": {
+    "parent": 86,
+    "title": "bollywood"
+  },
+  "176": {
+    "parent": 2,
+    "title": "pacific"
+  },
+  "177": {
+    "parent": 2,
+    "title": "celtic"
+  },
+  "178": {
+    "parent": 4,
+    "title": "be-bop"
+  },
+  "179": {
+    "parent": 4,
+    "title": "big band/swing"
+  },
+  "180": {
+    "parent": 17,
+    "title": "british folk"
+  },
+  "181": {
+    "parent": 15,
+    "title": "techno"
+  },
+  "182": {
+    "parent": 15,
+    "title": "house"
+  },
+  "183": {
+    "parent": 15,
+    "title": "glitch"
+  },
+  "184": {
+    "parent": 15,
+    "title": "minimal electronic"
+  },
+  "185": {
+    "parent": 15,
+    "title": "breakcore - hard"
+  },
+  "186": {
+    "parent": 38,
+    "title": "sound poetry"
+  },
+  "187": {
+    "parent": 5,
+    "title": "20th century classical"
+  },
+  "188": {
+    "parent": 20,
+    "title": "poetry"
+  },
+  "189": {
+    "parent": 65,
+    "title": "talk radio"
+  },
+  "214": {
+    "parent": 92,
+    "title": "north african"
+  },
+  "224": {
+    "parent": 38,
+    "title": "sound collage"
+  },
+  "232": {
+    "parent": 2,
+    "title": "flamenco"
+  },
+  "236": {
+    "parent": 15,
+    "title": "idm"
+  },
+  "240": {
+    "parent": 297,
+    "title": "chiptune"
+  },
+  "247": {
+    "parent": 38,
+    "title": "musique concrete"
+  },
+  "250": {
+    "parent": 38,
+    "title": "improv"
+  },
+  "267": {
+    "parent": 1235,
+    "title": "new age"
+  },
+  "286": {
+    "parent": 15,
+    "title": "trip-hop"
+  },
+  "296": {
+    "parent": 15,
+    "title": "dance"
+  },
+  "297": {
+    "parent": 15,
+    "title": "chip music"
+  },
+  "311": {
+    "parent": 13,
+    "title": "lounge"
+  },
+  "314": {
+    "parent": 12,
+    "title": "goth"
+  },
+  "322": {
+    "parent": 5,
+    "title": "composed music"
+  },
+  "337": {
+    "parent": 15,
+    "title": "drum & bass"
+  },
+  "359": {
+    "parent": 12,
+    "title": "shoegaze"
+  },
+  "360": {
+    "parent": 6,
+    "title": "kid-friendly"
+  },
+  "361": {
+    "parent": 109,
+    "title": "thrash"
+  },
+  "362": {
+    "parent": 10,
+    "title": "synth pop"
+  },
+  "374": {
+    "parent": 20,
+    "title": "banter"
+  },
+  "377": {
+    "parent": 19,
+    "title": "deep funk"
+  },
+  "378": {
+    "parent": 20,
+    "title": "spoken word"
+  },
+  "400": {
+    "parent": 182,
+    "title": "chill-out"
+  },
+  "401": {
+    "parent": 181,
+    "title": "bigbeat"
+  },
+  "404": {
+    "parent": 85,
+    "title": "surf"
+  },
+  "428": {
+    "parent": 20,
+    "title": "radio theater"
+  },
+  "439": {
+    "parent": 31,
+    "title": "grindcore"
+  },
+  "440": {
+    "parent": 12,
+    "title": "rock opera"
+  },
+  "441": {
+    "parent": 5,
+    "title": "opera"
+  },
+  "442": {
+    "parent": 5,
+    "title": "chamber music"
+  },
+  "443": {
+    "parent": 5,
+    "title": "choral music"
+  },
+  "444": {
+    "parent": 5,
+    "title": "symphony"
+  },
+  "456": {
+    "parent": 38,
+    "title": "minimalism"
+  },
+  "465": {
+    "parent": 20,
+    "title": "musical theater"
+  },
+  "468": {
+    "parent": 15,
+    "title": "dubstep"
+  },
+  "491": {
+    "parent": 468,
+    "title": "skweee"
+  },
+  "493": {
+    "parent": 651,
+    "title": "western swing"
+  },
+  "495": {
+    "parent": 15,
+    "title": "downtempo"
+  },
+  "502": {
+    "parent": 46,
+    "title": "cumbia"
+  },
+  "504": {
+    "parent": 2,
+    "title": "latin"
+  },
+  "514": {
+    "parent": 38,
+    "title": "sound art"
+  },
+  "524": {
+    "parent": 130,
+    "title": "romany (gypsy)"
+  },
+  "538": {
+    "parent": 18,
+    "title": "compilation"
+  },
+  "539": {
+    "parent": 21,
+    "title": "rap"
+  },
+  "542": {
+    "parent": 21,
+    "title": "breakbeat"
+  },
+  "567": {
+    "parent": 3,
+    "title": "gospel"
+  },
+  "580": {
+    "parent": 21,
+    "title": "abstract hip-hop"
+  },
+  "602": {
+    "parent": 79,
+    "title": "reggae - dancehall"
+  },
+  "619": {
+    "parent": 130,
+    "title": "spanish"
+  },
+  "651": {
+    "parent": 9,
+    "title": "country & western"
+  },
+  "659": {
+    "parent": 5,
+    "title": "contemporary classical"
+  },
+  "693": {
+    "parent": 21,
+    "title": "wonky"
+  },
+  "695": {
+    "parent": 15,
+    "title": "jungle"
+  },
+  "741": {
+    "parent": 130,
+    "title": "klezmer"
+  },
+  "763": {
+    "parent": 16,
+    "title": "holiday"
+  },
+  "808": {
+    "parent": 46,
+    "title": "salsa"
+  },
+  "810": {
+    "parent": 13,
+    "title": "nu-jazz"
+  },
+  "811": {
+    "parent": 21,
+    "title": "hip-hop beats"
+  },
+  "906": {
+    "parent": 4,
+    "title": "modern jazz"
+  },
+  "1032": {
+    "parent": 102,
+    "title": "turkish"
+  },
+  "1060": {
+    "parent": 46,
+    "title": "tango"
+  },
+  "1156": {
+    "parent": 130,
+    "title": "fado"
+  },
+  "1193": {
+    "parent": 763,
+    "title": "christmas"
+  },
+  "1235": {
+    "parent": 0,
+    "title": "instrumental"
+  }
+}

@@ -13,3 +13,11 @@ venv/
 
 # Pytest cache
 .pytest_cache/
+
+# Credentials and local data downloads
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+data/raw/
+*.zip

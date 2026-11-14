@@ -1,0 +1,24 @@
+{
+  "mode": "manual controlled exclusion ablation",
+  "preferences": {
+    "preferred_genres": [],
+    "required_genres": [],
+    "excluded_genres": [
+      "rock"
+    ],
+    "targets": {
+      "energy": 0.6939908022
+    },
+    "bounds": {},
+    "unsupported": []
+  },
+  "guard_enabled": {
+    "top_track_id": 33219,
+    "returned_excluded_tracks": 0
+  },
+  "guard_disabled": {
+    "top_track_id": 569,
+    "returned_excluded_tracks": 3
+  },
+  "catalog_sha256": "0f1ace043abee4464fd8c8cb28b5909aaeee37949a4193cdcbf7308d5cf4967d"
+}

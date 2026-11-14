@@ -1,0 +1,21 @@
+{
+  "original_tests_before_changes": 52,
+  "final_tests": 127,
+  "new_behavior_tests": 75,
+  "pre_existing_failures": 0,
+  "clean_environment_tests": 127,
+  "baseline_outputs_unchanged": true,
+  "snapshot_rebuild_byte_identical": true,
+  "python": "Python 3.11.18",
+  "pytest": "8.4.2",
+  "streamlit_prepared_for_pass2": "1.67.0",
+  "catalog_sha256": "0f1ace043abee4464fd8c8cb28b5909aaeee37949a4193cdcbf7308d5cf4967d",
+  "live_model_calls": 0,
+  "test_commands": [
+    "python -m pytest -q",
+    "python -m src.main",
+    "python -m src.evaluate",
+    "python -m pip check",
+    "python -m compileall -q src tests scripts"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "preferred_genres": ["jazz"],
+  "required_genres": ["jazz"],
+  "targets": {"energy": 0.35, "valence": 0.55, "tempo_bpm": 95}
+}

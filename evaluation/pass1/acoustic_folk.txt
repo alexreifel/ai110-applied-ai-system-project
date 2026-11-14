@@ -1,0 +1,33 @@
+$ python -m src.cli --preferences examples/acoustic_folk.json --limit 3
+Mode: manual (no LLM calls)
+Preferences: {"bounds": {"acousticness": {"maximum": null, "minimum": 0.6}}, "excluded_genres": [], "preferred_genres": ["folk", "country"], "required_genres": ["folk", "country"], "targets": {"acousticness": 0.9, "energy": 0.25, "tempo_bpm": 85.0}, "unsupported": []}
+Catalog: 1200; eligible: 162; returned: 3
+Recommendations from catalog metadata; scores are similarities, not probabilities.
+1. B 6 Ce matin — Yves Rakotomalala | Match: 0.987 | FMA 42474
+   Genres: psych-folk
+   genre: matched folk; similarity 1.000, weight 2
+   acousticness: observed 0.9338, target 0.9000; similarity 0.9662, weight 1
+   energy: observed 0.2751, target 0.2500; similarity 0.9749, weight 1
+   tempo_bpm: observed 84.1640, target 85.0000; similarity 0.9916, weight 1
+   required acousticness: at least 0.6; observed 0.9338
+   required genre matched: folk
+   Source: https://freemusicarchive.org/music/Yves_Rakotomalala/Ce_matin_encore/B_6_Ce_matin
+2. Long Nights I — Daniel Bachman | Match: 0.985 | FMA 62880
+   Genres: americana, folk
+   genre: matched country, folk; similarity 1.000, weight 2
+   acousticness: observed 0.8535, target 0.9000; similarity 0.9535, weight 1
+   energy: observed 0.2673, target 0.2500; similarity 0.9827, weight 1
+   tempo_bpm: observed 83.9580, target 85.0000; similarity 0.9896, weight 1
+   required acousticness: at least 0.6; observed 0.8535
+   required genre matched: country, folk
+   Source: https://freemusicarchive.org/music/Daniel_Bachman/Live_at_WFMU_on_Irene_Trudels_Show_on_March_26_2012/Daniel_Bachman_-_05_-_Long_Nights_I
+3. Kamikaze Economy Christmas — Travis Taylor | Match: 0.971 | FMA 40878
+   Genres: folk, holiday
+   genre: matched folk; similarity 1.000, weight 2
+   acousticness: observed 0.7748, target 0.9000; similarity 0.8748, weight 1
+   energy: observed 0.2482, target 0.2500; similarity 0.9982, weight 1
+   tempo_bpm: observed 86.9420, target 85.0000; similarity 0.9806, weight 1
+   required acousticness: at least 0.6; observed 0.7748
+   required genre matched: folk
+   Source: https://freemusicarchive.org/music/Travis_Taylor/Thee_Christmas_Mix_Tape_2010/badgerland_-_Thee_Christmas_Mix_Tape_-_13_Kamikaze_Economy_Christmas
+Exit code: 0

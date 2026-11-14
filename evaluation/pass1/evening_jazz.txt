@@ -1,0 +1,30 @@
+$ python -m src.cli --preferences examples/evening_jazz.json --limit 3
+Mode: manual (no LLM calls)
+Preferences: {"bounds": {}, "excluded_genres": [], "preferred_genres": ["jazz"], "required_genres": ["jazz"], "targets": {"energy": 0.35, "tempo_bpm": 95.0, "valence": 0.55}, "unsupported": []}
+Catalog: 1200; eligible: 144; returned: 3
+Recommendations from catalog metadata; scores are similarities, not probabilities.
+1. Passionate conjugate chemistry — Hat City Intuitive | Match: 0.960 | FMA 6967
+   Genres: jazz
+   genre: matched jazz; similarity 1.000, weight 2
+   energy: observed 0.2937, target 0.3500; similarity 0.9437, weight 1
+   tempo_bpm: observed 98.6300, target 95.0000; similarity 0.9637, weight 1
+   valence: observed 0.4416, target 0.5500; similarity 0.8916, weight 1
+   required genre matched: jazz
+   Source: https://freemusicarchive.org/music/Hat_City_Intuitive/Live_at_WFMU_on_Storks_Show_on_10121997/Passionate_conjugate_chemistry
+2. Blue Drag — The Swing Ninjas | Match: 0.953 | FMA 64361
+   Genres: jazz
+   genre: matched jazz; similarity 1.000, weight 2
+   energy: observed 0.3623, target 0.3500; similarity 0.9877, weight 1
+   tempo_bpm: observed 97.9080, target 95.0000; similarity 0.9709, weight 1
+   valence: observed 0.7425, target 0.5500; similarity 0.8075, weight 1
+   required genre matched: jazz
+   Source: https://freemusicarchive.org/music/The_Swing_Ninjas/Tears_Of_The_Tuba_The_Difficult_Second_Album/The_Swing_Ninjas_-_Blue_Drag_1649
+3. What is the What — BJ Block & Dawn Pemberton | Match: 0.953 | FMA 77378
+   Genres: funk, jazz, soul-rnb
+   genre: matched jazz; similarity 1.000, weight 2
+   energy: observed 0.5223, target 0.3500; similarity 0.8277, weight 1
+   tempo_bpm: observed 99.9990, target 95.0000; similarity 0.9500, weight 1
+   valence: observed 0.5623, target 0.5500; similarity 0.9877, weight 1
+   required genre matched: jazz
+   Source: https://freemusicarchive.org/music/BJ_Block__Dawn_Pemberton/II_1060/06_BJ_Block_n_Dawn_Pemberton_What_is_the_What_II_FROSTWIRE_FROSTCLICK_CREATIVE_COMMONS_1366
+Exit code: 0

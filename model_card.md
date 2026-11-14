@@ -1,246 +1,64 @@
-# Model Card: VibeScore 1.0
+# Model card — Music Discovery Assistant
 
-## 1. Model Name
+Status: **Pass 1 foundation implemented; AI interpretation and browser interface are pending Pass 2.** Current runs use manual structured preferences and no LLM. Historical Module 3 documentation is preserved in `docs/baseline/`.
 
-VibeScore 1.0 — an explainable, weighted-score music recommender.
+## Original scope and current system
 
-## 2. Intended Use
+The base is Module 3 Music Recommender Simulation, a deterministic weighted ranker over 20 synthetic songs. Its original source, CSV, interfaces, CLI/evaluation behavior, tests, and history are retained. The extension currently ranks a versioned catalog of 1,200 real FMA tracks using multiple genres, exclusions, required conditions, and numeric targets. It has no trained weights or listener-feedback model. The planned assistant will specialize an LLM through structured prompting, not fine-tuning; no live model has been verified or called in Pass 1.
 
-Suggest five songs from a small synthetic catalog for an explicit genre, mood,
-and energy preference. This is for classroom exploration of content-based
-recommendation, feature weighting, ranking, and explanation. It is not intended
-as a production music service, a diagnosis of mood, or a validated prediction of
-any real person's enjoyment. It does not learn from other listeners or train
-model parameters.
+## Data, assumptions, and ranking
 
-## 3. How the Model Works
+See `data/README.md` and `data/catalog_report.json` for attribution, exact source/rebuild details, observed coverage, and cleaning. The snapshot has 775 artists and 113 represented genre labels. Artist-capped genre stratification improves available variety but changes the source distribution. Genre labels overlap and include explicit ancestors from the source hierarchy.
 
-Each genre match earns two points and each mood match earns one. Energy earns
-up to one point: subtract the absolute difference between a song's energy and
-the user's target from one. Sum the three contributions, score every song, and
-return the five largest totals. Each reason reports the actual matching or
-mismatching feature and its point contribution. Labels ignore case and outer
-whitespace, but `pop` and `indie pop` remain distinct.
+Hard conditions are checked before scoring. Only requested soft attributes contribute to a weighted mean: preferred-genre match has weight 2; each numeric target has weight 1. Unit-interval features use similarity `max(0, 1 - abs(observed - target))`; tempo uses `max(0, 1 - abs(observed_bpm - target_bpm) / 100)`. Omitted preferences have no contribution. Required-only requests are marked unscored. Ties use stable track IDs.
 
-The baseline was chosen to follow the assignment's simple recipe. The required
-experiment changes genre from 2 to 1 and energy from 1 to 2, leaving mood at 1.
-This tests sensitivity, not learned optimization. Scores are rounded to 12
-decimal places for stable mathematical ties; ties preserve input order. Empty
-catalog lists return no recommendations. A file with no songs, invalid values,
-or duplicate IDs is rejected. Unknown genre/mood labels are valid but receive
-no categorical match points, so fallback results may be weak.
+The 0.6 soft-match threshold and 0.75 per-feature compromise indicator are explicit engineering heuristics. The recorded examples exercise them, but they are not empirically calibrated satisfaction thresholds. Match scores are not confidence, accuracy, or probabilities of enjoyment. A deterministic score does not establish that a person will like the recommendation.
 
-## 4. Data
+## Limitations and biases
 
-The catalog contains 20 fictional songs: the starter's 10 plus 10 synthetic
-additions. Genre counts are lofi 3, pop 2, and one each of rock, ambient, jazz,
-synthwave, indie pop, classical, hip-hop, rnb, folk, country, edm, reggae, soul,
-metal, and latin. Each row has an ID, title, artist, genre, mood, energy, tempo,
-valence, danceability, and acousticness. Numerical music labels are illustrative,
-not measured from real recordings. The baseline uses only genre/mood/energy;
-the other attributes remain stored and validated. There is no user interaction
-history, audio, lyrics, popularity measurement, or ground-truth enjoyment label.
-No new attribute columns were added.
+- Historical independent-music coverage excludes much of contemporary/mainstream listening. A larger catalog is still finite, and absent genres are rejected rather than forced into presets.
+- Fifteen broad genres have at least 20 tracks; spoken has only seven. Other subgenres can remain sparse. Selection is not representative of music globally, listener demographics, or cultural tastes.
+- Genre labels reflect source classification; categorical boundaries and hierarchical overlap can be debatable. Broad exclusions may remove crossover tracks a user would enjoy.
+- Energy, acousticness, danceability, valence, tempo, and instrumentalness are algorithmic estimates. They cannot verify emotional impact, lyrics, actual instrumentation, or absence of vocals. No verified explicit-lyrics guarantee is available.
+- Missing metadata causes exclusion when needed for a requested condition/target. It is not replaced with a fabricated zero.
+- Source links were imported from historical records. The three top demo references returned HTTP 200 in HEAD checks, which does not verify playback or content identity for all tracks.
+- Ranking uses hand-chosen weights and no listening history. Strict checks and repeatable tests do not establish subjective recommendation quality or exhaustive correctness.
+- Pass 1 does not yet understand natural language. Planned LLM interpretation may misunderstand requests even when its output schema is valid; human review and additional model-specific evaluation remain necessary.
 
-## 5. Strengths
+## Misuse and mitigations
 
-The three distinct baseline profiles choose different first songs: Sunrise City
-for High-Energy Pop (3.98), Library Rain for Chill Lofi (4.00), and Storm Runner
-for Deep Intense Rock (3.99). Those results follow their stated categorical
-preferences and energy targets. Explanations make it possible to check each
-component by hand instead of accepting an opaque score.
+The app should not be used to guarantee child-safe lyrics, medical/therapeutic effects, or universal emotional responses. Unsupported essential conditions return `needs_clarification`; the current manual schema exposes unsupported conditions instead of silently claiming compliance. Hard exclusions and bounds are never relaxed to fill results. Recommendations cite catalog records rather than generated tracks.
 
-**Metadata-based intuition check for Alex to review:** Sunrise City is a plausible
-first suggestion for pop/happy/0.8 because it matches both labels and has energy
-0.82. Gym Hero is second despite its intense mood because its pop match is worth
-more than the available energy or mood differences. This is a check against the
-provided labels, not a claim that Alex or Codex listened to fictional tracks or
-established real musical preference accuracy.
+Pass 1 executes no model-generated code, remote tool calls, audio downloads, or account actions. Strict preference/catalog validation rejects unknown fields, invalid numbers, contradictory conditions, duplicate JSON keys, and unrepresented genres. Source data preparation checks the archive checksum before reading CSVs and never deserializes its pickle member. Logs contain aggregate ranking outcomes rather than credentials or personal request history. Future provider calls will need explicit access/cost checks and bounded errors before live verification.
 
-## 6. Limitations and Bias
+## Reliability testing observations
 
-The baseline gives genre two points, so it can prefer a badly mismatched energy
-level if the genre matches. In the conflicting classical profile, Quiet
-Constellations ranks first at 2.23 despite energy 0.18 versus a target of 0.95.
-Lofi has three catalog entries while classical has only one, giving some users
-more matching choices. Exact category matching treats `pop` and `indie pop` as
-unrelated and `intense` and `aggressive` as unrelated. These design and coverage
-choices can reinforce a narrow set of suggestions rather than discover music
-across related genres.
+Before changes, the original 52 tests passed and the original CLI/evaluation outputs matched the committed reports. Pass 1 adds behavioral checks around actual ranking changes, real CLI examples, source integrity, and invalid-input/error handling. Recorded test results are in `evaluation/pass1/pytest.txt`; they are observed runs rather than an estimated test count.
 
-The tail of every top-five list is not necessarily a strong match: the rock list
-includes unrelated genres because there is only one exact rock entry. Rankings
-are relative to available candidates; low-scoring candidates are not a claim of
-positive enjoyment. No diversity/fairness penalty or confidence threshold was
-added, because those would change the agreed baseline scope.
+An observed boundary case in the metadata audit was a feature record whose track had no title (ID 26620). Rejecting that record avoided publishing an incomplete recommendation. The controlled exclusion ablation in `evaluation/pass1/guardrail_ablation.json` returned prohibited rock tracks when the rejection guard was bypassed and none when it was enabled. This demonstrates the guard's effect on that case, not a claim about all possible mistakes. No independent human listening evaluation has been performed.
 
-## 7. Evaluation
+## What surprised Alex while testing reliability?
 
-Executed `python -m src.main`, `python -m src.evaluate`, and `python -m pytest -q`.
-The three required preference dictionaries are in `src/main.py`. The evaluation
-adds Conflicting Classical (classical, melancholic, energy 0.95) to test an
-incompatible combination given this catalog. All output below was generated by
-the actual implementation; it is not hypothetical output.
+**Requires Alex review after trying the system.** The missing-title finding and guardrail comparison above are Codex-observed technical results. They are not attributed to Alex as a personal surprise or experience. Record Alex's actual observation here during review before submission.
 
-### Actual profile and experiment outputs
+## Collaboration with AI
 
-```text
-Loaded songs: 20
+Alex used Codex to inspect earlier projects, compare extensions, research data sources, plan the architecture, implement and test the foundation, and prepare factual documentation. Codex selected the current numeric weights, thresholds, sampling procedure, and module organization; these are agent implementation choices for Alex to inspect, not claims that Alex personally designed each detail. Alex chose the base, revised the initial scope, and selected the interface/data priorities in this chat.
 
-BASELINE: genre=2.0, mood=1.0, energy=1.0
+## Accepted and rejected or revised AI suggestions
 
-Profile: High-Energy Pop
-Preferences: genre=pop, mood=happy, energy=0.80
-1. Sunrise City — Neon Echo | Score: 3.98
-   Because: genre match (+2.00); mood match (+1.00); energy 0.82 vs target 0.80: gap 0.02 (+0.98)
-2. Gym Hero — Max Pulse | Score: 2.87
-   Because: genre match (+2.00); mood mismatch (+0.00); energy 0.93 vs target 0.80: gap 0.13 (+0.87)
-3. Rooftop Lights — Indigo Parade | Score: 1.96
-   Because: genre mismatch (+0.00); mood match (+1.00); energy 0.76 vs target 0.80: gap 0.04 (+0.96)
-4. Plaza at Sunset — Sol de Abril | Score: 0.99
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.81 vs target 0.80: gap 0.01 (+0.99)
-5. Sidewalk Confidence — Copper Verse | Score: 0.98
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.78 vs target 0.80: gap 0.02 (+0.98)
+- **Accepted:** Alex chose the natural-language music recommender extension because translating user requests into usable preferences adds value to the existing ranker.
+- **Revised:** Alex challenged the initial idea of placing the assistant over only 20 fictional songs and narrow preferences. The plan and foundation were expanded to real-track variety, multiple genres, exclusions, and additional attributes so varied requests could lead to meaningful choices.
+- **Rejected:** Alex rejected the proposed repeated LLM coaching for the guessing game: binary search can be explained once, then computed algorithmically without ongoing model calls.
 
-Profile: Chill Lofi
-Preferences: genre=lofi, mood=chill, energy=0.35
-1. Library Rain — Paper Lanterns | Score: 4.00
-   Because: genre match (+2.00); mood match (+1.00); energy 0.35 vs target 0.35: gap 0.00 (+1.00)
-2. Midnight Coding — LoRoom | Score: 3.93
-   Because: genre match (+2.00); mood match (+1.00); energy 0.42 vs target 0.35: gap 0.07 (+0.93)
-3. Focus Flow — LoRoom | Score: 2.95
-   Because: genre match (+2.00); mood mismatch (+0.00); energy 0.40 vs target 0.35: gap 0.05 (+0.95)
-4. Spacewalk Thoughts — Orbit Bloom | Score: 1.93
-   Because: genre mismatch (+0.00); mood match (+1.00); energy 0.28 vs target 0.35: gap 0.07 (+0.93)
-5. Coffee Shop Stories — Slow Stereo | Score: 0.98
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.37 vs target 0.35: gap 0.02 (+0.98)
+These decisions occurred in the session. Alex should review the final wording and add personal reflection without inventing development or listening experiences.
 
-Profile: Deep Intense Rock
-Preferences: genre=rock, mood=intense, energy=0.90
-1. Storm Runner — Voltline | Score: 3.99
-   Because: genre match (+2.00); mood match (+1.00); energy 0.91 vs target 0.90: gap 0.01 (+0.99)
-2. Gym Hero — Max Pulse | Score: 1.97
-   Because: genre mismatch (+0.00); mood match (+1.00); energy 0.93 vs target 0.90: gap 0.03 (+0.97)
-3. Electric Horizon — Prism Current | Score: 0.94
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.96 vs target 0.90: gap 0.06 (+0.94)
-4. Sunrise City — Neon Echo | Score: 0.92
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.82 vs target 0.90: gap 0.08 (+0.92)
-5. Iron Signal — Black Meridian | Score: 0.92
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.98 vs target 0.90: gap 0.08 (+0.92)
+## Future improvements and remaining work
 
-Profile: Conflicting Classical
-Preferences: genre=classical, mood=melancholic, energy=0.95
-1. Quiet Constellations — Mira Vale | Score: 2.23
-   Because: genre match (+2.00); mood mismatch (+0.00); energy 0.18 vs target 0.95: gap 0.77 (+0.23)
-2. After the Last Train — Velvet Hours | Score: 1.37
-   Because: genre mismatch (+0.00); mood match (+1.00); energy 0.32 vs target 0.95: gap 0.63 (+0.37)
-3. Electric Horizon — Prism Current | Score: 0.99
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.96 vs target 0.95: gap 0.01 (+0.99)
-4. Gym Hero — Max Pulse | Score: 0.98
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.93 vs target 0.95: gap 0.02 (+0.98)
-5. Iron Signal — Black Meridian | Score: 0.97
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.98 vs target 0.95: gap 0.03 (+0.97)
+Pass 2 will integrate the specialized interpreter, browser UI, and shared CLI workflow with visible preference review and provider failure handling. Pass 3 will add the explicitly requested evaluation harness and actual same-model generic-vs-specialized prompt comparison. Pass 4 will audit all 21 required rubric rows and selected bonuses, finish evidence/personal review, and verify publication/CI.
 
-SENSITIVITY EXPERIMENT: halve genre and double energy
-genre=1.0, mood=1.0, energy=2.0
+Later research could evaluate listener satisfaction, improve data coverage and semantics, or learn weights from consented feedback. These are future ideas, not implemented features or authorized extra scope for this pass.
 
-Profile: High-Energy Pop (experiment)
-Preferences: genre=pop, mood=happy, energy=0.80
-1. Sunrise City — Neon Echo | Score: 3.96
-   Because: genre match (+1.00); mood match (+1.00); energy 0.82 vs target 0.80: gap 0.02 (+1.96)
-2. Rooftop Lights — Indigo Parade | Score: 2.92
-   Because: genre mismatch (+0.00); mood match (+1.00); energy 0.76 vs target 0.80: gap 0.04 (+1.92)
-3. Gym Hero — Max Pulse | Score: 2.74
-   Because: genre match (+1.00); mood mismatch (+0.00); energy 0.93 vs target 0.80: gap 0.13 (+1.74)
-4. Plaza at Sunset — Sol de Abril | Score: 1.98
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.81 vs target 0.80: gap 0.01 (+1.98)
-5. Sidewalk Confidence — Copper Verse | Score: 1.96
-   Because: genre mismatch (+0.00); mood mismatch (+0.00); energy 0.78 vs target 0.80: gap 0.02 (+1.96)
+## Specialization comparison and live-access status
 
-Before top 3: Sunrise City, Gym Hero, Rooftop Lights
-After top 3: Sunrise City, Rooftop Lights, Gym Hero
-```
-
-### Pairwise comparisons of the three required profiles
-
-- **Pop versus lofi:** Sunrise City (3.98) changes to Library Rain (4.00). Pop/happy
-  rewards Sunrise City's two label matches, while lofi/chill rewards Library
-  Rain's label matches and exact 0.35 energy. Their top-five lists share no songs.
-- **Pop versus rock:** Sunrise City changes to Storm Runner (3.99). Gym Hero is
-  second for both but for different reasons: it matches pop genre in the first
-  case and intense mood in the second. The overlap does not mean the profiles
-  are being ignored; the explanations expose distinct contributions.
-- **Lofi versus rock:** Library Rain changes to Storm Runner and their top-five
-  lists do not overlap. Energy targets shift from 0.35 to 0.90 while both
-  categorical preferences change, so this comparison exercises multiple features.
-
-### Adversarial profile comparisons
-
-- **Classical versus pop:** the preferred genre changes the winner from Sunrise
-  City to Quiet Constellations, even though the latter's energy is far from the
-  classical profile's target. Gym Hero remains in both lists as an energy match.
-- **Classical versus lofi:** both winners have low energy, but for different
-  reasons: Library Rain fits the low-energy lofi profile, whereas the classical
-  winner contradicts the high-energy target and wins mainly on genre. Their
-  top-five lists do not overlap.
-- **Classical versus rock:** the rock profile has a near-perfect matching song;
-  the classical profile has no song matching all its preferences. Electric
-  Horizon, Gym Hero, and Iron Signal appear in both lists through energy or mood
-  contributions, while the category bonus determines different winners.
-
-### Sensitivity experiment and interpretation
-
-Halving genre weight and doubling energy weight swaps the second and third pop
-recommendations: Rooftop Lights rises from 1.96 to 2.92 and Gym Hero changes from
-2.87 to 2.74. Rooftop Lights has the happy mood and energy 0.76, close to the 0.80
-target; Gym Hero has the pop genre but an intense mood and energy 0.93. The
-experiment therefore does what its math predicts. It might better fit a listener
-who values mood/energy over exact genre, but without listener feedback it is
-**different**, not demonstrated to be more accurate. Baseline scores and altered
-scores have different weighting and should not be treated as probabilities.
-
-### Verification
-
-52 pytest cases pass locally, including the two original starter tests. Added
-cases test real scoring values, reversed input order, tied scores, input
-immutability, different profiles, CSV validation, invalid user values, empty
-catalogs, top-k behavior, class/function consistency, the weight change, and CLI
-execution. The original tests alone could pass placeholders, so they are not
-used as sufficient evidence. CI also compares fresh CLI/evaluation output with
-committed text reports on Python 3.11 and 3.12. This is implementation verification,
-not an estimate of real-world recommendation accuracy.
-
-## 8. Future Work
-
-1. Collect actual listener judgments and tune weights against a separate
-   evaluation set instead of assuming a larger score means better taste fit.
-2. Expand underrepresented genres and represent related genres/moods more
-   carefully, with explicit decisions about what similarity should mean.
-3. Explore contextual preferences or variety only after the baseline is reviewed.
-
-These are ideas, not implemented optional extensions. There are no added song
-attributes, selectable ranking strategies, artist penalties, or output tables.
-
-## 9. Engineering and Personal Reflection
-
-**Biggest learning point:** A ranking is a consequence of both data coverage and
-weight choices. The classical edge case shows why a valid, explained algorithm
-can still return an unconvincing recommendation when the available catalog cannot
-satisfy the requested preferences.
-
-**How AI helped and what needed checking:** Codex implemented the initial draft,
-created regression tests, and ran the profile experiment. Inspection found two
-starter inconsistencies: an import incompatible with the requested module command,
-and separate class/functional interfaces. The implementation uses one scoring
-rule for both. The weak starter tests were retained but supplemented with exact
-scores, shuffled inputs, and explicit explanation checks. Numerical ties also
-needed machine-scale rounding to avoid arbitrary floating-point ordering.
-
-**Why a simple algorithm can resemble recommendations:** Changing the explicit
-preferences changes the winning tracks in an understandable way. That creates
-personalization without model training. It does not establish that a real user
-would enjoy the output, particularly because these tracks are fictional.
-
-**What to try next:** A useful next step would be collecting a few preference
-judgments and deciding whether genre should dominate mood and energy. The current
-build deliberately stops at the required features.
+**Pending Passes 2–3.** No model identifier, live outputs, specialization comparison, fine-tuning, or model-quality score is claimed. Offline/manual foundation evidence cannot substantiate live LLM behavior or the specialization bonus. Usable credentials, model access, quotas, and cost constraints remain unverified.

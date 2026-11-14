@@ -1,0 +1,16 @@
+{
+  "original_commit": "46eaeb6abc72d10dafa895880a59945869610933",
+  "original_tracked_files_unchanged": 18,
+  "original_working_tree_clean": true,
+  "inherited_application_and_tests_byte_identical": [
+    "src/__init__.py",
+    "src/main.py",
+    "src/recommender.py",
+    "src/evaluate.py",
+    "data/songs.csv",
+    "tests/test_behavior.py",
+    "tests/test_recommender.py"
+  ],
+  "verbatim_requirements_sha256": "80499cf3ac233cf418596f1fa07d7531a9a35f7428439a8afc0fa57ecccbe0a0",
+  "both_histories_retained": true
+}

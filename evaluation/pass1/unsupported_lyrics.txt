@@ -1,0 +1,6 @@
+$ python -m src.cli --preferences examples/unsupported_lyrics.json --limit 3
+Mode: manual (no LLM calls)
+Preferences: {"bounds": {}, "excluded_genres": [], "preferred_genres": ["pop"], "required_genres": [], "targets": {}, "unsupported": ["Guarantee no explicit lyrics; this catalog has no verified lyric-safety field"]}
+Catalog: 1200; eligible: 0; returned: 0
+Cannot verify: Guarantee no explicit lyrics; this catalog has no verified lyric-safety field
+Exit code: 3

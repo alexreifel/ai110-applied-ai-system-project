@@ -1,0 +1,6 @@
+$ python -m src.cli --preferences examples/no_results.json --limit 3
+Mode: manual (no LLM calls)
+Preferences: {"bounds": {"tempo_bpm": {"maximum": 1001.0, "minimum": 1000.0}}, "excluded_genres": [], "preferred_genres": [], "required_genres": ["jazz"], "targets": {}, "unsupported": []}
+Catalog: 1200; eligible: 0; returned: 0
+No tracks satisfy every required condition with sufficient metadata. Conditions were not relaxed.
+Exit code: 3

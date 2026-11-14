@@ -1,0 +1,20 @@
+{
+  ".github/workflows/ci.yml": "43d897335abcbe454cf9b3423e54643b234e84e79573447858e73853e74bba0f",
+  ".gitignore": "a1e0c53d4425e3be7058e47b954b7388cd0026e5c74113d5e87963b76504f0ba",
+  "README.md": "e077732a1e467bfb122710885f767df4ccff0ad2635fc052ee686d53ea27d81e",
+  "REQUIREMENTS_CHECKLIST.md": "1c4086d04a806ddae180943d899ddb7803712b44eee78729fd625fe9a7d5df94",
+  "ai_interactions.md": "8e61c9b050249f59f6aa5c846ce7086f7f3de7fc957957e360b21fd7828af594",
+  "data/songs.csv": "b2554ebda8676bdbf9ce13359463c040441fa1142a46ac57d0ddb1f3f9722653",
+  "evaluation/demo.txt": "6d5a3df874de1fa3a23202f154309c2c5634430bf4ef2d0d9be0f04e6179453a",
+  "evaluation/pytest.txt": "bda0728b6b481e621d7bf86e57c1ae7469ed44da8adad93fb2066abf3d57f5d0",
+  "evaluation/results.txt": "d40e16b5f994f428299c9b6deb378de683844fc6ebe03c14ac8d0a9e19adf430",
+  "model_card.md": "4685d4d38cbf07d334005474212ee1974ae79b07270f04db1807cb9aa935f25f",
+  "pytest.ini": "6c6ccf864e8f2d2e0223ee8e39bfde660c12435aa37d81e2b14000a6bee15003",
+  "requirements.txt": "55a850742338fc5135f3be0af740e3c86f1e80bf97914ba4189ce3c20a19d0e1",
+  "src/__init__.py": "989c68a33910358dffe9d04dc50f4e190ca8b61684ea69987129e6d8529fbac4",
+  "src/evaluate.py": "f5112795a54f7f997862c1efe6490b1efd39b05d07ccf83b2fe10a89db050e8d",
+  "src/main.py": "836438f9249132e231a7da8aa7759c0f432d6e2813fed1b3179919437410a73d",
+  "src/recommender.py": "703e74aefddc4776da8bf67d36bb6ee2cd75b23221e83651444e57083a22454c",
+  "tests/test_behavior.py": "c24313afdc90cb949b8bbcfbd4823210bf50931eb1bd28983a71109ff86b6152",
+  "tests/test_recommender.py": "726de3efd7898a846a18cfbb93454380e3bc03af831f1b0dd1be73201fe5d8de"
+}

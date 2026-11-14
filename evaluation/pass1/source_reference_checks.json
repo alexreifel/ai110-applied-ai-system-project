@@ -1,0 +1,29 @@
+[
+  {
+    "case": "acoustic_folk",
+    "track_id": 42474,
+    "source_url": "https://freemusicarchive.org/music/Yves_Rakotomalala/Ce_matin_encore/B_6_Ce_matin",
+    "http_status": "200",
+    "effective_url": "https://freemusicarchive.org/music/Yves_Rakotomalala/Ce_matin_encore/B_6_Ce_matin",
+    "curl_exit_code": 0,
+    "note": "HEAD response only; not a playback or content identity verification"
+  },
+  {
+    "case": "evening_jazz",
+    "track_id": 6967,
+    "source_url": "https://freemusicarchive.org/music/Hat_City_Intuitive/Live_at_WFMU_on_Storks_Show_on_10121997/Passionate_conjugate_chemistry",
+    "http_status": "200",
+    "effective_url": "https://freemusicarchive.org/music/Hat_City_Intuitive/Live_at_WFMU_on_Storks_Show_on_10121997/Passionate_conjugate_chemistry",
+    "curl_exit_code": 0,
+    "note": "HEAD response only; not a playback or content identity verification"
+  },
+  {
+    "case": "dance_pop",
+    "track_id": 33850,
+    "source_url": "https://freemusicarchive.org/music/Patrick_Lee/Bad_Panda_42/Quittin_Time",
+    "http_status": "200",
+    "effective_url": "https://freemusicarchive.org/music/Patrick_Lee/Bad_Panda_42/Quittin_Time",
+    "curl_exit_code": 0,
+    "note": "HEAD response only; not a playback or content identity verification"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "case": "acoustic_folk",
+    "mode": "manual",
+    "model": null,
+    "command": "python -m src.cli --preferences examples/acoustic_folk.json --limit 3",
+    "exit_code": 0,
+    "stdout": "Mode: manual (no LLM calls)\nPreferences: {\"bounds\": {\"acousticness\": {\"maximum\": null, \"minimum\": 0.6}}, \"excluded_genres\": [], \"preferred_genres\": [\"folk\", \"country\"], \"required_genres\": [\"folk\", \"country\"], \"targets\": {\"acousticness\": 0.9, \"energy\": 0.25, \"tempo_bpm\": 85.0}, \"unsupported\": []}\nCatalog: 1200; eligible: 162; returned: 3\nRecommendations from catalog metadata; scores are similarities, not probabilities.\n1. B 6 Ce matin — Yves Rakotomalala | Match: 0.987 | FMA 42474\n   Genres: psych-folk\n   genre: matched folk; similarity 1.000, weight 2\n   acousticness: observed 0.9338, target 0.9000; similarity 0.9662, weight 1\n   energy: observed 0.2751, target 0.2500; similarity 0.9749, weight 1\n   tempo_bpm: observed 84.1640, target 85.0000; similarity 0.9916, weight 1\n   required acousticness: at least 0.6; observed 0.9338\n   required genre matched: folk\n   Source: https://freemusicarchive.org/music/Yves_Rakotomalala/Ce_matin_encore/B_6_Ce_matin\n2. Long Nights I — Daniel Bachman | Match: 0.985 | FMA 62880\n   Genres: americana, folk\n   genre: matched country, folk; similarity 1.000, weight 2\n   acousticness: observed 0.8535, target 0.9000; similarity 0.9535, weight 1\n   energy: observed 0.2673, target 0.2500; similarity 0.9827, weight 1\n   tempo_bpm: observed 83.9580, target 85.0000; similarity 0.9896, weight 1\n   required acousticness: at least 0.6; observed 0.8535\n   required genre matched: country, folk\n   Source: https://freemusicarchive.org/music/Daniel_Bachman/Live_at_WFMU_on_Irene_Trudels_Show_on_March_26_2012/Daniel_Bachman_-_05_-_Long_Nights_I\n3. Kamikaze Economy Christmas — Travis Taylor | Match: 0.971 | FMA 40878\n   Genres: folk, holiday\n   genre: matched folk; similarity 1.000, weight 2\n   acousticness: observed 0.7748, target 0.9000; similarity 0.8748, weight 1\n   energy: observed 0.2482, target 0.2500; similarity 0.9982, weight 1\n   tempo_bpm: observed 86.9420, target 85.0000; similarity 0.9806, weight 1\n   required acousticness: at least 0.6; observed 0.7748\n   required genre matched: folk\n   Source: https://freemusicarchive.org/music/Travis_Taylor/Thee_Christmas_Mix_Tape_2010/badgerland_-_Thee_Christmas_Mix_Tape_-_13_Kamikaze_Economy_Christmas\n",
+    "stderr": ""
+  },
+  {
+    "case": "evening_jazz",
+    "mode": "manual",
+    "model": null,
+    "command": "python -m src.cli --preferences examples/evening_jazz.json --limit 3",
+    "exit_code": 0,
+    "stdout": "Mode: manual (no LLM calls)\nPreferences: {\"bounds\": {}, \"excluded_genres\": [], \"preferred_genres\": [\"jazz\"], \"required_genres\": [\"jazz\"], \"targets\": {\"energy\": 0.35, \"tempo_bpm\": 95.0, \"valence\": 0.55}, \"unsupported\": []}\nCatalog: 1200; eligible: 144; returned: 3\nRecommendations from catalog metadata; scores are similarities, not probabilities.\n1. Passionate conjugate chemistry — Hat City Intuitive | Match: 0.960 | FMA 6967\n   Genres: jazz\n   genre: matched jazz; similarity 1.000, weight 2\n   energy: observed 0.2937, target 0.3500; similarity 0.9437, weight 1\n   tempo_bpm: observed 98.6300, target 95.0000; similarity 0.9637, weight 1\n   valence: observed 0.4416, target 0.5500; similarity 0.8916, weight 1\n   required genre matched: jazz\n   Source: https://freemusicarchive.org/music/Hat_City_Intuitive/Live_at_WFMU_on_Storks_Show_on_10121997/Passionate_conjugate_chemistry\n2. Blue Drag — The Swing Ninjas | Match: 0.953 | FMA 64361\n   Genres: jazz\n   genre: matched jazz; similarity 1.000, weight 2\n   energy: observed 0.3623, target 0.3500; similarity 0.9877, weight 1\n   tempo_bpm: observed 97.9080, target 95.0000; similarity 0.9709, weight 1\n   valence: observed 0.7425, target 0.5500; similarity 0.8075, weight 1\n   required genre matched: jazz\n   Source: https://freemusicarchive.org/music/The_Swing_Ninjas/Tears_Of_The_Tuba_The_Difficult_Second_Album/The_Swing_Ninjas_-_Blue_Drag_1649\n3. What is the What — BJ Block & Dawn Pemberton | Match: 0.953 | FMA 77378\n   Genres: funk, jazz, soul-rnb\n   genre: matched jazz; similarity 1.000, weight 2\n   energy: observed 0.5223, target 0.3500; similarity 0.8277, weight 1\n   tempo_bpm: observed 99.9990, target 95.0000; similarity 0.9500, weight 1\n   valence: observed 0.5623, target 0.5500; similarity 0.9877, weight 1\n   required genre matched: jazz\n   Source: https://freemusicarchive.org/music/BJ_Block__Dawn_Pemberton/II_1060/06_BJ_Block_n_Dawn_Pemberton_What_is_the_What_II_FROSTWIRE_FROSTCLICK_CREATIVE_COMMONS_1366\n",
+    "stderr": ""
+  },
+  {
+    "case": "dance_pop",
+    "mode": "manual",
+    "model": null,
+    "command": "python -m src.cli --preferences examples/dance_pop.json --limit 3",
+    "exit_code": 0,
+    "stdout": "Mode: manual (no LLM calls)\nPreferences: {\"bounds\": {\"danceability\": {\"maximum\": null, \"minimum\": 0.65}}, \"excluded_genres\": [\"experimental\"], \"preferred_genres\": [\"pop\", \"electronic\"], \"required_genres\": [\"pop\", \"electronic\"], \"targets\": {\"danceability\": 0.85, \"energy\": 0.85, \"tempo_bpm\": 125.0, \"valence\": 0.8}, \"unsupported\": []}\nCatalog: 1200; eligible: 154; returned: 3\nRecommendations from catalog metadata; scores are similarities, not probabilities.\n1. Quittin' Time — Patrick Lee | Match: 0.984 | FMA 33850\n   Genres: electronic, funk\n   genre: matched electronic; similarity 1.000, weight 2\n   danceability: observed 0.8008, target 0.8500; similarity 0.9508, weight 1\n   energy: observed 0.8286, target 0.8500; similarity 0.9786, weight 1\n   tempo_bpm: observed 125.0020, target 125.0000; similarity 1.0000, weight 1\n   valence: observed 0.8226, target 0.8000; similarity 0.9774, weight 1\n   required danceability: at least 0.65; observed 0.8008\n   required genre matched: electronic\n   excluded genres absent: experimental\n   Source: https://freemusicarchive.org/music/Patrick_Lee/Bad_Panda_42/Quittin_Time\n2. Snake In A Box — M.W.D. | Match: 0.945 | FMA 33322\n   Genres: downtempo, hip-hop, jazz\n   genre: matched electronic; similarity 1.000, weight 2\n   danceability: observed 0.8436, target 0.8500; similarity 0.9936, weight 1\n   energy: observed 0.8483, target 0.8500; similarity 0.9983, weight 1\n   tempo_bpm: observed 144.0120, target 125.0000; similarity 0.8099, weight 1\n   valence: observed 0.9332, target 0.8000; similarity 0.8668, weight 1\n   required danceability: at least 0.65; observed 0.8436\n   required genre matched: electronic\n   excluded genres absent: experimental\n   Source: https://freemusicarchive.org/music/MWD/Singing_Forest/07_mwd-snake_in_a_box\n3. uluroo — markojux & stuart mckeown | Match: 0.942 | FMA 14996\n   Genres: electronic, techno\n   genre: matched electronic; similarity 1.000, weight 2\n   danceability: observed 0.7763, target 0.8500; similarity 0.9263, weight 1\n   energy: observed 0.6766, target 0.8500; similarity 0.8266, weight 1\n   tempo_bpm: observed 124.0170, target 125.0000; similarity 0.9902, weight 1\n   valence: observed 0.7093, target 0.8000; similarity 0.9093, weight 1\n   required danceability: at least 0.65; observed 0.7763\n   required genre matched: electronic\n   excluded genres absent: experimental\n   Source: https://freemusicarchive.org/music/markojux_amp_stuart_mckeown/Melbourne_Macropus/uluroo\n",
+    "stderr": ""
+  },
+  {
+    "case": "unsupported_lyrics",
+    "mode": "manual",
+    "model": null,
+    "command": "python -m src.cli --preferences examples/unsupported_lyrics.json --limit 3",
+    "exit_code": 3,
+    "stdout": "Mode: manual (no LLM calls)\nPreferences: {\"bounds\": {}, \"excluded_genres\": [], \"preferred_genres\": [\"pop\"], \"required_genres\": [], \"targets\": {}, \"unsupported\": [\"Guarantee no explicit lyrics; this catalog has no verified lyric-safety field\"]}\nCatalog: 1200; eligible: 0; returned: 0\nCannot verify: Guarantee no explicit lyrics; this catalog has no verified lyric-safety field\n",
+    "stderr": ""
+  },
+  {
+    "case": "no_results",
+    "mode": "manual",
+    "model": null,
+    "command": "python -m src.cli --preferences examples/no_results.json --limit 3",
+    "exit_code": 3,
+    "stdout": "Mode: manual (no LLM calls)\nPreferences: {\"bounds\": {\"tempo_bpm\": {\"maximum\": 1001.0, \"minimum\": 1000.0}}, \"excluded_genres\": [], \"preferred_genres\": [], \"required_genres\": [\"jazz\"], \"targets\": {}, \"unsupported\": []}\nCatalog: 1200; eligible: 0; returned: 0\nNo tracks satisfy every required condition with sufficient metadata. Conditions were not relaxed.\n",
+    "stderr": ""
+  }
+]

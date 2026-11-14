@@ -1,0 +1,6 @@
+{
+  "preferred_genres": ["folk", "country"],
+  "required_genres": ["folk", "country"],
+  "targets": {"energy": 0.25, "acousticness": 0.9, "tempo_bpm": 85},
+  "bounds": {"acousticness": {"minimum": 0.6}}
+}

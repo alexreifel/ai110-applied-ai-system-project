@@ -1,0 +1,4 @@
+{
+  "required_genres": ["jazz"],
+  "bounds": {"tempo_bpm": {"minimum": 1000, "maximum": 1001}}
+}

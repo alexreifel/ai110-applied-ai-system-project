@@ -1,0 +1,38 @@
+{
+  "base_commit": "46eaeb6abc72d10dafa895880a59945869610933",
+  "python": "Python 3.11.18",
+  "commands": [
+    {
+      "command": [
+        "/Users/alexreifel/Coding Programs/CodePath AI 110/ai110-applied-ai-system-project/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "exit_code": 0,
+      "output": "pytest.txt"
+    },
+    {
+      "command": [
+        "/Users/alexreifel/Coding Programs/CodePath AI 110/ai110-applied-ai-system-project/.venv/bin/python",
+        "-m",
+        "src.main"
+      ],
+      "exit_code": 0,
+      "output": "demo.txt"
+    },
+    {
+      "command": [
+        "/Users/alexreifel/Coding Programs/CodePath AI 110/ai110-applied-ai-system-project/.venv/bin/python",
+        "-m",
+        "src.evaluate"
+      ],
+      "exit_code": 0,
+      "output": "results.txt"
+    }
+  ],
+  "pre_existing_failures": [],
+  "committed_demo_and_evaluation_match": true
+}
