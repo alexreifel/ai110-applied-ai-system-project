@@ -55,8 +55,8 @@ All outputs below are captured under [evaluation/final](../evaluation/final/veri
 
 | Check | Actual result |
 | --- | --- |
-| `.venv/bin/python -m pytest -q` | 171 passed, including all 52 inherited tests |
-| `/private/tmp/ai110-pass1-clean-env/bin/python -m pytest -q` | 171 passed in the separately installed environment |
+| `.venv/bin/python -m pytest -q` | 174 passed, including all 52 inherited tests |
+| `/private/tmp/ai110-pass1-clean-env/bin/python -m pytest -q` | 174 passed in the separately installed environment |
 | `.venv/bin/python -m src.evaluate_assistant --mode offline --output evaluation/final/offline_evaluation.json` | 12/12 predefined cases passed; offline_fixture, model none |
 | `.venv/bin/python -m mypy app.py --follow-imports=silent --ignore-missing-imports` | Success, no issues |
 | `.venv/bin/python -m compileall -q src tests scripts app.py` | Exit 0 |
@@ -81,7 +81,7 @@ The engineering code-review skill was applied to the final change and relevant s
 | Performance | Cached 1,200-track catalog; local filtering/scoring; bounded request/output sizes and timeout; one generation call, no automatic retries. No large-scale performance claim. |
 | Maintainability | Shared browser/CLI backend, separate schema/provider/ranker, immutable validated preferences, explicit fixture provenance and repeatable evidence. Current diagram and instructions match implementation. |
 
-Resolved during this pass: obsolete fallback names now refer to Explore without AI; the bonus table's blank row was removed so it renders as one table; successful AI review coverage was restored after the mode consolidation. The requested copy was verified in the actual running app. Useful existing design choices retained include original model preferences before guardrail corrections, factual score explanations, and explicit human review.
+Resolved during this pass: explicit JSON depth validation now works independently of interpreter recursion, with array/object boundaries and quoted-string coverage; obsolete fallback names now refer to Explore without AI; the bonus table's blank row was removed so it renders as one table; successful AI review coverage was restored after the mode consolidation. The requested copy was verified in the actual running app. Useful existing design choices retained include original model preferences before guardrail corrections, factual score explanations, and explicit human review.
 
 ## Full handoff and Appendix A coverage
 
@@ -102,14 +102,14 @@ Resolved during this pass: obsolete fallback names now refer to Explore without 
 | Portfolio preparation | Verified repository link, short summary and grounded personal paragraph in `docs/portfolio_draft.md`; requires Alex's wording review, not published elsewhere. |
 | Parseable evidence | Committed text/JSON outputs plus README/model-card tables and blocks. No screenshot or video replaces execution evidence. |
 | Selected extras only | Evaluation harness and specialization comparison; no unrelated RAG/agent or app expansion. |
-| Multiple meaningful commits | Foundation; assistant/reliability; final merged interface/audit/evidence. Setup merge is additional; no empty commits. Actual hashes reported at delivery. |
+| Multiple meaningful commits | Three planned commits: foundation; assistant/reliability; final merged interface/audit/evidence. One additional necessary CI correction preserves published history and fixes the observed Python 3.12 failure. Setup merge is additional; no empty commits. Actual hashes reported at delivery. |
 | Retained CI | Offline workflow includes inherited baseline checks, full tests, syntax, evaluator and app type checking on Python 3.11/3.12. No API key. Local checks do not establish remote success. |
 | Deadline, delivery and submission | Course pages inaccessible; prior deadline/Demo Day timing remains unverified. No on-time submission claim, CodePath submission, video upload, outside portfolio publication or external message. |
 | Compaction/source discipline | Complete source retained word-for-word; current handoff preserves decisions, blockers and obligations with a hash and source link. |
 
 ## Publication and actual CI verification
 
-Repository: [alexreifel/ai110-applied-ai-system-project](https://github.com/alexreifel/ai110-applied-ai-system-project). The final commit is published only after staged/history scanning and destination review. [Actual Actions runs](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/workflows/ci.yml) provide the remote result. The delivery report supplies the observed run URL/status and exact pushed commit after publication; this document does not predeclare CI success or substitute local output for it. If CI fails, fix the observed problem and report the actual rerun.
+Repository: [alexreifel/ai110-applied-ai-system-project](https://github.com/alexreifel/ai110-applied-ai-system-project). The final commit is published only after staged/history scanning and destination review. [Actual Actions runs](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/workflows/ci.yml) provide the remote result. The first observed [remote run](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/runs/43653019071) passed all Python 3.11 steps but failed one Python 3.12 test (170 passed). Python 3.12 parsed 1,500 nested arrays without the recursion error used by the earlier guard. The correction enforces a version-independent maximum of 32 container levels and adds boundary/quoted-string tests; local suites now pass 174 tests. See evaluation/final/ci_followup.json. A fourth necessary commit carries this actual CI correction without rewriting the three published implementation commits. The delivery report supplies the latest observed rerun URL/status and exact pushed commit; this document does not predeclare that rerun successful.
 
 ## Remaining actions and review order
 

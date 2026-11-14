@@ -100,7 +100,7 @@ def test_catalog_loader_reports_line_and_rejects_duplicate_keys(tmp_path):
         read_json('{"targets":{"energy":0.2,"energy":0.9}}')
 
 
-@pytest.mark.parametrize("value", ['{"energy":NaN}', '{"energy":Infinity}', '[' * 1500 + '0' + ']' * 1500])
+@pytest.mark.parametrize("value", ['{"energy":NaN}', '{"energy":Infinity}', '[' * 1500 + '0' + ']' * 1500], ids=['nan', 'infinity', 'deep_nesting'])
 def test_nonstandard_or_excessively_nested_json_is_rejected(value):
     with pytest.raises(ValueError):
         read_json(value)
@@ -250,3 +250,17 @@ def test_preparation_hierarchy_rejects_unknown_parents_and_cycles():
         genre_ancestors(1, {1: {"parent": 2}, 2: {"parent": 1}})
     with pytest.raises(ValueError):
         genre_ancestors(1, {1: {"parent": 2}})
+
+
+@pytest.mark.parametrize("opening,closing", [("[", "]"), ('{"next":', "}")], ids=["arrays", "objects"])
+def test_json_depth_limit_is_independent_of_parser_recursion(opening, closing):
+    from src.catalog import MAX_JSON_DEPTH
+    assert read_json(opening * MAX_JSON_DEPTH + '0' + closing * MAX_JSON_DEPTH) is not None
+    depth = MAX_JSON_DEPTH + 1
+    with pytest.raises(ValueError, match="nesting"):
+        read_json(opening * depth + '0' + closing * depth)
+
+
+def test_brackets_and_escaped_quotes_in_json_strings_are_not_nesting():
+    value = '[{' * 100 + '"quoted"' + '}]' * 100
+    assert read_json(json.dumps({"text": value})) == {"text": value}

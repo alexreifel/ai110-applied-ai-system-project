@@ -2,7 +2,7 @@
   "mode": "offline_fixture",
   "model": null,
   "claim_scope": "offline orchestration/guardrail checks using predefined replies; no measured model behavior",
-  "created_at_utc": "2026-11-14T21:01:44.096138+00:00",
+  "created_at_utc": "2026-11-14T23:25:55.957883+00:00",
   "generation_settings": {
     "temperature": 0,
     "maxOutputTokens": 2048
@@ -71,7 +71,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0012
+        "elapsed_seconds": 0.0006
       },
       "result": {
         "status": "ok",
@@ -299,7 +299,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0006
+        "elapsed_seconds": 0.0004
       },
       "result": {
         "status": "ok",
@@ -527,7 +527,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0013
+        "elapsed_seconds": 0.0004
       },
       "result": {
         "status": "ok",
@@ -750,7 +750,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0008
+        "elapsed_seconds": 0.0004
       },
       "result": {
         "status": "ok",
@@ -964,7 +964,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0012
+        "elapsed_seconds": 0.0004
       },
       "result": {
         "status": "ok",
@@ -1178,7 +1178,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0006
+        "elapsed_seconds": 0.0003
       },
       "result": {
         "status": "ok",
@@ -1394,7 +1394,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0006
+        "elapsed_seconds": 0.0004
       },
       "result": {
         "status": "ok",
@@ -1616,7 +1616,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0006
+        "elapsed_seconds": 0.0004
       },
       "result": {
         "status": "ok",
@@ -1822,7 +1822,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0006
+        "elapsed_seconds": 0.0003
       },
       "result": {
         "status": "needs_clarification",
@@ -1875,7 +1875,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0009
+        "elapsed_seconds": 0.0003
       },
       "result": {
         "status": "needs_clarification",
@@ -1928,7 +1928,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0006
+        "elapsed_seconds": 0.0003
       },
       "result": {
         "status": "needs_clarification",
@@ -1981,7 +1981,7 @@
         "model": null,
         "prompt_variant": "specialized",
         "prompt_sha256": "661a49883818a44dcebb15cd630f66612e03f4f932b564ab4b058a858cb34179",
-        "elapsed_seconds": 0.0005
+        "elapsed_seconds": 0.0003
       },
       "result": {
         "status": "needs_clarification",

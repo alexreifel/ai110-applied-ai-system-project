@@ -8,6 +8,7 @@ from urllib.parse import urlparse
 
 
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "data" / "catalog.jsonl"
+MAX_JSON_DEPTH = 32
 FEATURES = ("energy", "tempo_bpm", "valence", "acousticness", "danceability",
             "instrumentalness")
 
@@ -120,8 +121,20 @@ def read_json(value):
     def invalid_constant(value):
         raise ValueError(f"Invalid JSON constant: {value}")
     try:
-        return json.loads(value, object_pairs_hook=reject_duplicates,
-                          parse_constant=invalid_constant)
+        result = json.loads(value, object_pairs_hook=reject_duplicates,
+                            parse_constant=invalid_constant)
+        # Parser recursion limits vary by Python version; enforce our own contract.
+        pending = [(result, 1)]
+        while pending:
+            container, depth = pending.pop()
+            if not isinstance(container, (dict, list)):
+                continue
+            if depth > MAX_JSON_DEPTH:
+                raise ValueError(f"JSON nesting exceeds the supported depth of {MAX_JSON_DEPTH}")
+            children = container.values() if isinstance(container, dict) else container
+            pending.extend((child, depth + 1) for child in children
+                           if isinstance(child, (dict, list)))
+        return result
     except RecursionError as exc:
         raise ValueError("JSON nesting exceeds the supported depth") from exc
 

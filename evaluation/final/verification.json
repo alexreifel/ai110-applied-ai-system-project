@@ -113,6 +113,9 @@
     "app.py": "5ef3247ffa1591336c53e1fee812e4b3f6002924a4c56a1fb103229debf7b17c",
     "src/assistant.py": "375831f2dd38eb22e70e16196097f818bc5afd61baa828585750093e034dd8e1",
     "src/llm_client.py": "1030d4b9d379b905ce845a08e99183e67ea85a439001548075a9547e109d39ce",
-    "tests/test_app.py": "4b22ba846623404d30918a5b7c65a43dd16331d6c21caeedb1ab378b64f4407b"
-  }
+    "tests/test_app.py": "4b22ba846623404d30918a5b7c65a43dd16331d6c21caeedb1ab378b64f4407b",
+    "src/catalog.py": "8e62fbd329a3bd735e4c5881f018e2e96c73c9cdb2dd54e0c6abe4a51d763868",
+    "tests/test_foundation.py": "f795948cda4bf7a495f1a02860f13cd3bee4bba362fac18ffc8f317f8b617f7e"
+  },
+  "ci_followup": "Python 3.12 accepted nesting that Python 3.11 rejected through interpreter recursion. read_json now enforces 32 container levels explicitly, with array/object boundary and quoted-string tests."
 }

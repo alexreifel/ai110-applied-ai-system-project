@@ -13,5 +13,11 @@
   "unrelated_material_review": "Candidate paths and staged diff reviewed against final project scope; no unrelated personal files included.",
   "staged_files_scanned": 28,
   "staged_findings": 0,
-  "whitespace_check": "Passed with blank-at-eof disabled solely to preserve byte-identical captured original CLI output, which ends with a blank line."
+  "whitespace_check": "Passed with blank-at-eof disabled solely to preserve byte-identical captured original CLI output, which ends with a blank line.",
+  "ci_followup_scan": {
+    "staged_files": 14,
+    "history_blobs": 149,
+    "findings": 0,
+    "scope": "Changed files and all reachable history before regular follow-up push"
+  }
 }

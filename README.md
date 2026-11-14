@@ -226,13 +226,13 @@ The harness checks predefined semantic expectations, result presence/clarificati
 
 ```text
 $ .venv/bin/python -m pytest -q
-........................................................................ [ 42%]
-........................................................................ [ 84%]
-...........................                                              [100%]
-171 passed in 3.14s
+........................................................................ [ 41%]
+........................................................................ [ 82%]
+..............................                                           [100%]
+174 passed in 2.04s
 ```
 
-**171 tests passed**, including all 52 original tests. The clean environment passed the same suite; [final verification](evaluation/final/verification.json), [current running-app checks](evaluation/final/runtime_checks.json), [captured CLI runs](evaluation/pass23/cli_runs.json), and [offline JSON evaluation](evaluation/pass23/offline_evaluation.json) retain observed evidence. Syntax, dependency consistency and Streamlit API type checks pass. The final runtime check covered ten states on a temporary localhost server without generation calls. Alex separately supplied qualitative feedback about variety; no scored listening study was performed.
+**174 tests passed**, including all 52 original tests. The clean environment passed the same suite; [final verification](evaluation/final/verification.json), [current running-app checks](evaluation/final/runtime_checks.json), [captured CLI runs](evaluation/pass23/cli_runs.json), and [offline JSON evaluation](evaluation/pass23/offline_evaluation.json) retain observed evidence. Syntax, dependency consistency and Streamlit API type checks pass. The first remote run exposed a Python 3.12 nesting-validation difference; an explicit 32-level JSON limit and boundary tests correct it. [CI follow-up evidence](evaluation/final/ci_followup.json) records the actual failure; the latest run result is reported at delivery. The final runtime check covered ten states on a temporary localhost server without generation calls. Alex separately supplied qualitative feedback about variety; no scored listening study was performed.
 
 ### Selected bonuses
 

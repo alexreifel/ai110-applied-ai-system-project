@@ -1,6 +1,6 @@
 # Durable session handoff
 
-Updated November 14, 2026 (America/New_York). **Final local source/rubric audit complete; 171 tests pass in both environments. Live Gemini verification/comparison remains blocked. Actual publication/CI verification is reported at delivery after the final commit.**
+Updated November 14, 2026 (America/New_York). **Final local source/rubric audit complete; 174 tests pass in both environments. Live Gemini verification/comparison remains blocked. Actual publication/CI verification is reported at delivery after the final commit.**
 
 ## Resume after compaction
 
@@ -104,3 +104,11 @@ Alex requested merging manual preferences and offline demo as redundant. The bro
 - Third coherent feature/audit commit follows 5fd7368 foundation and e6da65c assistant/reliability. Obtain exact final hash from git log. Normal explicit push only to origin HEAD:refs/heads/main; no force/rewrite. No original submission/CodePath push.
 - Live restriction unchanged: wait for explicit key/access/billing confirmation even if .env exists. Three live examples and measured generic-vs-specialized comparison remain missing. Run at most24 approved small generation calls after confirmation, stop on access/quota/network failure, inspect actual results before claiming complete.
 - No course submission, external message, recorded/uploaded video or outside publication. Course timing unverified. Actual remote publication/CI status is supplied in final delivery; do not repeat historical “remote README-only” notes after a successful observed push.
+
+## Actual publication and CI correction — supersedes earlier checkpoint
+
+- Three planned substantive commits were published to the verified final repository: 5fd7368, e6da65c, 2abd669. Published main was verified identical to local HEAD; worktree clean at that checkpoint.
+- Real CI run https://github.com/alexreifel/ai110-applied-ai-system-project/actions/runs/43653019071: Python3.11 all steps passed; Python3.12 pytest had1failure/170passes and skipped later steps. Actual logs showed1,500 nested arrays did not raise ValueError.
+- Cause: relying on json.loads RecursionError for depth; Python3.12 has different recursion behavior. Fixed src/catalog.py read_json with explicit MAX_JSON_DEPTH32 iterative container traversal; retains duplicate/nonfinite rejection and catches parser recursion. Added array/object boundary and string escaping coverage, descriptive case IDs.
+- Final refreshed checks:174passed per local environment, harness12/12, mypy/compileall/pipcheck and byte-identical original output. evaluation/final/ci_followup.json records actual failure/correction. Final actual rerun still must be inspected/reported at delivery.
+- Fourth meaningful commit is necessary for the observed CI fix; do not rewrite already published commits merely to reach the source's preferred2–3 grouping. Final delivery includes this extra fix hash, actual latest CI URL/status and remaining live gap. All live restrictions and no-submission rules remain unchanged.
