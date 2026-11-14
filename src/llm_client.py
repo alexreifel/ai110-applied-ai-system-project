@@ -77,7 +77,7 @@ class GeminiClient:
 
     def generate(self, instructions, request, schema):
         if not self.settings.api_key:
-            raise ProviderError("missing_credentials", "Set GEMINI_API_KEY in the ignored .env file, or use manual mode/offline demo.")
+            raise ProviderError("missing_credentials", "Set GEMINI_API_KEY in the ignored .env file, or use Explore without AI in the browser or manual CLI preferences.")
         payload = {"systemInstruction": {"parts": [{"text": instructions}]},
                    "contents": [{"role": "user", "parts": [{"text": request}]}],
                    "generationConfig": {"temperature": 0, "maxOutputTokens": 2048,
@@ -102,16 +102,16 @@ class GeminiClient:
             elif exc.code == 404:
                 kind, message = "model_access", "The configured Gemini model is unavailable. Check GEMINI_MODEL and account access."
             elif exc.code == 429:
-                kind, message = "quota", "Gemini quota/rate limit reached. Try later or use manual mode; billing was not changed."
+                kind, message = "quota", "Gemini quota/rate limit reached. Try later or use Explore without AI; billing was not changed."
             else:
-                kind, message = "provider", f"Gemini request failed (HTTP {exc.code}). Use manual mode or try again later."
+                kind, message = "provider", f"Gemini request failed (HTTP {exc.code}). Use Explore without AI or try again later."
             raise ProviderError(kind, message) from None
         except (TimeoutError, socket.timeout):
-            raise ProviderError("timeout", "Gemini timed out. No automatic retry was made; manual mode is available.") from None
+            raise ProviderError("timeout", "Gemini timed out. No automatic retry was made; Explore without AI is available.") from None
         except urllib.error.URLError as exc:
             if isinstance(exc.reason, (TimeoutError, socket.timeout)):
                 raise ProviderError("timeout", "Gemini timed out. No automatic retry was made.") from None
-            raise ProviderError("network", "Could not reach Gemini. Check the connection or use manual mode.") from None
+            raise ProviderError("network", "Could not reach Gemini. Check the connection or use Explore without AI.") from None
         if len(raw) > 65536:
             raise ProviderError("invalid_output", "Gemini returned an oversized response; it was not used.")
         try:
@@ -141,5 +141,5 @@ class FixtureClient:
 
     def generate(self, instructions, request, schema):
         if request not in self.replies:
-            raise ProviderError("fixture_unavailable", "Offline demo recognizes only its listed examples. Use AI mode for other requests or edit preferences manually.")
+            raise ProviderError("fixture_unavailable", "Offline CLI mode recognizes only its listed examples. Use AI mode for other requests or edit preferences manually.")
         return json.dumps(self.replies[request])

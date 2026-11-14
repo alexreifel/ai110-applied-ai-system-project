@@ -2,12 +2,12 @@ flowchart TD
     U[User describes music in browser or CLI] --> I[Validate request length and text]
     I --> P[Task-specific prompt plus represented genre vocabulary and JSON schema]
     P --> G[Gemini REST client: one request, timeout, no retries]
-    P --> X[Explicit offline mode: predefined test fixture]
+    P --> X[CLI or evaluation offline mode: predefined test fixture]
     G --> V[Validate response structure, numeric values, genre labels and contradictions]
     X --> V
     V --> B[Check known unsupported guarantees]
     B --> H[Human reviews or edits preferences in browser; CLI explicit confirmation]
-    M[Manual preferences, no provider required] --> H
+    M[Browser Explore without AI: custom or example settings; manual CLI] --> H
     H --> F[Filter required genres, exclusions, bounds and missing evidence]
     D[Versioned FMA catalog] --> V
     D --> F

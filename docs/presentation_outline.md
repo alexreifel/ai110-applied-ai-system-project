@@ -1,6 +1,6 @@
 # Presentation outline — 6 minutes
 
-Prepared for Alex's review. This outline is preparation, not evidence that a presentation was delivered. Current model access is unverified; use the offline demo honestly until actual live verification is completed.
+Prepared for Alex's review. This outline is preparation, not evidence that a presentation was delivered. Current model access is unverified; use Explore without AI honestly until actual live verification is completed.
 
 ## 0:00–0:45 — Problem and useful role for AI
 
@@ -12,7 +12,7 @@ Original: Module 3 Music Recommender Simulation, 20 synthetic songs, one genre/m
 
 ## 1:30–2:15 — Architecture
 
-Show `diagrams/architecture.mmd`. Walk through request -> specialized prompt/schema -> response validation -> human review -> required-condition filtering -> deterministic ranking -> source-backed output. Point out manual fallback, explicit fixture mode, provider errors, unsupported conditions, and the catalog audit. Explain that structured prompting specializes an existing model; model weights are not trained here.
+Show `diagrams/architecture.mmd`. Walk through request -> specialized prompt/schema -> response validation -> human review -> required-condition filtering -> deterministic ranking -> source-backed output. Point out the unified non-AI explore flow, explicit CLI fixture mode, provider errors, unsupported conditions, and the catalog audit. Explain that structured prompting specializes an existing model; model weights are not trained here.
 
 ## 2:15–3:45 — Demonstration
 
@@ -23,11 +23,11 @@ source .venv/bin/activate
 python -m streamlit run app.py
 ```
 
-For current reproducible evidence, select **Offline demo (mock)** and state clearly that the interpretation is a predefined test reply. Select the acoustic evening example, click Interpret, review genre/energy/acousticness/tempo assumptions, then Recommend. Show actual track metadata, a factual explanation and source reference. Change a preference and submit again; no new interpretation call is needed.
+For a current browser demonstration, select **Explore without AI**, then select the acoustic evening example under Start with. Explain that it loads predefined preference settings, not an AI interpretation. Review or edit the genre, energy, acoustic character and tempo limit, then Recommend. Custom preferences are available in the same mode. Show actual track metadata, a factual explanation and source reference. Change a preference and submit again; no new interpretation call is needed.
 
 Next select the lyric-safety example. Show that unsupported conditions block results until the user explicitly removes that condition or revises the request. Never describe the resulting tracks as verified clean lyrics. Switch requests and show that old results disappear.
 
-When a valid key and free-tier access have been confirmed and live evidence has been captured, AI assistant mode can replace the fixture demo. Until then, identify live access as the remaining verification gap. Do not silently present a fixture as live AI.
+When a valid key and free-tier access have been confirmed and live evidence has been captured, AI assistant mode can demonstrate actual language interpretation. Until then, identify live access as the remaining verification gap. Do not silently present a fixture as live AI.
 
 Terminal evidence:
 
@@ -39,14 +39,14 @@ python -m pytest -q
 
 ## 3:45–4:45 — Reliability and evaluation
 
-Show the observed test result and `evaluation/pass23/offline_evaluation.txt`. The harness runs 12 predefined requests and reports individual/aggregate results. Offline success establishes orchestration and guardrail behavior, not model interpretation quality. Explain the exclusion ablation from Pass 1 and the test where a deliberately incomplete model fixture misses a lyric condition: a local guard blocks it, while the evaluator still marks model understanding as failed.
+Show the observed test result and `evaluation/final/offline_evaluation.txt`. The harness runs 12 predefined requests and reports individual/aggregate results. Offline success establishes orchestration and guardrail behavior, not model interpretation quality. Explain the exclusion ablation from Pass 1 and the test where a deliberately incomplete model fixture misses a lyric condition: a local guard blocks it, while the evaluator still marks model understanding as failed.
 
 The specialization comparison command is implemented but has not run live. Its design holds model, schema, vocabulary, settings, and requests constant while changing generic versus specialized prompting. Show actual differences only after real results exist; a prompt file alone does not establish bonus completion.
 
 ## 4:45–5:30 — Limitations and responsible design
 
-Historical independent catalog; uneven labels; sparse subgenres; algorithmic attributes, not emotional certainty or lyric guarantees. Scores are similarities, not confidence. Provider errors remain explicit, no automatic retries occur, requests are not written to disk by the browser app, and manual mode works without credentials. Explain that schema validity cannot prove that the model understood every sentence.
+Historical independent catalog; uneven labels; sparse subgenres; algorithmic attributes, not emotional certainty or lyric guarantees. Scores are similarities, not confidence. Provider errors remain explicit, no automatic retries occur, requests are not written to disk by the browser app, and Explore without AI works without credentials. Explain that schema validity cannot prove that the model understood every sentence.
 
 ## 5:30–6:00 — Reflection and close
 
-Use the actual accepted/revised/rejected suggestions in `model_card.md`: accepted music assistant, revised catalog depth, rejected repeated LLM binary-search coaching. Alex adds a genuine personal testing observation after trying the app. Close with the usefulness criterion demonstrated by the project: language interpretation, adequate data, and enforceable constraints must work together. Point reviewers to README evidence, model card, and the verified repository URL. State any remaining live-access or review gap honestly.
+Use the actual accepted/revised/rejected suggestions in `model_card.md`: accepted music assistant, revised catalog depth, rejected repeated LLM binary-search coaching. Use Alex's actual observation: recommendations were diverse and most songs were unfamiliar, which he linked to the larger catalog. Close with the usefulness criterion demonstrated by the project: language interpretation, adequate data, and enforceable constraints must work together. Point reviewers to README evidence, model card, and the verified repository URL. State any remaining live-access or review gap honestly.

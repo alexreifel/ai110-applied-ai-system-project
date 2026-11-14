@@ -1,0 +1,118 @@
+{
+  "created_at_utc": "2026-11-14T21:01:31.512634+00:00",
+  "live_generation_calls": 0,
+  "checks": [
+    {
+      "name": "pytest",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output": "evaluation/final/pytest.txt"
+    },
+    {
+      "name": "clean_setup_pytest",
+      "command": [
+        "/private/tmp/ai110-pass1-clean-env/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output": "evaluation/final/clean_setup_pytest.txt"
+    },
+    {
+      "name": "mypy",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "mypy",
+        "app.py",
+        "--follow-imports=silent",
+        "--ignore-missing-imports"
+      ],
+      "exit_code": 0,
+      "output": "evaluation/final/mypy.txt"
+    },
+    {
+      "name": "compileall",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "src",
+        "tests",
+        "scripts",
+        "app.py"
+      ],
+      "exit_code": 0,
+      "output": "evaluation/final/compileall.txt"
+    },
+    {
+      "name": "pip_check",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "output": "evaluation/final/pip_check.txt"
+    },
+    {
+      "name": "offline_evaluation",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "src.evaluate_assistant",
+        "--mode",
+        "offline",
+        "--output",
+        "evaluation/final/offline_evaluation.json"
+      ],
+      "exit_code": 0,
+      "output": "evaluation/final/offline_evaluation.txt"
+    },
+    {
+      "name": "original_demo",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "src.main"
+      ],
+      "exit_code": 0,
+      "output": "evaluation/final/original_demo.txt",
+      "byte_identical_to": "evaluation/demo.txt",
+      "byte_identical": true
+    },
+    {
+      "name": "original_evaluation",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "src.evaluate"
+      ],
+      "exit_code": 0,
+      "output": "evaluation/final/original_evaluation.txt",
+      "byte_identical_to": "evaluation/results.txt",
+      "byte_identical": true
+    }
+  ],
+  "preservation": {
+    "source_sha256": "80499cf3ac233cf418596f1fa07d7531a9a35f7428439a8afc0fa57ecccbe0a0",
+    "source_bytes": 36532,
+    "original_base_files_unchanged": 18,
+    "original_base_clean": true,
+    "base_head": "46eaeb6abc72d10dafa895880a59945869610933"
+  },
+  "reviewed_source_sha256": {
+    "app.py": "5ef3247ffa1591336c53e1fee812e4b3f6002924a4c56a1fb103229debf7b17c",
+    "src/assistant.py": "375831f2dd38eb22e70e16196097f818bc5afd61baa828585750093e034dd8e1",
+    "src/llm_client.py": "1030d4b9d379b905ce845a08e99183e67ea85a439001548075a9547e109d39ce",
+    "tests/test_app.py": "4b22ba846623404d30918a5b7c65a43dd16331d6c21caeedb1ab378b64f4407b"
+  }
+}

@@ -2,7 +2,7 @@
 
 Describe music in ordinary language, review the interpreted preferences, and receive real independent tracks with source-backed explanations. This CodePath AI110 final project extends **Module 3 Music Recommender Simulation**.
 
-**Current checkpoint:** the Gemini adapter, specialized prompt, browser review flow, shared CLI, and evaluation harness are implemented. Browser/manual/offline behavior is verified. **Live Gemini behavior and the generic-versus-specialized comparison remain unverified:** the existing key was rejected, and Alex instructed that generation stay offline until access and billing are confirmed. No fixture result below is represented as live AI.
+**Final local audit:** the Gemini adapter, specialized prompt, browser review flow, shared CLI, and evaluation harness are implemented. Browser/manual/offline behavior is verified. **Live Gemini behavior and the generic-versus-specialized comparison remain unverified:** the existing key was rejected, and Alex instructed that generation stay offline until access and billing are confirmed. No fixture result below is represented as live AI.
 
 ## Original project and new behavior
 
@@ -32,15 +32,14 @@ python -m pip install -r requirements-dev.txt -c requirements-lock.txt
 python -m streamlit run app.py
 ```
 
-For app/runtime only, use `requirements.txt` instead of `requirements-dev.txt`. On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. The catalog is checked in; no dataset download, audio files or API key is needed for manual mode/offline demo. A separate clean environment passed the complete suite. Developer dependencies include the type checker; exact dependency constraints are retained for reproducibility.
+For app/runtime only, use `requirements.txt` instead of `requirements-dev.txt`. On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. The catalog is checked in; no dataset download, audio files or API key is needed for Explore without AI mode. A separate clean environment passed the complete suite. Developer dependencies include the type checker; exact dependency constraints are retained for reproducibility.
 
 ### Choose a mode
 
 - **AI assistant:** type a request, click Interpret, review/edit the preferences and assumptions, then Recommend. This makes one Gemini request per interpretation; subsequent preference edits rerank locally.
-- **Manual preferences:** select genres/attributes/limits directly. No model call is made.
-- **Offline demo (mock):** choose a predefined request and exercise the same validation/review/ranking path with a test reply. This does not interpret arbitrary new language or demonstrate model quality.
+- **Explore without AI:** choose Custom preferences or start from an example. Examples load predefined settings directly into the same editable review form. Adjust genres, characteristics and limits, then Recommend. No AI or mock interpretation call is made.
 
-Changing a request or input mode clears old review/results. The form applies edits only when submitted; displayed results correspond to the last submitted preferences. Unsupported conditions block results until explicitly revised. Source links identify historical catalog records; playback is not guaranteed.
+Changing an AI request, example, or input mode clears old results. Selecting an example immediately loads its predefined preferences for editing. The form applies edits only when submitted; displayed results correspond to the last submitted preferences. Unsupported conditions block results until explicitly revised. Source links identify historical catalog records; playback is not guaranteed.
 
 ### Configure Gemini locally
 
@@ -73,7 +72,7 @@ Manual preferences accept `preferred_genres`, `required_genres`, `excluded_genre
 
 ## Architecture and decisions
 
-[Editable Mermaid architecture](diagrams/architecture.mmd): request -> specialized prompt/client -> strict response and vocabulary checks -> unsupported-guarantee checks -> human review -> hard filtering -> deterministic scoring -> actual catalog tracks and explanations. Manual and explicitly mocked paths join the same preference/ranking services.
+[Editable Mermaid architecture](diagrams/architecture.mmd): request -> specialized prompt/client -> strict response and vocabulary checks -> unsupported-guarantee checks -> human review -> hard filtering -> deterministic scoring -> actual catalog tracks and explanations. The browser’s unified Explore without AI mode joins the same preference/ranking services through custom or prefilled example settings. The CLI/evaluation retain explicitly labeled fixtures for reproducible tests.
 
 - `src/llm_client.py`: bounded Gemini adapter, safe error categories, local configuration and explicitly labeled fixtures.
 - `prompts/specialized.txt` and `prompts/generic.txt`: actual experimental prompt variants; both receive the same schema and vocabulary.
@@ -229,11 +228,11 @@ The harness checks predefined semantic expectations, result presence/clarificati
 $ .venv/bin/python -m pytest -q
 ........................................................................ [ 42%]
 ........................................................................ [ 84%]
-..........................                                               [100%]
-170 passed in 2.90s
+...........................                                              [100%]
+171 passed in 3.14s
 ```
 
-**170 tests passed**, including all 52 original tests. The clean environment passed the same suite; [structured verification](evaluation/pass23/verification.json), [running-app checks](evaluation/pass23/runtime_checks.json), [captured CLI runs](evaluation/pass23/cli_runs.json), and [offline JSON evaluation](evaluation/pass23/offline_evaluation.json) retain observed evidence. Syntax, dependency consistency and Streamlit API type checks pass. The runtime check used a temporary localhost server and offline mode; no human visual or listening evaluation is claimed.
+**171 tests passed**, including all 52 original tests. The clean environment passed the same suite; [final verification](evaluation/final/verification.json), [current running-app checks](evaluation/final/runtime_checks.json), [captured CLI runs](evaluation/pass23/cli_runs.json), and [offline JSON evaluation](evaluation/pass23/offline_evaluation.json) retain observed evidence. Syntax, dependency consistency and Streamlit API type checks pass. The final runtime check covered ten states on a temporary localhost server without generation calls. Alex separately supplied qualitative feedback about variety; no scored listening study was performed.
 
 ### Selected bonuses
 
@@ -245,10 +244,12 @@ python -m src.evaluate_assistant --mode live --compare-prompts --output evaluati
 
 The current 12-case comparison makes at most 24 generation calls and stops on unavailable access/quota/network errors. Both arms use the same model/settings/schema/vocabulary/catalog/cases. It changes only task instructions/examples. Report actual differences, ties or regressions in `model_card.md`; no improvement or bonus credit is claimed in advance. Offline comparison is refused because fixtures cannot establish specialized-model behavior. See [model card](model_card.md) for the exact outstanding evidence.
 
-## Limitations, reflection and next checkpoint
+## Limitations, reflection and final audit
 
 See [catalog provenance/audit](data/README.md), [catalog report](data/catalog_report.json), and [model card](model_card.md). Data is historical and independent-music focused; some categories are sparse. Musical attributes are estimates, not verified moods, lyrics, instrumentation, medical effects or absence of vocals. Valid JSON can still misunderstand a request. Human review and data coverage remain necessary even when code checks pass.
 
-Alex accepted the language-assistant direction, revised the tiny-catalog proposal and rejected repeated LLM binary-search coaching. Codex implemented and tested the code with those decisions; personal testing reflection remains for Alex's review. A useful observed design lesson is that local guardrail success and model understanding must be measured separately.
+Alex accepted the language-assistant direction, revised the tiny-catalog proposal and rejected repeated LLM binary-search coaching. Codex implemented and tested the code with those decisions; Alex reported that the recommendations were diverse and most songs were unfamiliar, which he associated with the larger dataset. A useful observed design lesson is that local guardrail success and model understanding must be measured separately.
 
-The [presentation outline](docs/presentation_outline.md) and [portfolio draft](docs/portfolio_draft.md) are prepared for review, not delivered/published. The [combined-pass report](docs/pass23_report.md) and [requirements checklist](docs/requirements_checklist.md) record remaining live/model/personal-review gaps. Pass 4's explicit full audit, final publication, and remote CI verification remain pending. CI is configured for offline tests/harness/type checks with no API secrets; no new remote run is claimed. The original baseline still runs with `python -m src.main` and `python -m src.evaluate`. No CodePath submission has occurred; prior course timing remains unverified.
+The [presentation outline](docs/presentation_outline.md) and [portfolio draft](docs/portfolio_draft.md) are prepared for review, not delivered/published. The merged non-AI browser flow was also verified in the actual runtime: [current UI checks](evaluation/final/runtime_checks.json). The earlier combined-pass snapshots describe the previous three-mode UI; the CLI fixture evidence remains valid.
+
+The [final audit](docs/final_audit.md) and [exact-criterion checklist](docs/requirements_checklist.md) cover all 21 required criteria, selected bonuses and the complete handoff. Local implementation and verification are complete; live AI examples and measured specialization remain blocked. The evaluation-harness evidence supports the selected +2 category, subject to grading; specialization credit is not claimed. [GitHub Actions](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/workflows/ci.yml) runs offline on Python 3.11/3.12 without API secrets. Its actual post-publication result is reported at delivery; local success is not substituted for remote CI. The original baseline still runs with `python -m src.main` and `python -m src.evaluate`. No CodePath submission has occurred; prior course timing remains unverified.

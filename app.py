@@ -7,7 +7,7 @@ import streamlit as st
 
 from src.assistant import interpret_request
 from src.catalog import FEATURES, load_catalog
-from src.llm_client import FixtureClient, GeminiClient, ProviderError
+from src.llm_client import GeminiClient, ProviderError
 from src.preferences import Preferences
 from src.ranking import recommend
 
@@ -47,32 +47,33 @@ with st.sidebar:
     st.subheader("Your catalog")
     st.metric("Real tracks", len(catalog.tracks))
     st.caption(f"{len({track.artist_id for track in catalog.tracks})} artists · {len(catalog.vocabulary)} genre labels")
-    st.caption("Historical FMA metadata. Audio attributes are estimates. No verified lyrics, vocal-absence, or playback guarantees.")
-    mode = st.selectbox("Input mode", ["AI assistant", "Manual preferences", "Offline demo (mock)"], key="input_mode", on_change=invalidate)
-    st.caption("Requests go to Gemini only when you click Interpret in AI mode. They are not written to disk by this app.")
+    st.caption("Built on historical FMA metadata.")
+    mode = st.selectbox("Input mode", ["AI assistant", "Explore without AI"], key="input_mode", on_change=invalidate)
 
-st.subheader("1. Describe your music")
-if mode == "Manual preferences":
+if mode == "Explore without AI":
+    st.subheader("1. Choose a starting point")
+    st.caption("Choose an example or set your own preferences below. All settings are editable.")
+    cases = json.loads((ROOT / "evaluation/cases.json").read_text())
+    examples = {case["request"]: case["fixture"]["preferences"] for case in cases}
+    starting_point = st.selectbox("Start with", ["Custom preferences", *examples], key="explore_start", on_change=invalidate)
     if st.session_state.review is None:
-        install_review(Preferences(targets={"energy": .5}), {"mode": "manual", "model": None})
-    st.caption("Choose your own preferences below. No model call is made.")
+        if starting_point == "Custom preferences":
+            install_review(Preferences(targets={"energy": .5}), {"mode": "manual", "model": None})
+        else:
+            install_review(Preferences.from_dict(examples[starting_point]),
+                           {"mode": "preset", "model": None, "example": starting_point})
 else:
-    if mode == "Offline demo (mock)":
-        st.info("Predefined test replies demonstrate the workflow. This mode does not interpret new language or call an AI model.")
-        cases = json.loads((ROOT / "evaluation/cases.json").read_text())
-        request = st.selectbox("Demo request", [case["request"] for case in cases], key="demo_request", on_change=invalidate)
-    else:
-        request = st.text_area("What would you like to hear?", placeholder="Mellow acoustic folk or country, below 100 BPM…", max_chars=1200, key="music_request", on_change=invalidate)
+    st.subheader("1. Describe your music")
+    request = st.text_area("What would you like to hear?", placeholder="Mellow acoustic folk or country, below 100 BPM…", max_chars=1200, key="music_request", on_change=invalidate)
     if st.button("Interpret request", key="interpret", type="primary", icon=":material/auto_awesome:"):
         invalidate()
         try:
-            client = FixtureClient() if mode == "Offline demo (mock)" else GeminiClient()
             with st.spinner("Interpreting your preferences…"):
-                interpretation = interpret_request(request, catalog, client)
+                interpretation = interpret_request(request, catalog, GeminiClient())
             install_review(interpretation.preferences, interpretation.to_dict())
         except ProviderError as exc:
             st.error(str(exc))
-            st.caption(f"Error category: {exc.kind}. Manual preferences and offline demo remain available.")
+            st.caption(f"Error category: {exc.kind}. Explore without AI remains available.")
         except ValueError as exc:
             st.error(str(exc))
 
@@ -84,8 +85,8 @@ if st.session_state.review is not None:
         st.write(provenance["summary"])
     for assumption in provenance.get("assumptions", []):
         st.caption(assumption)
-    if provenance.get("mode") == "offline_fixture":
-        st.caption("Interpretation source: offline test fixture. Recommendations use the real catalog.")
+    if provenance.get("mode") == "preset":
+        st.caption("Starting from predefined example settings, not an AI interpretation. Recommendations use the real catalog.")
     elif provenance.get("model"):
         st.caption(f"Interpretation source: {provenance['model']}. Check the assumptions before continuing.")
     prefix = f"review_{st.session_state.revision}_"

@@ -1,0 +1,17 @@
+{
+  "scope": "All tracked/unignored candidate files and every reachable inherited history blob before final publication; recognized token/private-key patterns, plus credential path checks. Pattern scanning cannot prove absence of every possible secret.",
+  "candidate_files": 110,
+  "history_blobs": 126,
+  "findings": [],
+  "ignored_paths": {
+    ".env": true,
+    ".env.local": true,
+    ".streamlit/secrets.toml": true,
+    ".venv/": true
+  },
+  "source_sha256": "80499cf3ac233cf418596f1fa07d7531a9a35f7428439a8afc0fa57ecccbe0a0",
+  "unrelated_material_review": "Candidate paths and staged diff reviewed against final project scope; no unrelated personal files included.",
+  "staged_files_scanned": 28,
+  "staged_findings": 0,
+  "whitespace_check": "Passed with blank-at-eof disabled solely to preserve byte-identical captured original CLI output, which ends with a blank line."
+}

@@ -1,0 +1,93 @@
+{
+  "runtime": "Streamlit 1.67.0 localhost agent API",
+  "ui_modes": [
+    "AI assistant",
+    "Explore without AI"
+  ],
+  "model_generation_calls": 0,
+  "mock_interpretation_calls": 0,
+  "steps": [
+    {
+      "action": "choose Explore without AI",
+      "status": "ready",
+      "source_cards": 0,
+      "headings": [
+        "1. Choose a starting point",
+        "2. Review and edit",
+        "Your catalog"
+      ]
+    },
+    {
+      "action": "choose example; settings load without an interpretation step",
+      "status": "ready",
+      "source_cards": 0,
+      "headings": [
+        "1. Choose a starting point",
+        "2. Review and edit",
+        "Your catalog"
+      ]
+    },
+    {
+      "action": "recommend using editable example settings",
+      "status": "ready",
+      "source_cards": 5,
+      "headings": [
+        "1. Choose a starting point",
+        "2. Review and edit",
+        "3. Your recommendations",
+        "1. Long Nights I",
+        "2. Musicawi Silt [Walias Band]",
+        "3. Nothing Much",
+        "4. Kamikaze Economy Christmas",
+        "5. O Sinachis",
+        "Your catalog"
+      ]
+    },
+    {
+      "action": "choose another example; old results disappear",
+      "status": "ready",
+      "source_cards": 0,
+      "headings": [
+        "1. Choose a starting point",
+        "2. Review and edit",
+        "Your catalog"
+      ]
+    },
+    {
+      "action": "choose Custom preferences in the same mode",
+      "status": "ready",
+      "source_cards": 0,
+      "headings": [
+        "1. Choose a starting point",
+        "2. Review and edit",
+        "Your catalog"
+      ]
+    },
+    {
+      "action": "recommend using custom preferences",
+      "status": "ready",
+      "source_cards": 5,
+      "headings": [
+        "1. Choose a starting point",
+        "2. Review and edit",
+        "3. Your recommendations",
+        "1. sleeping world",
+        "2. Love Languid",
+        "3. Nobody But You",
+        "4. Through a Glass Darkly",
+        "5. V",
+        "Your catalog"
+      ]
+    },
+    {
+      "action": "switch to AI assistant; old results disappear",
+      "status": "ready",
+      "source_cards": 0,
+      "headings": [
+        "1. Describe your music",
+        "Your catalog"
+      ]
+    }
+  ],
+  "app_sha256": "107de0f49a9884404c2d79da1e5f630082e3740b17ff4a2e4c2b2ded31069c03"
+}

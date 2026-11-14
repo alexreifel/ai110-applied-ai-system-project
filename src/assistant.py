@@ -100,7 +100,7 @@ def interpret_request(request: str, catalog: Catalog, client, variant="specializ
             prefs = Preferences.from_dict(payload)
     except (ValueError, TypeError, AttributeError):
         LOGGER.warning("interpretation rejected category=invalid_output mode=%s", client.mode)
-        raise ProviderError("invalid_output", "The interpretation failed validation. No preferences were applied; try rephrasing or use manual mode.") from None
+        raise ProviderError("invalid_output", "The interpretation failed validation. No preferences were applied; try rephrasing or use Explore without AI.") from None
     elapsed = round(time.monotonic() - started, 4)
     LOGGER.info("interpretation mode=%s model=%s variant=%s elapsed=%s unsupported=%d", client.mode, client.model, variant, elapsed, len(prefs.unsupported))
     return Interpretation(prefs, model_preferences, summary.strip(), tuple(assumptions), client.mode, client.model, variant,

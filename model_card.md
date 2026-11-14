@@ -1,6 +1,6 @@
 # Model card — Music Discovery Assistant
 
-Status: **Combined Passes 2–3 implemented and verified offline. Live Gemini validation and the measured specialization comparison remain pending usable access and Alex’s confirmation.** The browser/CLI interpreter and provider adapter exist; current captured assistant runs use explicitly labeled fixtures, not a live LLM. Historical Module 3 documentation is preserved in `docs/baseline/`.
+Status: **Final local audit complete; implementation verified offline. Live Gemini validation and the measured specialization comparison remain pending usable access and Alex’s confirmation.** The browser/CLI interpreter and provider adapter exist; current captured assistant runs use explicitly labeled fixtures, not a live LLM. Historical Module 3 documentation is preserved in `docs/baseline/`.
 
 ## Original scope and current system
 
@@ -23,7 +23,7 @@ The 0.6 soft-match threshold and 0.75 per-feature compromise indicator are expli
 - Missing metadata causes exclusion when needed for a requested condition/target. It is not replaced with a fabricated zero.
 - Source links were imported from historical records. The three top demo references returned HTTP 200 in HEAD checks, which does not verify playback or content identity for all tracks.
 - Ranking uses hand-chosen weights and no listening history. Strict checks and repeatable tests do not establish subjective recommendation quality or exhaustive correctness.
-- The implemented live adapter has not yet been verified against usable access. The offline demo recognizes only predefined requests and cannot interpret arbitrary language. A live interpretation may misunderstand requests even when its schema is valid; human review and model-specific evaluation remain necessary.
+- The implemented live adapter has not yet been verified against usable access. The browser’s Explore without AI mode provides custom settings or prefilled examples, with no interpretation call. The CLI’s offline fixture mode recognizes only predefined requests and cannot interpret arbitrary language. A live interpretation may misunderstand requests even when its schema is valid; human review and model-specific evaluation remain necessary.
 
 ## Misuse and mitigations
 
@@ -33,13 +33,17 @@ The application executes no model-generated code, remote tools, audio downloads,
 
 ## Reliability testing observations
 
-Before changes, the original 52 tests passed and the original CLI/evaluation outputs matched the committed reports. Pass 1 adds behavioral checks around actual ranking changes, real CLI examples, source integrity, and invalid-input/error handling. The full suite now passes 170 tests in both project and separate clean environments; see `evaluation/pass23/pytest.txt` and `clean_setup_pytest.txt`. The twelve-case offline harness passes 12/12, explicitly measuring fixture orchestration/guardrails rather than model quality. Mypy and actual localhost runtime checks also pass. These are observed runs, not estimated counts.
+Before changes, the original 52 tests passed and the original CLI/evaluation outputs matched the committed reports. Pass 1 adds behavioral checks around actual ranking changes, real CLI examples, source integrity, and invalid-input/error handling. The full suite now passes 171 tests in both project and separate clean environments; see `evaluation/final/pytest.txt` and `evaluation/final/clean_setup_pytest.txt`. The twelve-case offline harness passes 12/12, explicitly measuring fixture orchestration/guardrails rather than model quality. Mypy and actual localhost runtime checks also pass. These are observed runs, not estimated counts.
 
-An observed boundary case in the metadata audit was a feature record whose track had no title (ID 26620). Rejecting that record avoided publishing an incomplete recommendation. The controlled exclusion ablation in `evaluation/pass1/guardrail_ablation.json` returned prohibited rock tracks when the rejection guard was bypassed and none when it was enabled. This demonstrates the guard's effect on that case, not a claim about all possible mistakes. No independent human listening evaluation has been performed.
+An observed boundary case in the metadata audit was a feature record whose track had no title (ID 26620). Rejecting that record avoided publishing an incomplete recommendation. The controlled exclusion ablation in `evaluation/pass1/guardrail_ablation.json` returned prohibited rock tracks when the rejection guard was bypassed and none when it was enabled. This demonstrates the guard's effect on that case, not a claim about all possible mistakes. Alex supplied qualitative feedback about discovery/variety; no scored independent listening study has been performed.
 
 ## What surprised Alex while testing reliability?
 
-**Requires Alex review after trying the system.** The missing-title finding and guardrail comparison above are Codex-observed technical results. They are not attributed to Alex as a personal surprise or experience. Record Alex's actual observation here during review before submission.
+After trying the app, Alex described his reaction in the final review:
+
+> I really liked how the recommendations were so diverse, most of the songs it recommended I had never heard before. Some of the perks of upgrading to such a large dataset.
+
+This is Alex's actual qualitative observation about variety and discovery. No numerical listening-quality evaluation was collected. The metadata rejection and guardrail ablation above remain Codex-observed engineering findings.
 
 ## Collaboration with AI
 
@@ -49,13 +53,14 @@ Alex used Codex to inspect earlier projects, compare extensions, research data s
 
 - **Accepted:** Alex chose the natural-language music recommender extension because translating user requests into usable preferences adds value to the existing ranker.
 - **Revised:** Alex challenged the initial idea of placing the assistant over only 20 fictional songs and narrow preferences. The plan and foundation were expanded to real-track variety, multiple genres, exclusions, and additional attributes so varied requests could lead to meaningful choices.
+- **Further revised:** Alex identified the separate manual and offline browser modes as redundant, requested the unified Explore without AI flow, and simplified its explanatory copy.
 - **Rejected:** Alex rejected the proposed repeated LLM coaching for the guessing game: binary search can be explained once, then computed algorithmically without ongoing model calls.
 
-These decisions occurred in the session. Alex should review the final wording and add personal reflection without inventing development or listening experiences.
+These decisions occurred in the session. Alex supplied the personal observation above during final review. The final wording remains grounded in his actual choices and feedback.
 
 ## Future improvements and remaining work
 
-The interpreter, editable browser review, shared CLI, bounded provider errors, offline harness, and live comparison machinery are implemented. Remaining work is usable live access and confirmation, three captured live examples, actual generic-vs-specialized measurements, Alex’s personal reflection, and Pass 4’s complete audit/publication/CI verification. Presentation outline and portfolio draft are prepared; neither is delivered or published.
+The interpreter, editable browser review, shared CLI, bounded provider errors, offline harness, and live comparison machinery are implemented. Remaining work is usable live access and confirmation, three captured live examples, and actual generic-vs-specialized measurements. Publication and actual CI verification are reported separately after the final commit. The complete source/rubric audit is in `docs/final_audit.md`. Alex supplied his actual personal reflection during the final review. Presentation outline and portfolio draft are prepared; neither is delivered or published.
 
 Later research could evaluate listener satisfaction, improve data coverage and semantics, or learn weights from consented feedback. These are future ideas, not implemented features or authorized extra scope for this pass.
 
