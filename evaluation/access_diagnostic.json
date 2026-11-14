@@ -1,0 +1,10 @@
+{
+  "diagnostic": "single user-approved tiny generation request",
+  "model": "gemini-2.5-flash-lite",
+  "max_output_tokens": 32,
+  "attempts": 1,
+  "billing_changed": false,
+  "http_status": 403,
+  "status": "PERMISSION_DENIED",
+  "reasons": []
+}
