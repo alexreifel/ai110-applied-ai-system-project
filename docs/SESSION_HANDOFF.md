@@ -2,6 +2,10 @@
 
 Updated November 14, 2026 (America/New_York). **Submission recheck complete offline: 176 tests pass in both environments, harness 12/12, browser 14 states and exact catalog rebuild pass. Alex explicitly chose offline-only; live examples/comparison remain blocked. See docs/final_audit.md and evaluation/submission_check/.**
 
+## Current documentation preference
+
+Alex explicitly requested removing personal API-access troubleshooting history and unverified/pending access-status commentary from README.md and model_card.md. Those documents now describe BYOK configuration and the system itself. Do not reinsert that commentary during later audits. Preserve accurate offline-fixture labels, actual test results, technical limitations, original-project context and required AI-collaboration reflection. Historical audit/evidence records remain intact. This documentation request does not authorize Gemini calls; the latest call policy remains offline-only.
+
 ## Resume after compaction
 
 1. Read `source/AI110_Final_Project_Codex_Prompt.md` in full, including both appendices. It is the word-for-word source, not a reconstructed summary. Later user instructions take precedence over its historical unselected-project/no-bonus wording.

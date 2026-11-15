@@ -2,7 +2,7 @@
 
 Describe music in ordinary language, review the interpreted preferences, and receive real independent tracks with source-backed explanations. This CodePath AI110 final project extends **Module 3 Music Recommender Simulation**.
 
-**Submission recheck:** the Gemini adapter, specialized prompt, browser review flow, shared CLI, and evaluation harness are implemented. All 176 tests pass in both local environments; the offline evaluator passes 12/12. **Live Gemini behavior and the generic-versus-specialized comparison remain unverified:** the current key loads and metadata lookup succeeded, but the one previously approved generation diagnostic returned HTTP 403 PERMISSION_DENIED. Alex requested that this recheck remain offline. No fixture result below is represented as live AI.
+**Bring your own key (BYOK):** AI assistant mode uses your Gemini API key. Set `GEMINI_API_KEY` in a local `.env` file using the setup below. Explore without AI and the offline tests run without a key.
 
 ## Original project and new behavior
 
@@ -15,7 +15,7 @@ The extension uses 1,200 real tracks from 775 artists, with 113 represented genr
 | Catalog | 20 synthetic tracks | 1,200 real tracks with attribution and coverage audit |
 | Preferences | One genre/mood/energy | Genre alternatives/exclusions, bounds and six optional numeric targets |
 | User entry | Fixed terminal demonstrations | Browser request/review/results; shared CLI; manual fallback |
-| New AI capability | None | Prompt-specialized Gemini preference interpretation, pending live verification |
+| New AI capability | None | Prompt-specialized Gemini preference interpretation |
 | Reliability | Base validation and tests | Response checks, effective constraints, safe provider errors, UI-state tests and evaluation harness |
 
 Original code, synthetic CSV, tests, CLI/evaluation behavior, and both Git histories are preserved. Historical documentation is in [docs/baseline](docs/baseline/README.md); the [Pass 1 report](docs/pass1_report.md) records the foundation checkpoint. Coverage/feature differences do not establish listener satisfaction or an LLM quality improvement.
@@ -41,9 +41,9 @@ For app/runtime only, use `requirements.txt` instead of `requirements-dev.txt`. 
 
 Changing an AI request, example, or input mode clears old results. Selecting an example immediately loads its predefined preferences for editing. The form applies edits only when submitted; displayed results correspond to the last submitted preferences. Unsupported conditions block results until explicitly revised. Source links identify historical catalog records; playback is not guaranteed.
 
-### Configure Gemini locally
+### Configure Gemini — bring your own key
 
-Copy `.env.example` to the ignored `.env` file, replace its key placeholder locally, and check current model access and account billing/free-tier status. **Do not paste or commit a key.** Configuration uses simple `KEY=value` or quoted values; it does not execute shell expressions.
+Create a local `.env` file from `.env.example` if one does not already exist, and supply your Gemini API key. Your Google project controls API access, quotas and billing. **Do not paste or commit a key.** Configuration uses simple `KEY=value` or quoted values; it does not execute shell expressions.
 
 ```text
 GEMINI_API_KEY=your_key_here
@@ -51,7 +51,7 @@ GEMINI_MODEL=gemini-2.5-flash-lite
 GEMINI_TIMEOUT_SECONDS=20
 ```
 
-The model is configurable. Its listed free-tier availability does not establish this account's quota or billing configuration. Verify these before live tests. Canonical `GEMINI_API_KEY` takes precedence over the legacy `GOOGLE_API_KEY` alias; environment settings override matching file settings. The adapter uses the [official Gemini generation API](https://ai.google.dev/api/generate-content) with a JSON response schema, temperature 0, at most 2,048 output tokens, a configurable 1–45 second network timeout, and no retries/tools. Schema validity does not prove that language was understood. The [provider's pricing/usage terms](https://ai.google.dev/gemini-api/docs/pricing) can differ between free and paid tiers.
+Set `GEMINI_MODEL` to the model you want to use. Canonical `GEMINI_API_KEY` takes precedence over the legacy `GOOGLE_API_KEY` alias; environment settings override matching file settings. The adapter uses the [official Gemini generation API](https://ai.google.dev/api/generate-content) with a JSON response schema, temperature 0, at most 2,048 output tokens, a configurable 1–45 second network timeout, and no retries/tools. Schema validity does not prove that language was understood. The [provider's pricing/usage terms](https://ai.google.dev/gemini-api/docs/pricing) can differ between free and paid tiers.
 
 Only the request, task instructions, supported genre vocabulary and schema go to Gemini. The catalog's track records and API key are not included in the prompt. The browser app does not write request text to disk; evaluation commands intentionally save the supplied predefined, nonpersonal test inputs and outputs. Provider-side retention is governed by the provider's terms.
 
@@ -66,7 +66,7 @@ python -m src.evaluate_assistant --mode offline
 python -m mypy app.py --follow-imports=silent --ignore-missing-imports
 ```
 
-With confirmed usable access, `--mode live --request ... --yes` invokes Gemini. In interactive terminals, omitting `--yes` displays the interpretation and asks for confirmation. Noninteractive requests require `--yes` before a call is made. `--json` produces parseable output and includes interpretation provenance; `--verbose` logs aggregate events without private request text. `--limit` accepts 1–20, default 5. Exit 0 means results, 2 means invalid input/provider/configuration failure, and 3 means clarification/no-results.
+With your key configured, `--mode live --request ... --yes` invokes Gemini. In interactive terminals, omitting `--yes` displays the interpretation and asks for confirmation. Noninteractive requests require `--yes` before a call is made. `--json` produces parseable output and includes interpretation provenance; `--verbose` logs aggregate events without private request text. `--limit` accepts 1–20, default 5. Exit 0 means results, 2 means invalid input/provider/configuration failure, and 3 means clarification/no-results.
 
 Manual preferences accept `preferred_genres`, `required_genres`, `excluded_genres`, numeric `targets`, hard `bounds`, and `unsupported` conditions. Multiple required genres mean any one may match; exclusions always win. All bounds are inclusive. Omitted dimensions do not contribute to ranking. See [examples](examples/acoustic_folk.json) and [data meanings](data/README.md).
 
@@ -87,7 +87,7 @@ The selected AI feature is **structured prompting / specialization**, not fine-t
 
 ## Three actual assistant-workflow examples
 
-These are captured CLI executions through the real interpretation/validation/ranking path using **offline predefined replies, model none**. They demonstrate plumbing and downstream behavior. They do not verify live language understanding; three live examples are still required for the intended final evidence package.
+These are captured CLI executions through the real interpretation/validation/ranking path using **offline predefined replies, model none**. They demonstrate the preference-validation and recommendation workflow reproducibly without an API key.
 
 ### acoustic evening
 
@@ -192,15 +192,13 @@ Recommendations from catalog metadata; scores are similarities, not probabilitie
 
 | Case | Observed behavior | Evidence |
 | --- | --- | --- |
-| Earlier invalid key | Historical model-list check returned HTTP 400 / API_KEY_INVALID | `evaluation/pass23/access_status.json` |
-| Current generation access | Metadata lookup succeeded; one approved 32-token generation diagnostic returned HTTP 403 PERMISSION_DENIED. No successful live result. | `evaluation/access_diagnostic.json` |
 | Malformed/missing credentials | Safe categorized errors; credential format checked before constructing a header | Provider tests; `.env` ignored |
 | Invalid model output | Bad types/unknown genres/extra fields rejected before preferences are applied | `tests/test_assistant.py` |
 | Model overlooks lyric condition in a controlled fixture | Local guard blocks results; model-understanding check still fails | `test_lyric_guard_changes_overlooked_model_condition_but_preserves_raw_evidence` |
 | Unsupported guarantee in UI | No results until the user explicitly removes the unsupported condition | `tests/test_app.py`; captured CLI reliability example |
 | Old results after request/mode change | Review/results cleared; no provider call on rerender/edit | UI tests and runtime checks |
 | Effective exclusion check | Guard on returns no prohibited rock tracks; bypass returns 3 | Pass 1 controlled ablation |
-| Provider errors | Configuration, access, model availability, quota, timeout, network and output errors separated; no retry. 403 guidance now includes project Status, Billing Tier and key restrictions. | Provider fault tests |
+| Provider errors | Configuration, access, model availability, quota, timeout, network and output errors separated; no automatic retry. | Provider fault tests |
 
 Actual offline harness output:
 
@@ -233,17 +231,17 @@ $ .venv/bin/python -m pytest -q
 176 passed in 2.36s
 ```
 
-**176 tests passed**, including all 52 original tests. The clean environment passed the same suite; [latest key-compatibility checks](evaluation/key_compatibility/verification.json) verify both key forms and the unchanged offline flow. Google AI Studio authorization keys containing periods are accepted without weakening whitespace/control-character rejection. No live authentication is inferred from this local check; [submission recheck](evaluation/submission_check/verification.json), [current running-app checks](evaluation/submission_check/runtime_checks.json), [captured CLI runs](evaluation/submission_check/cli_runs.json), and [offline JSON evaluation](evaluation/submission_check/offline_evaluation.json) retain observed evidence. Syntax, dependency consistency and Streamlit API type checks pass. The first remote run exposed a Python 3.12 nesting-validation difference; an explicit 32-level JSON limit and boundary tests correct it. [CI follow-up evidence](evaluation/final/ci_followup.json) records the actual failure; the latest run result is reported at delivery. The submission runtime check covered 14 states on a separate temporary localhost server without generation calls; the existing user server was left running. Six fresh CLI cases and a byte-identical catalog rebuild also passed. Alex separately supplied qualitative feedback about variety; no scored listening study was performed.
+**176 tests passed**, including all 52 original tests, in both the project and a separately installed environment. [Verification results](evaluation/submission_check/verification.json), [running-app checks](evaluation/submission_check/runtime_checks.json), [captured CLI runs](evaluation/submission_check/cli_runs.json), and [offline evaluation](evaluation/submission_check/offline_evaluation.json) retain the observed evidence. Type, syntax and dependency checks pass. Browser checks cover 14 states; six CLI cases and an exact catalog rebuild also pass. Alex supplied qualitative feedback about variety and discovery; no scored listening study was performed.
 
-### Selected bonuses
+### Prompt comparison
 
-The **evaluation harness** is implemented and verified: it evaluates multiple predefined requests and prints per-case/aggregate results. The **specialization comparison** is implemented but not verified live. After usable access/free-tier confirmation, run:
+The evaluation harness runs predefined requests and prints per-case and aggregate results. To compare the generic and specialized prompts with your Gemini key, run:
 
 ```bash
 python -m src.evaluate_assistant --mode live --compare-prompts --output evaluation/live_comparison.json
 ```
 
-The current 12-case comparison makes at most 24 generation calls and stops on unavailable access/quota/network errors. Both arms use the same model/settings/schema/vocabulary/catalog/cases. It changes only task instructions/examples. Report actual differences, ties or regressions in `model_card.md`; no improvement or bonus credit is claimed in advance. Offline comparison is refused because fixtures cannot establish specialized-model behavior. See [model card](model_card.md) for the exact outstanding evidence.
+The current 12-case comparison makes at most 24 generation calls and stops on unavailable access/quota/network errors. Both arms use the same model/settings/schema/vocabulary/catalog/cases. It changes only task instructions/examples. The report records outputs and checks for each arm so differences, ties and regressions can be inspected. Prompt comparison uses live mode; the offline fixture mode tests orchestration and guardrails.
 
 ## Limitations, reflection and final audit
 
@@ -253,4 +251,4 @@ Alex accepted the language-assistant direction, revised the tiny-catalog proposa
 
 The [presentation outline](docs/presentation_outline.md) and [portfolio draft](docs/portfolio_draft.md) are prepared for review, not delivered/published. The merged non-AI browser flow was also verified in the actual runtime: [current UI checks](evaluation/submission_check/runtime_checks.json). The earlier combined-pass snapshots describe the previous three-mode UI; the CLI fixture evidence remains valid.
 
-The [final audit](docs/final_audit.md) and [exact-criterion checklist](docs/requirements_checklist.md) cover all 21 required criteria, selected bonuses and the complete handoff. Local implementation and verification are complete; live AI examples and measured specialization remain blocked. The evaluation-harness evidence supports the selected +2 category, subject to grading; specialization credit is not claimed. [GitHub Actions](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/workflows/ci.yml) runs offline on Python 3.11/3.12 without API secrets. The [last verified published checkpoint](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/runs/43655455444) passed both versions; the audit update’s actual post-push run is reported at delivery. Local success is not substituted for remote CI. The original baseline still runs with `python -m src.main` and `python -m src.evaluate`. No CodePath submission has occurred; prior course timing remains unverified.
+The [final audit](docs/final_audit.md) and [requirements checklist](docs/requirements_checklist.md) map the 21 required criteria and selected bonus categories to project artifacts and evidence. [GitHub Actions](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/workflows/ci.yml) runs offline tests, the evaluator and type checks on Python 3.11/3.12 without API secrets. The original baseline still runs with `python -m src.main` and `python -m src.evaluate`.
