@@ -39,7 +39,7 @@ python -m pytest -q
 
 ## 3:45–4:45 — Reliability and evaluation
 
-Show the observed test result and `evaluation/final/offline_evaluation.txt`. The harness runs 12 predefined requests and reports individual/aggregate results. Offline success establishes orchestration and guardrail behavior, not model interpretation quality. Explain the exclusion ablation from Pass 1 and the test where a deliberately incomplete model fixture misses a lyric condition: a local guard blocks it, while the evaluator still marks model understanding as failed.
+Show the observed test result and `evaluation/submission_check/offline_evaluation.txt`. The harness runs 12 predefined requests and reports individual/aggregate results. Offline success establishes orchestration and guardrail behavior, not model interpretation quality. Explain the exclusion ablation from Pass 1 and the test where a deliberately incomplete model fixture misses a lyric condition: a local guard blocks it, while the evaluator still marks model understanding as failed.
 
 The specialization comparison command is implemented but has not run live. Its design holds model, schema, vocabulary, settings, and requests constant while changing generic versus specialized prompting. Show actual differences only after real results exist; a prompt file alone does not establish bonus completion.
 

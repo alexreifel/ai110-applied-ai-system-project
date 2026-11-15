@@ -79,6 +79,9 @@ def test_provider_errors_are_safe_categorized_and_not_retried(code, reason, kind
     assert caught.value.kind == kind
     assert "local-test-key" not in str(caught.value)
     assert len(calls) == 1
+    if code == 403:
+        assert "HTTP 403" in str(caught.value)
+        assert "Status, Billing Tier, and API key restrictions" in str(caught.value)
 
 
 @pytest.mark.parametrize("error,kind", [(socket.timeout(),"timeout"),(urllib.error.URLError("offline"),"network"),(urllib.error.URLError(socket.timeout()),"timeout")])

@@ -97,7 +97,9 @@ class GeminiClient:
                 reason = " ".join(str(item.get("reason", "")) for item in error.get("details", []) if isinstance(item, dict))
             except (ValueError, TypeError, AttributeError, OSError):
                 pass
-            if exc.code in (401, 403) or "API_KEY_INVALID" in reason:
+            if exc.code == 403:
+                kind, message = "authentication", "Gemini denied access (HTTP 403). In Google AI Studio, check this project's Status, Billing Tier, and API key restrictions. A valid key does not guarantee generation access."
+            elif exc.code == 401 or "API_KEY_INVALID" in reason:
                 kind, message = "authentication", "Gemini rejected the key or its access. Check the local key and API restrictions."
             elif exc.code == 404:
                 kind, message = "model_access", "The configured Gemini model is unavailable. Check GEMINI_MODEL and account access."

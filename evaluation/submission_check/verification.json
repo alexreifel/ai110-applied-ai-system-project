@@ -1,0 +1,122 @@
+{
+  "created_at_utc": "2026-11-15T00:02:08.656736+00:00",
+  "generation_calls_this_check": 0,
+  "checks": [
+    {
+      "name": "pytest",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "evidence": "evaluation/submission_check/pytest.txt"
+    },
+    {
+      "name": "clean_setup_pytest",
+      "command": [
+        "/private/tmp/ai110-pass1-clean-env/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "evidence": "evaluation/submission_check/clean_setup_pytest.txt"
+    },
+    {
+      "name": "mypy",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "mypy",
+        "app.py",
+        "--follow-imports=silent",
+        "--ignore-missing-imports"
+      ],
+      "exit_code": 0,
+      "evidence": "evaluation/submission_check/mypy.txt"
+    },
+    {
+      "name": "compileall",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "src",
+        "tests",
+        "scripts",
+        "app.py"
+      ],
+      "exit_code": 0,
+      "evidence": "evaluation/submission_check/compileall.txt"
+    },
+    {
+      "name": "pip_check",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "evidence": "evaluation/submission_check/pip_check.txt"
+    },
+    {
+      "name": "offline_evaluation",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "src.evaluate_assistant",
+        "--mode",
+        "offline",
+        "--output",
+        "evaluation/submission_check/offline_evaluation.json"
+      ],
+      "exit_code": 0,
+      "evidence": "evaluation/submission_check/offline_evaluation.txt"
+    },
+    {
+      "name": "original_demo",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "src.main"
+      ],
+      "exit_code": 0,
+      "evidence": "evaluation/submission_check/original_demo.txt",
+      "matches_original_report": true
+    },
+    {
+      "name": "original_evaluation",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "src.evaluate"
+      ],
+      "exit_code": 0,
+      "evidence": "evaluation/submission_check/original_evaluation.txt",
+      "matches_original_report": true
+    }
+  ],
+  "downloads_original_available": false,
+  "source_sha256": "80499cf3ac233cf418596f1fa07d7531a9a35f7428439a8afc0fa57ecccbe0a0",
+  "source_bytes": 36532,
+  "unchanged_base_files": 18,
+  "base_clean": true,
+  "source_hashes": {
+    "app.py": "5ef3247ffa1591336c53e1fee812e4b3f6002924a4c56a1fb103229debf7b17c",
+    "src/llm_client.py": "53d03b4c6d7f4c55783f4e2316cffda2134e1bfd0fa2d804c91e447c02f98fe5",
+    "src/assistant.py": "375831f2dd38eb22e70e16196097f818bc5afd61baa828585750093e034dd8e1",
+    "src/catalog.py": "8e62fbd329a3bd735e4c5881f018e2e96c73c9cdb2dd54e0c6abe4a51d763868",
+    "src/preferences.py": "eb08c8b0349895a42382fbacdb3990888fc7c08360916e62f2048945032228e5",
+    "src/ranking.py": "bf33244b5a4e92e0208853107c3d54dcfa886a1851e96603b8f7c9444cf6d07f",
+    "src/evaluate_assistant.py": "67a52e4fe52d7d59210667b52b1977554fc85941aa09b2e2026975619cc4fd46",
+    "tests/test_app.py": "4b22ba846623404d30918a5b7c65a43dd16331d6c21caeedb1ab378b64f4407b",
+    "tests/test_assistant.py": "52770220abb5ac73183ee19ea2b60a6fea6b5ca51fcc6dc1b3654198b930107a"
+  },
+  "live_policy": "Alex explicitly selected Keep live calls off; run everything offline during the submission recheck.",
+  "starting_commit": "791b1db67477c7e8ca69b4026444f6c8bcabc924",
+  "tested_tree": "Working tree after the 403-guidance correction, identified by source_hashes; final published commit and CI result reported at delivery."
+}

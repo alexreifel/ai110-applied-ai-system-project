@@ -1,0 +1,14 @@
+{
+  "candidate_files_scanned": 133,
+  "reachable_history_blobs_scanned": 177,
+  "recognized_secret_findings": 0,
+  "configured_key_literal_findings": 0,
+  "credential_paths_ignored": {
+    ".env": true,
+    ".env.local": true,
+    ".streamlit/secrets.toml": true,
+    ".venv/": true
+  },
+  "scope": "Recognized token/private-key patterns including authorization keys, current configured key literal, tracked credential paths, candidate filenames and history. This is not proof against every possible secret.",
+  "unrelated_material": "Only project code, docs and evidence changed in this pass. User-committed editor settings were preserved."
+}

@@ -1,0 +1,15 @@
+Mode: offline_fixture; model: none
+offline orchestration/guardrail checks using predefined replies; no measured model behavior
+PASS specialized acoustic_evening
+PASS specialized jazz_tempo
+PASS specialized dance_exclusion
+PASS specialized no_assumed_genre
+PASS specialized rock_limit
+PASS specialized acoustic_exclusion
+PASS specialized required_interval
+PASS specialized genre_alternatives
+PASS specialized lyric_guarantee
+PASS specialized conflicting_genres
+PASS specialized release_date
+PASS specialized instruction_override
+specialized: 12/12 passed

@@ -2,7 +2,7 @@
 
 Describe music in ordinary language, review the interpreted preferences, and receive real independent tracks with source-backed explanations. This CodePath AI110 final project extends **Module 3 Music Recommender Simulation**.
 
-**Final local audit:** the Gemini adapter, specialized prompt, browser review flow, shared CLI, and evaluation harness are implemented. Browser/manual/offline behavior is verified. **Live Gemini behavior and the generic-versus-specialized comparison remain unverified:** the existing key was rejected, and Alex instructed that generation stay offline until access and billing are confirmed. No fixture result below is represented as live AI.
+**Submission recheck:** the Gemini adapter, specialized prompt, browser review flow, shared CLI, and evaluation harness are implemented. All 176 tests pass in both local environments; the offline evaluator passes 12/12. **Live Gemini behavior and the generic-versus-specialized comparison remain unverified:** the current key loads and metadata lookup succeeded, but the one previously approved generation diagnostic returned HTTP 403 PERMISSION_DENIED. Alex requested that this recheck remain offline. No fixture result below is represented as live AI.
 
 ## Original project and new behavior
 
@@ -192,14 +192,15 @@ Recommendations from catalog metadata; scores are similarities, not probabilitie
 
 | Case | Observed behavior | Evidence |
 | --- | --- | --- |
-| Invalid key | Read-only model-list check returned HTTP 400 / API_KEY_INVALID; no generation run | `evaluation/pass23/access_status.json` |
+| Earlier invalid key | Historical model-list check returned HTTP 400 / API_KEY_INVALID | `evaluation/pass23/access_status.json` |
+| Current generation access | Metadata lookup succeeded; one approved 32-token generation diagnostic returned HTTP 403 PERMISSION_DENIED. No successful live result. | `evaluation/access_diagnostic.json` |
 | Malformed/missing credentials | Safe categorized errors; credential format checked before constructing a header | Provider tests; `.env` ignored |
 | Invalid model output | Bad types/unknown genres/extra fields rejected before preferences are applied | `tests/test_assistant.py` |
 | Model overlooks lyric condition in a controlled fixture | Local guard blocks results; model-understanding check still fails | `test_lyric_guard_changes_overlooked_model_condition_but_preserves_raw_evidence` |
 | Unsupported guarantee in UI | No results until the user explicitly removes the unsupported condition | `tests/test_app.py`; captured CLI reliability example |
 | Old results after request/mode change | Review/results cleared; no provider call on rerender/edit | UI tests and runtime checks |
 | Effective exclusion check | Guard on returns no prohibited rock tracks; bypass returns 3 | Pass 1 controlled ablation |
-| Provider errors | Missing config, auth/access, model unavailable, quota, timeout, network, bad output separated; no retry | Provider fault tests |
+| Provider errors | Configuration, access, model availability, quota, timeout, network and output errors separated; no retry. 403 guidance now includes project Status, Billing Tier and key restrictions. | Provider fault tests |
 
 Actual offline harness output:
 
@@ -229,10 +230,10 @@ $ .venv/bin/python -m pytest -q
 ........................................................................ [ 40%]
 ........................................................................ [ 81%]
 ................................                                         [100%]
-176 passed in 2.16s
+176 passed in 2.36s
 ```
 
-**176 tests passed**, including all 52 original tests. The clean environment passed the same suite; [latest key-compatibility checks](evaluation/key_compatibility/verification.json) verify both key forms and the unchanged offline flow. Google AI Studio authorization keys containing periods are accepted without weakening whitespace/control-character rejection. No live authentication is inferred from this local check; [final verification](evaluation/final/verification.json), [current running-app checks](evaluation/final/runtime_checks.json), [captured CLI runs](evaluation/pass23/cli_runs.json), and [offline JSON evaluation](evaluation/pass23/offline_evaluation.json) retain observed evidence. Syntax, dependency consistency and Streamlit API type checks pass. The first remote run exposed a Python 3.12 nesting-validation difference; an explicit 32-level JSON limit and boundary tests correct it. [CI follow-up evidence](evaluation/final/ci_followup.json) records the actual failure; the latest run result is reported at delivery. The final runtime check covered ten states on a temporary localhost server without generation calls. Alex separately supplied qualitative feedback about variety; no scored listening study was performed.
+**176 tests passed**, including all 52 original tests. The clean environment passed the same suite; [latest key-compatibility checks](evaluation/key_compatibility/verification.json) verify both key forms and the unchanged offline flow. Google AI Studio authorization keys containing periods are accepted without weakening whitespace/control-character rejection. No live authentication is inferred from this local check; [submission recheck](evaluation/submission_check/verification.json), [current running-app checks](evaluation/submission_check/runtime_checks.json), [captured CLI runs](evaluation/submission_check/cli_runs.json), and [offline JSON evaluation](evaluation/submission_check/offline_evaluation.json) retain observed evidence. Syntax, dependency consistency and Streamlit API type checks pass. The first remote run exposed a Python 3.12 nesting-validation difference; an explicit 32-level JSON limit and boundary tests correct it. [CI follow-up evidence](evaluation/final/ci_followup.json) records the actual failure; the latest run result is reported at delivery. The submission runtime check covered 14 states on a separate temporary localhost server without generation calls; the existing user server was left running. Six fresh CLI cases and a byte-identical catalog rebuild also passed. Alex separately supplied qualitative feedback about variety; no scored listening study was performed.
 
 ### Selected bonuses
 
@@ -250,6 +251,6 @@ See [catalog provenance/audit](data/README.md), [catalog report](data/catalog_re
 
 Alex accepted the language-assistant direction, revised the tiny-catalog proposal and rejected repeated LLM binary-search coaching. Codex implemented and tested the code with those decisions; Alex reported that the recommendations were diverse and most songs were unfamiliar, which he associated with the larger dataset. A useful observed design lesson is that local guardrail success and model understanding must be measured separately.
 
-The [presentation outline](docs/presentation_outline.md) and [portfolio draft](docs/portfolio_draft.md) are prepared for review, not delivered/published. The merged non-AI browser flow was also verified in the actual runtime: [current UI checks](evaluation/final/runtime_checks.json). The earlier combined-pass snapshots describe the previous three-mode UI; the CLI fixture evidence remains valid.
+The [presentation outline](docs/presentation_outline.md) and [portfolio draft](docs/portfolio_draft.md) are prepared for review, not delivered/published. The merged non-AI browser flow was also verified in the actual runtime: [current UI checks](evaluation/submission_check/runtime_checks.json). The earlier combined-pass snapshots describe the previous three-mode UI; the CLI fixture evidence remains valid.
 
-The [final audit](docs/final_audit.md) and [exact-criterion checklist](docs/requirements_checklist.md) cover all 21 required criteria, selected bonuses and the complete handoff. Local implementation and verification are complete; live AI examples and measured specialization remain blocked. The evaluation-harness evidence supports the selected +2 category, subject to grading; specialization credit is not claimed. [GitHub Actions](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/workflows/ci.yml) runs offline on Python 3.11/3.12 without API secrets. Its actual post-publication result is reported at delivery; local success is not substituted for remote CI. The original baseline still runs with `python -m src.main` and `python -m src.evaluate`. No CodePath submission has occurred; prior course timing remains unverified.
+The [final audit](docs/final_audit.md) and [exact-criterion checklist](docs/requirements_checklist.md) cover all 21 required criteria, selected bonuses and the complete handoff. Local implementation and verification are complete; live AI examples and measured specialization remain blocked. The evaluation-harness evidence supports the selected +2 category, subject to grading; specialization credit is not claimed. [GitHub Actions](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/workflows/ci.yml) runs offline on Python 3.11/3.12 without API secrets. The [last verified published checkpoint](https://github.com/alexreifel/ai110-applied-ai-system-project/actions/runs/43655455444) passed both versions; the audit update’s actual post-push run is reported at delivery. Local success is not substituted for remote CI. The original baseline still runs with `python -m src.main` and `python -m src.evaluate`. No CodePath submission has occurred; prior course timing remains unverified.

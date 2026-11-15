@@ -1,0 +1,112 @@
+[
+  {
+    "case": "acoustic_evening",
+    "mode": "offline_fixture",
+    "model": null,
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "src.cli",
+      "--mode",
+      "offline",
+      "--request",
+      "Find mellow acoustic folk or country for a quiet evening; keep it at or below 100 BPM.",
+      "--yes",
+      "--limit",
+      "3"
+    ],
+    "exit_code": 0,
+    "stdout": "Mode: offline_fixture\nInterpretation: Offline test fixture for acoustic evening.\nModel: none (predefined fixture)\nAssumption: This is a predefined fixture, not a model interpretation.\nPreferences: {\"bounds\": {\"tempo_bpm\": {\"maximum\": 100.0, \"minimum\": null}}, \"excluded_genres\": [], \"preferred_genres\": [\"folk\", \"country\"], \"required_genres\": [], \"targets\": {\"acousticness\": 0.85, \"energy\": 0.25}, \"unsupported\": []}\nCatalog: 1200; eligible: 405; returned: 3\nRecommendations from catalog metadata; scores are similarities, not probabilities.\n1. Long Nights I \u2014 Daniel Bachman | Match: 0.995 | FMA 62880\n   Genres: americana, folk\n   genre: matched country, folk; similarity 1.000, weight 2\n   acousticness: observed 0.8535, target 0.8500; similarity 0.9965, weight 1\n   energy: observed 0.2673, target 0.2500; similarity 0.9827, weight 1\n   required tempo_bpm: at most 100.0; observed 83.9580\n   Source: https://freemusicarchive.org/music/Daniel_Bachman/Live_at_WFMU_on_Irene_Trudels_Show_on_March_26_2012/Daniel_Bachman_-_05_-_Long_Nights_I\n2. Musicawi Silt [Walias Band] \u2014 Debo Band | Match: 0.995 | FMA 31342\n   Genres: folk, international, middle east\n   genre: matched folk; similarity 1.000, weight 2\n   acousticness: observed 0.8522, target 0.8500; similarity 0.9978, weight 1\n   energy: observed 0.2303, target 0.2500; similarity 0.9803, weight 1\n   required tempo_bpm: at most 100.0; observed 66.6810\n   Source: https://freemusicarchive.org/music/Debo_Band/Live_on_WFMUs_Transpacific_Sound_Paradise_with_Bob_Weisberg_12122009/Debo_Band_-_07_-_Musicawi_Silt__Walias_Band\n3. Nothing Much \u2014 My Bubba & Mi | Match: 0.994 | FMA 57802\n   Genres: blues, folk, pop\n   genre: matched folk; similarity 1.000, weight 2\n   acousticness: observed 0.8280, target 0.8500; similarity 0.9780, weight 1\n   energy: observed 0.2494, target 0.2500; similarity 0.9994, weight 1\n   required tempo_bpm: at most 100.0; observed 99.9410\n   Source: https://freemusicarchive.org/music/My_Bubba__Mi/Wild__You/My_bubba__Mi_-_Wild__You_-_01_Nothing_Much\n",
+    "stderr": ""
+  },
+  {
+    "case": "jazz_tempo",
+    "mode": "offline_fixture",
+    "model": null,
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "src.cli",
+      "--mode",
+      "offline",
+      "--request",
+      "I want jazz around 95 BPM with moderate energy.",
+      "--yes",
+      "--limit",
+      "3"
+    ],
+    "exit_code": 0,
+    "stdout": "Mode: offline_fixture\nInterpretation: Offline test fixture for jazz tempo.\nModel: none (predefined fixture)\nAssumption: This is a predefined fixture, not a model interpretation.\nPreferences: {\"bounds\": {}, \"excluded_genres\": [], \"preferred_genres\": [\"jazz\"], \"required_genres\": [], \"targets\": {\"energy\": 0.5, \"tempo_bpm\": 95.0}, \"unsupported\": []}\nCatalog: 1200; eligible: 1200; returned: 3\nRecommendations from catalog metadata; scores are similarities, not probabilities.\n1. Love Languid \u2014 Matt Darriau's Paradox Trio | Match: 0.995 | FMA 6375\n   Genres: balkan, europe, free-jazz, international\n   genre: matched jazz; similarity 1.000, weight 2\n   energy: observed 0.4998, target 0.5000; similarity 0.9998, weight 1\n   tempo_bpm: observed 93.2160, target 95.0000; similarity 0.9822, weight 1\n   Source: https://freemusicarchive.org/music/Matt_Darriaus_Paradox_Trio/Paradox_Trio_Live_on_WFMU_from_the_2009_Golden_Festival_in_NYC/Love_Languid\n2. Forward \u2014 Northbound | Match: 0.989 | FMA 39361\n   Genres: downtempo, funk, jazz\n   genre: matched jazz; similarity 1.000, weight 2\n   energy: observed 0.5182, target 0.5000; similarity 0.9818, weight 1\n   tempo_bpm: observed 97.4720, target 95.0000; similarity 0.9753, weight 1\n   Source: https://freemusicarchive.org/music/Northbound/Landscapes_of_Late/9404_Northbound_Forward_Monotonik_Creative_Commons___by_nc_nd_25_wwwdogmazicnet\n3. Handful of Dust [remix of Fabryka original] \u2014 Musetta | Match: 0.989 | FMA 41565\n   Genres: jazz, lounge\n   genre: matched jazz; similarity 1.000, weight 2\n   energy: observed 0.5441, target 0.5000; similarity 0.9559, weight 1\n   tempo_bpm: observed 94.9770, target 95.0000; similarity 0.9998, weight 1\n   Source: https://freemusicarchive.org/music/Musetta/Absolute_Balance/01_-_musetta_-_handful_of_dust_remix_of_song_by_fabryka\n",
+    "stderr": ""
+  },
+  {
+    "case": "dance_exclusion",
+    "mode": "offline_fixture",
+    "model": null,
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "src.cli",
+      "--mode",
+      "offline",
+      "--request",
+      "Danceable electronic or pop, high energy, no experimental tracks.",
+      "--yes",
+      "--limit",
+      "3"
+    ],
+    "exit_code": 0,
+    "stdout": "Mode: offline_fixture\nInterpretation: Offline test fixture for dance exclusion.\nModel: none (predefined fixture)\nAssumption: This is a predefined fixture, not a model interpretation.\nPreferences: {\"bounds\": {}, \"excluded_genres\": [\"experimental\"], \"preferred_genres\": [\"electronic\", \"pop\"], \"required_genres\": [], \"targets\": {\"danceability\": 0.85, \"energy\": 0.85}, \"unsupported\": []}\nCatalog: 1200; eligible: 1090; returned: 3\nRecommendations from catalog metadata; scores are similarities, not probabilities.\n1. Snake In A Box \u2014 M.W.D. | Match: 0.998 | FMA 33322\n   Genres: downtempo, hip-hop, jazz\n   genre: matched electronic; similarity 1.000, weight 2\n   danceability: observed 0.8436, target 0.8500; similarity 0.9936, weight 1\n   energy: observed 0.8483, target 0.8500; similarity 0.9983, weight 1\n   excluded genres absent: experimental\n   Source: https://freemusicarchive.org/music/MWD/Singing_Forest/07_mwd-snake_in_a_box\n2. Quittin' Time \u2014 Patrick Lee | Match: 0.982 | FMA 33850\n   Genres: electronic, funk\n   genre: matched electronic; similarity 1.000, weight 2\n   danceability: observed 0.8008, target 0.8500; similarity 0.9508, weight 1\n   energy: observed 0.8286, target 0.8500; similarity 0.9786, weight 1\n   excluded genres absent: experimental\n   Source: https://freemusicarchive.org/music/Patrick_Lee/Bad_Panda_42/Quittin_Time\n3. Vapor (Kupa Mix) \u2014 MHV | Match: 0.981 | FMA 40817\n   Genres: chip music, dubstep, electronic\n   genre: matched electronic; similarity 1.000, weight 2\n   danceability: observed 0.8240, target 0.8500; similarity 0.9740, weight 1\n   energy: observed 0.8015, target 0.8500; similarity 0.9515, weight 1\n   excluded genres absent: experimental\n   Source: https://freemusicarchive.org/music/MHV/Vapor_Remixes/vira_-_VIRANET01_MHV_-_VAPOR_Remixes_-_02_Vapor_Kupa_Mix\n",
+    "stderr": ""
+  },
+  {
+    "case": "lyric_guarantee",
+    "mode": "offline_fixture",
+    "model": null,
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "src.cli",
+      "--mode",
+      "offline",
+      "--request",
+      "Pop songs guaranteed safe for children with no explicit lyrics.",
+      "--yes",
+      "--limit",
+      "3"
+    ],
+    "exit_code": 3,
+    "stdout": "Mode: offline_fixture\nInterpretation: Offline test fixture for lyric guarantee.\nModel: none (predefined fixture)\nAssumption: This is a predefined fixture, not a model interpretation.\nPreferences: {\"bounds\": {}, \"excluded_genres\": [], \"preferred_genres\": [\"pop\"], \"required_genres\": [], \"targets\": {}, \"unsupported\": [\"Verified lyric safety is unavailable.\", \"Verified lyric safety is unavailable in this catalog.\"]}\nCatalog: 1200; eligible: 0; returned: 0\nCannot verify: Verified lyric safety is unavailable.; Verified lyric safety is unavailable in this catalog.\n",
+    "stderr": ""
+  },
+  {
+    "case": "examples/no_results.json",
+    "mode": "manual",
+    "model": null,
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "src.cli",
+      "--preferences",
+      "examples/no_results.json"
+    ],
+    "exit_code": 3,
+    "stdout": "Mode: manual (no LLM calls)\nPreferences: {\"bounds\": {\"tempo_bpm\": {\"maximum\": 1001.0, \"minimum\": 1000.0}}, \"excluded_genres\": [], \"preferred_genres\": [], \"required_genres\": [\"jazz\"], \"targets\": {}, \"unsupported\": []}\nCatalog: 1200; eligible: 0; returned: 0\nNo tracks satisfy every required condition with sufficient metadata. Conditions were not relaxed.\n",
+    "stderr": ""
+  },
+  {
+    "case": "examples/acoustic_folk.json",
+    "mode": "manual",
+    "model": null,
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "src.cli",
+      "--preferences",
+      "examples/acoustic_folk.json"
+    ],
+    "exit_code": 0,
+    "stdout": "Mode: manual (no LLM calls)\nPreferences: {\"bounds\": {\"acousticness\": {\"maximum\": null, \"minimum\": 0.6}}, \"excluded_genres\": [], \"preferred_genres\": [\"folk\", \"country\"], \"required_genres\": [\"folk\", \"country\"], \"targets\": {\"acousticness\": 0.9, \"energy\": 0.25, \"tempo_bpm\": 85.0}, \"unsupported\": []}\nCatalog: 1200; eligible: 162; returned: 5\nRecommendations from catalog metadata; scores are similarities, not probabilities.\n1. B 6 Ce matin \u2014 Yves Rakotomalala | Match: 0.987 | FMA 42474\n   Genres: psych-folk\n   genre: matched folk; similarity 1.000, weight 2\n   acousticness: observed 0.9338, target 0.9000; similarity 0.9662, weight 1\n   energy: observed 0.2751, target 0.2500; similarity 0.9749, weight 1\n   tempo_bpm: observed 84.1640, target 85.0000; similarity 0.9916, weight 1\n   required acousticness: at least 0.6; observed 0.9338\n   required genre matched: folk\n   Source: https://freemusicarchive.org/music/Yves_Rakotomalala/Ce_matin_encore/B_6_Ce_matin\n2. Long Nights I \u2014 Daniel Bachman | Match: 0.985 | FMA 62880\n   Genres: americana, folk\n   genre: matched country, folk; similarity 1.000, weight 2\n   acousticness: observed 0.8535, target 0.9000; similarity 0.9535, weight 1\n   energy: observed 0.2673, target 0.2500; similarity 0.9827, weight 1\n   tempo_bpm: observed 83.9580, target 85.0000; similarity 0.9896, weight 1\n   required acousticness: at least 0.6; observed 0.8535\n   required genre matched: country, folk\n   Source: https://freemusicarchive.org/music/Daniel_Bachman/Live_at_WFMU_on_Irene_Trudels_Show_on_March_26_2012/Daniel_Bachman_-_05_-_Long_Nights_I\n3. Kamikaze Economy Christmas \u2014 Travis Taylor | Match: 0.971 | FMA 40878\n   Genres: folk, holiday\n   genre: matched folk; similarity 1.000, weight 2\n   acousticness: observed 0.7748, target 0.9000; similarity 0.8748, weight 1\n   energy: observed 0.2482, target 0.2500; similarity 0.9982, weight 1\n   tempo_bpm: observed 86.9420, target 85.0000; similarity 0.9806, weight 1\n   required acousticness: at least 0.6; observed 0.7748\n   required genre matched: folk\n   Source: https://freemusicarchive.org/music/Travis_Taylor/Thee_Christmas_Mix_Tape_2010/badgerland_-_Thee_Christmas_Mix_Tape_-_13_Kamikaze_Economy_Christmas\n4. O Sinachis \u2014 D. Charles Speer | Match: 0.970 | FMA 44155\n   Genres: country, folk, international\n   genre: matched country, folk; similarity 1.000, weight 2\n   acousticness: observed 0.8214, target 0.9000; similarity 0.9214, weight 1\n   energy: observed 0.2004, target 0.2500; similarity 0.9504, weight 1\n   tempo_bpm: observed 87.3520, target 85.0000; similarity 0.9765, weight 1\n   required acousticness: at least 0.6; observed 0.8214\n   required genre matched: country, folk\n   Source: https://freemusicarchive.org/music/D_Charles_Speer/D_Charles_Speer_on_John_Allens_Show_02232011/D_Charles_Speer_-_03_-_O_Sinachis\n5. Kauaksi J\u00e4\u00e4neet \u2014 Muuttuvat Kasvot | Match: 0.968 | FMA 38710\n   Genres: drone, improv, psych-folk\n   genre: matched folk; similarity 1.000, weight 2\n   acousticness: observed 0.9955, target 0.9000; similarity 0.9045, weight 1\n   energy: observed 0.2280, target 0.2500; similarity 0.9780, weight 1\n   tempo_bpm: observed 80.6060, target 85.0000; similarity 0.9561, weight 1\n   required acousticness: at least 0.6; observed 0.9955\n   required genre matched: folk\n   Source: https://freemusicarchive.org/music/Muuttuvat_Kasvot/Muuttuvat_Kasvot/02_Kauaksi_Jneet\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "scripts.prepare_catalog",
+    "/private/tmp/ai110-fma-metadata.zip",
+    "--output",
+    "/var/folders/_b/3tktgxfd1l7bskxjc2rlw_040000gn/T/ai110-submission-catalog-ya34lrxl"
+  ],
+  "exit_code": 0,
+  "byte_identical": {
+    "catalog.jsonl": true,
+    "catalog_report.json": true,
+    "genres.json": true
+  },
+  "archive_sha256": "d9527a5297a65da31c5676484d5047c3e2b8a8060ce72a46e26158be736bf265"
+}

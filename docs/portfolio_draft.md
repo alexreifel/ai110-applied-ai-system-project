@@ -4,7 +4,7 @@ Repository: [ai110-applied-ai-system-project](https://github.com/alexreifel/ai11
 
 ## Project summary
 
-Music Discovery Assistant extends my CodePath music recommender into a Python and Streamlit application over 1,200 real independent tracks. It combines an implemented Gemini preference-interpreter adapter with editable preference review, deterministic ranking, source-backed explanations, and checks for unsupported conditions. A reproducible evaluation harness exercises 12 predefined requests, and 174 automated tests pass in two local environments. The browser workflow and offline tests are verified; live Gemini behavior and the generic-versus-specialized prompt comparison still need validation with usable access.
+Music Discovery Assistant extends my CodePath music recommender into a Python and Streamlit application over 1,200 real independent tracks. It combines an implemented Gemini preference-interpreter adapter with editable preference review, deterministic ranking, source-backed explanations, and checks for unsupported conditions. A reproducible evaluation harness exercises 12 predefined requests, and 176 automated tests pass in two local environments. The browser workflow and offline tests are verified; live Gemini behavior and the generic-versus-specialized prompt comparison still need validation with usable access.
 
 ## Reflection paragraph for Alex's review
 
