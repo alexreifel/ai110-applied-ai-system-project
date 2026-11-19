@@ -16,7 +16,7 @@ from .preferences import Preferences
 ROOT = Path(__file__).resolve().parents[1]
 LOGGER = logging.getLogger(__name__)
 
-
+# Forces Gemini reply into JSON structure
 def response_schema(vocabulary):
     genres = {"type": "array", "items": {"type": "string", "enum": sorted(vocabulary)}, "maxItems": 10}
     number_properties = {feature: {"type": "number"} for feature in FEATURES}
@@ -69,7 +69,7 @@ class Interpretation:
                 "prompt_variant": self.prompt_variant, "prompt_sha256": self.prompt_sha256,
                 "elapsed_seconds": self.elapsed_seconds}
 
-
+# Rejects empty requests, requests >1200 chars
 def interpret_request(request: str, catalog: Catalog, client, variant="specialized"):
     if not isinstance(request, str) or not request.strip():
         raise ValueError("Describe the music you want before interpreting it.")
